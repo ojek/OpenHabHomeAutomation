@@ -1,2 +1,2 @@
 String Diode2 "Diode light1" <siren> {mqtt="<MQTT:default:command:*:default"}
-Number temperature "temp [%.1f]" {mqtt="<[MQTT:openhab/dupa:state:default]"}
+Number Temperature "temp [%.1f]" {mqtt="<[MQTT:default:state:default]"}
