@@ -1,3 +1,5 @@
 mosquitto_sub -t openhab/out/Diode2/command
 mosquitto_pub -t openhab/in/Temperature/state -m 2
- mosquitto_sub -t openhab/in/LuminositySensor/state
+
+mosquitto_sub -t openhab/in/LuminositySensor/state
+mosquitto_pub -t openhab/in/LuminositySensor/state -m 3

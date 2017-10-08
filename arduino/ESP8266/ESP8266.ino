@@ -27,9 +27,12 @@ void setup()
 void loop()
 {
     delay(200); //safety, power saving
-    
+
     mqtt.loop(mqttChannelList);
-    mqtt.sendMsg(luminositySensor.inTopic, luminositySensor.read());
+
+    char lux[6];
+    luminositySensor.read(lux);
+    mqtt.sendMsg(luminositySensor.inTopic, lux);
 }
 
 void registerItemChannels()

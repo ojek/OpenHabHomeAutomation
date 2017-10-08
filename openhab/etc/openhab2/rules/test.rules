@@ -1,0 +1,13 @@
+rule "Test"
+when
+     Item LuminositySensor changed
+then
+    if (LuminositySensor.state > 10)
+    {
+        Diode2.sendCommand(ON)
+    }
+    else
+    {
+        Diode2.sendCommand(OFF)
+    }
+end

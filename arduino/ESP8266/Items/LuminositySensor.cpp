@@ -15,7 +15,7 @@ class LuminositySensor
             Wire.begin();
         }
 
-        char* read()
+        void read(char* outStr)
         {
             int i;
             char buf[6];
@@ -28,8 +28,10 @@ class LuminositySensor
               val=((buff[0]<<8)|buff[1])/1.2;
             }
             sprintf(buf, "%u", val);
-            Serial.println(buf);
-            return buf;
+            for(int i=0; i < 6; ++i)
+            {
+                outStr[i] = buf[i];
+            }
         }
 
         int BH1750_Read(int address) //
