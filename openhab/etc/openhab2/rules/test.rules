@@ -4,10 +4,10 @@ when
 then
     if (LuminositySensor.state > 10)
     {
-        Diode2.sendCommand(ON)
+        Diode2.sendCommand(1)
     }
     else
     {
-        Diode2.sendCommand(OFF)
+        Diode2.sendCommand(0)
     }
 end
