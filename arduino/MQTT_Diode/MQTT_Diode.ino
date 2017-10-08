@@ -58,6 +58,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
 }
 
+void sendSensorValue(char* topic, float value){
+  
+}
+
 void setup_wifi() {
   delay(10);
   // We start by connecting to a WiFi network
