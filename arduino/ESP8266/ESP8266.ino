@@ -1,22 +1,45 @@
 #include "WiFi\WiFi.cpp"
 #include "MQTT\MQTT.cpp"
 #include "Items\NodeMCUDiode.cpp"
+#include "Items\LuminositySensor.cpp"
 
 MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
+LuminositySensor luminositySensor;
+char* mqttChannelList[99];
 
 void setup()
 {
-   HomeWiFi wifi;
-   wifi.setup_wifi();
-   
-   mqtt.setServer();
-   mqtt.setCallback(mqttCallback);
+    pinMode(nodeMCUDiode.diode_pin, OUTPUT);
+    Serial.begin(115200);
+
+    HomeWiFi wifi;
+    wifi.setup_wifi();
+
+    mqtt.setServer();
+    mqtt.setCallback(mqttCallback);
+
+    registerItemChannels();
+
+    setupItems();
 }
  
 void loop()
 {
-    mqtt.loop();
+    delay(200); //safety, power saving
+    
+    mqtt.loop(mqttChannelList);
+    mqtt.sendMsg(luminositySensor.inTopic, luminositySensor.read());
+}
+
+void registerItemChannels()
+{
+    mqttChannelList[0] = nodeMCUDiode.outTopic;
+}
+
+void setupItems()
+{
+    luminositySensor.setup();
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
