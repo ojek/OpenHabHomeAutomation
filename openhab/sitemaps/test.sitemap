@@ -1,0 +1,6 @@
+sitemap demo label="My home automation" {
+	Frame label="Switch1" {
+		Switch item=Diode2 mappings=[OFF="OFF!", ON="ON!", 0="xOFF!", "1"="xON!"] icon="light"
+		Text item=temperature
+	}
+}
