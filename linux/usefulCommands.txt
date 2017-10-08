@@ -1,0 +1,2 @@
+mosquitto_sub -t openhab/out/Diode2/command
+mosquitto_pub -t openhab/out/Temperature/state -m 1
