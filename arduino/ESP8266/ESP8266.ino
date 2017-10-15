@@ -1,8 +1,24 @@
 #include "WiFi\WiFi.cpp"
 #include "MQTT\MQTT.cpp"
+#include "ESPHelper\ESPHelper.cpp"
 #include "Items\NodeMCUDiode.cpp"
 #include "Items\LuminositySensor.cpp"
 
+/*
+#define D0 16
+#define D1 5 // I2C Bus SCL (clock)
+#define D2 4 // I2C Bus SDA (data)
+#define D3 0
+#define D4 2 // Same as "LED_BUILTIN", but inverted logic
+#define D5 14 // SPI Bus SCK (clock)
+#define D6 12 // SPI Bus MISO 
+#define D7 13 // SPI Bus MOSI
+#define D8 15 // SPI Bus SS (CS)
+#define D9 3 // RX0 (Serial console)
+#define D10 1 // TX0 (Serial console)
+*/
+
+ESPHelper espHelper;
 MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
 LuminositySensor luminositySensor;
@@ -19,8 +35,9 @@ void setup()
     mqtt.setServer();
     mqtt.setCallback(mqttCallback);
 
-    registerItemChannels();
+    espHelper.setup();
 
+    registerItemChannels();
     setupItems();
 }
  
@@ -43,7 +60,6 @@ void registerItemChannels()
 void setupItems()
 {
     nodeMCUDiode.off();
-    luminositySensor.setup();
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
