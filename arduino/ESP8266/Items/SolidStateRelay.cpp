@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include <math.h> 
 
-class LuminositySensor
+class SolidStateRelay
 {
     int BH1750address = 0x23; //i2c address
     byte buff[2];

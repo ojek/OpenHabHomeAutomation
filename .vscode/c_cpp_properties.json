@@ -57,7 +57,8 @@
                 "path": [
                     "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt",
                     "${workspaceRoot}",
-                    "G:/FW_Allowed/Arduino"
+                    "G:/FW_Allowed/Arduino",
+                    "G:/FW_Allowed/GithubProjects/OpenHabHomeAutomation/arduino"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

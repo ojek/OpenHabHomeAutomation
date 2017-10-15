@@ -1,56 +1,27 @@
-#include <Wire.h>
-#include <math.h> 
+#include "DHT.h"
+//#define DHTPIN 4 // what digital pin the DHT22 is conected to (D2)
+//#define DHTTYPE DHT22   // there are multiple kinds of DHT sensors
 
 class TempHumidSensor
 {
+
   //3.3-5.5V DC. Typical: 5V
   //1-1.5 mA Typical in between
   //Collecting period: 2s
 
-  int i2c = 0x23; //i2c address
-  byte buff[2];
-
+  DHT dht = DHT(4, DHT22); //4 - DHT pin (D2), I2C Bus SDA (data)
+  float humidity;
+  float temperature;
+  
   public:
-      char* outTopic = "openhab/out/TempHumidSensor/state";
-      char* inTopic = "openhab/in/TempHumidSensor/state";
+    char* outTempTopic = "openhab/out/TemperatureSensor/state";
+    char* inTempTopic = "openhab/in/TemperatureSensor/state";
+    char* outHumidTopic = "openhab/out/HumiditySensor/state";
+    char* inHumidTopic = "openhab/in/HumiditySensor/state";
 
-      void read(char* outStr)
-      {
-          int i;
-          char buf[6];
-          uint16_t val=0;
-          BH1750_Init(BH1750address);
-          delay(200);
-          
-          if(2==BH1750_Read(BH1750address))
-          {
-            val=((buff[0]<<8)|buff[1])/1.2;
-          }
-          sprintf(buf, "%u", val);
-          for(int i=0; i < 6; ++i)
-          {
-              outStr[i] = buf[i];
-          }
-      }
-
-      int BH1750_Read(int address) //
-      {
-        int i=0;
-        Wire.beginTransmission(address);
-        Wire.requestFrom(address, 2);
-        while(Wire.available()) //
-        {
-          buff[i] = Wire.read();  // receive one byte
-          i++;
-        }
-        Wire.endTransmission();
-        return i;
-      }
-        
-      void BH1750_Init(int address)
-      {
-        Wire.beginTransmission(address);
-        Wire.write(0x10);//1lx reolution 120ms
-        Wire.endTransmission();
-      }
+    void readTempHumid(float* tempHumid)
+    {
+      tempHumid[0] = dht.readTemperature();
+      tempHumid[1] = dht.readHumidity();
+    }
 };

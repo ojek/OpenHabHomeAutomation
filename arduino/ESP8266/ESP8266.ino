@@ -1,8 +1,9 @@
 #include "WiFi\WiFi.cpp"
 #include "MQTT\MQTT.cpp"
-#include "ESPHelper\ESPHelper.cpp"
+#include "Other\ESPHelper.cpp"
 #include "Items\NodeMCUDiode.cpp"
 #include "Items\LuminositySensor.cpp"
+#include "Items\TempHumidSensor.cpp"
 
 /*
 #define D0 16
@@ -22,6 +23,7 @@ ESPHelper espHelper;
 MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
 LuminositySensor luminositySensor;
+TempHumidSensor tempHumidSensor;
 char* mqttChannelList[99];
 
 void setup()
@@ -47,9 +49,16 @@ void loop()
 
     mqtt.loop(mqttChannelList);
 
-    char lux[6];
-    luminositySensor.read(lux);
-    mqtt.sendMsg(luminositySensor.inTopic, lux);
+    char buffer[64];
+    luminositySensor.read(buffer);
+    mqtt.sendMsg(luminositySensor.inTopic, buffer);
+
+    float tempHumid[2];
+    tempHumidSensor.readTempHumid(tempHumid);
+    snprintf(buffer, sizeof buffer, "%f", tempHumid[0]);
+    mqtt.sendMsg(tempHumidSensor.inTempTopic, buffer);
+    snprintf(buffer, sizeof buffer, "%f", tempHumid[1]);
+    mqtt.sendMsg(tempHumidSensor.inHumidTopic, buffer);
 }
 
 void registerItemChannels()
