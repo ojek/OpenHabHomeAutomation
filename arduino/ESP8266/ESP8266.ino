@@ -42,6 +42,7 @@ void registerItemChannels()
 
 void setupItems()
 {
+    nodeMCUDiode.off();
     luminositySensor.setup();
 }
 
@@ -51,7 +52,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
     {
         if ((char)payload[0] == '0') {
             nodeMCUDiode.off();
-        } else {
+        } else if ((char)payload[0] == '1') {
             nodeMCUDiode.on();
         }
     }
