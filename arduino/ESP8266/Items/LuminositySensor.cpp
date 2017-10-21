@@ -64,22 +64,15 @@ class LuminositySensor
     char* outTopic = "openhab/out/LuminositySensor/state";
     char* inTopic = "openhab/in/LuminositySensor/state";
 
-    void read(char* outStr)
+    void loop(double* val)
     {
       int i;
-      char buf[6];
-      uint16_t val=0;
       BH1750_Init(BH1750address);
       delay(120);
       
       if(2==BH1750_Read(BH1750address))
       {
-        val=((buff[0]<<8)|buff[1])/1.2;
-      }
-      sprintf(buf, "%u", val);
-      for(int i=0; i < 6; ++i)
-      {
-          outStr[i] = buf[i];
+        *val=((buff[0]<<8)|buff[1])/1.2;
       }
     }
 };

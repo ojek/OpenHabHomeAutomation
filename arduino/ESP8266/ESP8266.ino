@@ -24,7 +24,10 @@ MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
 LuminositySensor luminositySensor;
 TempHumidSensor tempHumidSensor;
+
 char* mqttChannelList[99];
+float tempHumid[2] = {0,0};
+double lux;
 
 void setup()
 {
@@ -48,17 +51,12 @@ void loop()
     delay(200); //safety, power saving
 
     mqtt.loop(mqttChannelList);
+    luminositySensor.loop(&lux);
+    tempHumidSensor.loop(tempHumid);
 
-    char buffer[64];
-    luminositySensor.read(buffer);
-    mqtt.sendMsg(luminositySensor.inTopic, buffer);
-
-    float tempHumid[2];
-    tempHumidSensor.readTempHumid(tempHumid);
-    snprintf(buffer, sizeof buffer, "%f", tempHumid[0]);
-    mqtt.sendMsg(tempHumidSensor.inTempTopic, buffer);
-    snprintf(buffer, sizeof buffer, "%f", tempHumid[1]);
-    mqtt.sendMsg(tempHumidSensor.inHumidTopic, buffer);
+    mqtt.sendMsg(luminositySensor.inTopic, String(lux));
+    mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
+    mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
 }
 
 void registerItemChannels()

@@ -1,15 +1,14 @@
 #include "DHT.h"
-//#define DHTPIN 4 // what digital pin the DHT22 is conected to (D2)
-//#define DHTTYPE DHT22   // there are multiple kinds of DHT sensors
+#define DHTPIN 2 // what digital pin the DHT22 is conected to (D4)
+#define DHTTYPE DHT22   // there are multiple kinds of DHT sensors
 
 class TempHumidSensor
 {
-
   //3.3-5.5V DC. Typical: 5V
   //1-1.5 mA Typical in between
   //Collecting period: 2s
 
-  DHT dht = DHT(4, DHT22); //4 - DHT pin (D2), I2C Bus SDA (data)
+  DHT dht = DHT(DHTPIN, DHTTYPE); //4 - DHT pin (D2), I2C Bus SDA (data)
   float humidity;
   float temperature;
   
@@ -19,9 +18,15 @@ class TempHumidSensor
     char* outHumidTopic = "openhab/out/HumiditySensor/state";
     char* inHumidTopic = "openhab/in/HumiditySensor/state";
 
-    void readTempHumid(float* tempHumid)
+    void loop(float* tempHumid)
     {
-      tempHumid[0] = dht.readTemperature();
-      tempHumid[1] = dht.readHumidity();
+      float temp,humid;
+      temp = dht.readTemperature();
+      humid = dht.readHumidity();
+      if (temp != NULL && humid != NULL && temp > 0 && humid > 0)
+      {
+        tempHumid[0] = temp;
+        tempHumid[1] = humid;
+      }
     }
 };

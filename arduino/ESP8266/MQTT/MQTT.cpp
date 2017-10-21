@@ -24,9 +24,9 @@ class MQTT
         {
             client.subscribe(topic);
         }
-        void sendMsg(char* topic, char* message)
+        void sendMsg(char* topic, String message, bool eraseMessage = true)
         {
-            client.publish(topic, message);
+            client.publish(topic, message.c_str());
         }
         void setCallback(MQTT_CALLBACK_SIGNATURE)
         {
