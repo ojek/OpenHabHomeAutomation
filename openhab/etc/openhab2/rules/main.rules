@@ -2,7 +2,7 @@ rule "LedLight_Luminosity"
 when
      Item LuminositySensor changed
 then
-    if (LuminositySensor.state > 20)
+    if (LuminositySensor.state > 13)
     {
         LedLight.sendCommand(1)
         SolidStateRelay.sendCommand(1)
