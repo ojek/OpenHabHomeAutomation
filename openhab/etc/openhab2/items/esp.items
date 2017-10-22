@@ -5,4 +5,4 @@ Number LuminositySensor "Luminosity [%.2f lux]" <sun> {mqtt="<[MQTT:default:stat
 
 Number MotionSensor "Motion [MAP(binary.map):%s]" <motion> {mqtt="<[MQTT:default:state:default]"}
 String LedDisplay "Display Text [%s]" <text> {mqtt="<[MQTT:default:state:default]"}
-String SolidStateRelay "SSR Position [MAP(binary.map):%s]" <wallswitch> {mqtt="<[MQTT:default:command:default]"}
+String SolidStateRelay "SSR Position" <wallswitch> {mqtt="<[MQTT:default:command:default]"}

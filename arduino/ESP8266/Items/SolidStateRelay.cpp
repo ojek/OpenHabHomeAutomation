@@ -1,6 +1,6 @@
 class SolidStateRelay
 {
-  #define	SSR_PIN	12 //D6
+  #define	SSR_PIN	0 //D3
   public:
     char* outTopic = "openhab/out/SolidStateRelay/command";
     char* inTopic = "openhab/in/SolidStateRelay/command";

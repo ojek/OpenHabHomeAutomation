@@ -5,9 +5,11 @@ then
     if (LuminositySensor.state > 20)
     {
         LedLight.sendCommand(1)
+        SolidStateRelay.sendCommand(1)
     }
     else
     {
         LedLight.sendCommand(0)
+        SolidStateRelay.sendCommand(0)
     }
 end

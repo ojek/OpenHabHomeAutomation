@@ -22,6 +22,9 @@
 #define D10 1 // TX0 (Serial console)
 */
 
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY 500
+#define MQTT_PUBLISH_DELAY_MS 5000
+
 ESPHelper espHelper;
 MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
@@ -30,7 +33,10 @@ TempHumidSensor tempHumidSensor;
 LedDisplay ledDisplay;
 MotionSensor motionSensor;
 SolidStateRelay solidStateRelay;
+
 char* mqttChannelList[2];
+int lastMQTTPublishTimeStampPriority = 0;
+int lastMQTTPublishTimeStamp = 0;
 
 float tempHumid[2] = {0,0};
 double lux;
@@ -65,15 +71,22 @@ void loop()
 
 void mqttPublish()
 {
-    Serial.println("test");
-    mqtt.sendMsg(luminositySensor.inTopic, String(lux));
-    Serial.println("test1");
-    mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
-    mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
-    mqtt.sendMsg(motionSensor.inTopic, String(isMotion));
-    mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
-    mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
-    mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
+    int currentTimeStamp = millis();
+    if (currentTimeStamp - lastMQTTPublishTimeStampPriority > MQTT_PUBLISH_DELAY_MS_PRIORITY)
+    {
+        lastMQTTPublishTimeStampPriority = currentTimeStamp;
+        mqtt.sendMsg(luminositySensor.inTopic, String(lux));
+        mqtt.sendMsg(motionSensor.inTopic, String(isMotion));
+    }
+    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS)
+    {
+        lastMQTTPublishTimeStamp = currentTimeStamp;
+        mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
+        mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
+        mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
+        mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
+        mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
+    }
 }
 
 void getItemChannels(char** mqttChannelList)
@@ -86,6 +99,8 @@ void setupItems()
 {
     nodeMCUDiode.setup();
     ledDisplay.setup();
+    solidStateRelay.setup();
+    motionSensor.setup();
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
