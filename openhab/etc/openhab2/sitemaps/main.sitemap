@@ -1,4 +1,4 @@
-sitemap test label="My home automation" {
+sitemap Main label="My home automation" {
 	Frame label="Main unit" {
 		Switch item=LedLight mappings=[1="ON", 0="OFF"]
 		Text item=TemperatureSensor
@@ -6,6 +6,6 @@ sitemap test label="My home automation" {
 		Text item=LuminositySensor
 		Text item=MotionSensor
 		Text item=LedDisplay
-		Text item=SolidStateRelay
+		Text item=SolidStateRelay mappings=[1="ON", 0="OFF"]
 	}
 }

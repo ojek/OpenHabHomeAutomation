@@ -6,25 +6,9 @@ class MQTT
 {
     const char* mqtt_server = "192.168.0.5";
     const char* client_name = "ESP8266Client";
-    #define MQTT_CHANNEL_COUNT 99
-    char* mqttChannelList[MQTT_CHANNEL_COUNT];
+    char** mqttChannels;
     
-    void setServer()
-    {
-        client.setServer(mqtt_server, 1883);
-    }
-
-    void subscribe(char* topic)
-    {
-        client.subscribe(topic);
-    }
-    
-    void setCallback(MQTT_CALLBACK_SIGNATURE)
-    {
-        client.setCallback(callback);
-    }
-        
-    void reconnect(char* mqttChannelList[MQTT_CHANNEL_COUNT]) 
+    void reconnect() 
     {
         while (!client.connected()) {
             if (client.connect(client_name)) {
@@ -37,10 +21,11 @@ class MQTT
 
     void resubscribe()
     {
-        for (int i = 0; i < MQTT_CHANNEL_COUNT; i++) {
-            if (mqttChannelList[i] != NULL && strlen(mqttChannelList[i]) > 0)
+        for (int i = 0; i < sizeof(mqttChannels); i++) 
+        {
+            if (mqttChannels[i] != NULL && strlen(mqttChannels[i]) > 0)
             {
-                client.subscribe(mqttChannelList[i]); 
+                client.subscribe(mqttChannels[i]); 
             }
             else
             {
@@ -50,17 +35,17 @@ class MQTT
     }
 
     public:
-        void setup(char* mqttChannelList[], MQTT_CALLBACK_SIGNATURE)
+        void setup(char** mqttChannelList, MQTT_CALLBACK_SIGNATURE)
         {
-            setServer();
+            client.setServer(mqtt_server, 1883);
             client.setCallback(callback);
-            mqttChannelList = mqttChannelList;
+            mqttChannels = mqttChannelList;
         }
 
         void loop()
         {
             if (!client.connected()) {
-                reconnect(mqttChannelList);
+                reconnect();
             }
             client.loop();
         }
@@ -75,6 +60,7 @@ class MQTT
             {
               pMsg = "";
             }
+            
             client.publish(topic,pMsg);
         }
 };

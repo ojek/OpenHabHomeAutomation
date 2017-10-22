@@ -30,6 +30,7 @@ TempHumidSensor tempHumidSensor;
 LedDisplay ledDisplay;
 MotionSensor motionSensor;
 SolidStateRelay solidStateRelay;
+char* mqttChannelList[2];
 
 float tempHumid[2] = {0,0};
 double lux;
@@ -43,7 +44,6 @@ void setup()
     wifi.setup_wifi();
     espHelper.setup();
 
-    char* mqttChannelList[2];
     getItemChannels(mqttChannelList);
     mqtt.setup(mqttChannelList, mqttCallback);
 
@@ -60,13 +60,17 @@ void loop()
     tempHumidSensor.loop(tempHumid);
     ledDisplay.loop(String(millis()/1000));
 
-    Serial.println("7");
+    mqttPublish();
+}
+
+void mqttPublish()
+{
+    Serial.println("test");
     mqtt.sendMsg(luminositySensor.inTopic, String(lux));
-    Serial.println("8");
+    Serial.println("test1");
     mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
     mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
     mqtt.sendMsg(motionSensor.inTopic, String(isMotion));
-
     mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
     mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
     mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
