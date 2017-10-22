@@ -1,6 +1,6 @@
 String LedLight "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
 Number TemperatureSensor "Temperature [%.1f °C]" <temperature> {mqtt="<[MQTT:default:state:default]"}
-Number HumiditySensor "Humidity [%.1f %%]" <humidity> {mqtt="<[MQTT:default:state:default]"}
+Number HumiditySensor "Humidity [%.1f]" <humidity> {mqtt="<[MQTT:default:state:default]"}
 Number LuminositySensor "Luminosity [%.2f lux]" <sun> {mqtt="<[MQTT:default:state:default]"}
 
 Number MotionSensor "Motion [MAP(binary.map):%s]" <motion> {mqtt="<[MQTT:default:state:default]"}
