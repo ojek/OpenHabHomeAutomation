@@ -23,6 +23,7 @@ class LedDisplay
     void setup()
     {
       mx.begin();
+      currentState = "";
     }
 
     void loop(String message)

@@ -86,22 +86,22 @@ void setupItems()
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
 {
+    if (payload == NULL || payload[0] == NULL)
+    {
+        return;
+    }
     if (strcmp(nodeMCUDiode.outTopic, topic) == 0)
     {
-        char msg = payload != NULL && payload[0] != NULL ? (char)payload[0] : '\0';
-        
-        if (msg == '0') 
+        if ((char)payload[0] == '0') 
             nodeMCUDiode.off();
-        else if (msg == '1') 
+        else if ((char)payload[0] == '1') 
             nodeMCUDiode.on();
     }
     else if (strcmp(solidStateRelay.outTopic, topic) == 0)
     {
-        char msg = payload != NULL && payload[0] != NULL ? (char)payload[0] : '\0';
-
-        if (msg == '0') 
+        if ((char)payload[0] == '0') 
             solidStateRelay.off();
-        else if (msg == '1') 
+        else if ((char)payload[0] == '1') 
             solidStateRelay.on();
     }
 }

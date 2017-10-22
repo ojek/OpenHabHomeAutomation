@@ -1,0 +1,13 @@
+rule "LedLight_Luminosity"
+when
+     Item LuminositySensor changed
+then
+    if (LuminositySensor.state > 20)
+    {
+        LedLight.sendCommand(1)
+    }
+    else
+    {
+        LedLight.sendCommand(0)
+    }
+end

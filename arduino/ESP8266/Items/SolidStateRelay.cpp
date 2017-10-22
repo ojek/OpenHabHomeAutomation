@@ -9,6 +9,7 @@ class SolidStateRelay
     void setup()
     {
       pinMode(SSR_PIN, OUTPUT);
+      currentState = "0";
     }
 
     void on()
