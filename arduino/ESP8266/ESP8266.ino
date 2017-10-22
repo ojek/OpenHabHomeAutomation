@@ -4,6 +4,7 @@
 #include "Items\NodeMCUDiode.cpp"
 #include "Items\LuminositySensor.cpp"
 #include "Items\TempHumidSensor.cpp"
+#include "Items\LedDisplay.cpp"
 
 /*
 #define D0 16
@@ -24,6 +25,7 @@ MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
 LuminositySensor luminositySensor;
 TempHumidSensor tempHumidSensor;
+LedDisplay ledDisplay;
 
 char* mqttChannelList[99];
 float tempHumid[2] = {0,0};
@@ -53,6 +55,7 @@ void loop()
     mqtt.loop(mqttChannelList);
     luminositySensor.loop(&lux);
     tempHumidSensor.loop(tempHumid);
+    ledDisplay.loop(String(lux));
 
     mqtt.sendMsg(luminositySensor.inTopic, String(lux));
     mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
@@ -67,6 +70,7 @@ void registerItemChannels()
 void setupItems()
 {
     nodeMCUDiode.off();
+    ledDisplay.setup();
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
