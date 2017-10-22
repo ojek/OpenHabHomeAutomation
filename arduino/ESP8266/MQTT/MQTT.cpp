@@ -1,6 +1,6 @@
 #include <PubSubClient.h>
-WiFiClient espClient;
-PubSubClient client(espClient);
+WiFiClient espClient = WiFiClient();
+PubSubClient client = PubSubClient(espClient);
 
 class MQTT
 {
@@ -53,7 +53,7 @@ class MQTT
         void sendMsg(char* topic, String message, bool eraseMessage = true)
         {
             int msgLen = message.length();
-            char* pMsg = new char[msgLen+1];
+            char* pMsg = new char[msgLen];
             if (msgLen > 0)
                 strcpy(pMsg, message.c_str());
             if (pMsg == NULL || pMsg == "")

@@ -36,7 +36,7 @@ class LedDisplay
     // Message area is padded with blank columns after printing.
     {
       int msgLen = message.length();
-      char* pMsg = new char[msgLen+1];
+      char* pMsg = new char[msgLen];
       if (msgLen > 0)
           strcpy(pMsg, message.c_str());
       if (pMsg == NULL || pMsg == "")
