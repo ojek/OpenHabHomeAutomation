@@ -1,4 +1,0 @@
-String Diode2 "Diode light1" <siren> {mqtt=">MQTT:default:command:*:default"}
-Number TemperatureSensor "Temperature [%.1f]" {mqtt="<[MQTT:default:state:default]"}
-Number HumiditySensor "Humidity [%.1f]" {mqtt="<[MQTT:default:state:default]"}
-Number LuminositySensor "Lux [%.1f]" {mqtt="<[MQTT:default:state:default]"}

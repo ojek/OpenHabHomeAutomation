@@ -5,6 +5,8 @@
 #include "Items\LuminositySensor.cpp"
 #include "Items\TempHumidSensor.cpp"
 #include "Items\LedDisplay.cpp"
+#include "Items\MotionSensor.cpp"
+#include "Items\SolidStateRelay.cpp"
 
 /*
 #define D0 16
@@ -26,25 +28,25 @@ NodeMCUDiode nodeMCUDiode;
 LuminositySensor luminositySensor;
 TempHumidSensor tempHumidSensor;
 LedDisplay ledDisplay;
+MotionSensor motionSensor;
+SolidStateRelay solidStateRelay;
 
-char* mqttChannelList[99];
 float tempHumid[2] = {0,0};
 double lux;
+bool isMotion;
 
 void setup()
 {
-    pinMode(nodeMCUDiode.diode_pin, OUTPUT);
     Serial.begin(115200);
 
     HomeWiFi wifi;
     wifi.setup_wifi();
-
-    mqtt.setServer();
-    mqtt.setCallback(mqttCallback);
-
     espHelper.setup();
 
-    registerItemChannels();
+    char* mqttChannelList[2];
+    getItemChannels(mqttChannelList);
+    mqtt.setup(mqttChannelList, mqttCallback);
+
     setupItems();
 }
  
@@ -52,24 +54,33 @@ void loop()
 {
     delay(200); //safety, power saving
 
-    mqtt.loop(mqttChannelList);
+    mqtt.loop();
+    motionSensor.loop(&isMotion);
     luminositySensor.loop(&lux);
     tempHumidSensor.loop(tempHumid);
-    ledDisplay.loop(String(lux));
+    ledDisplay.loop(String(millis()/1000));
 
+    Serial.println("7");
     mqtt.sendMsg(luminositySensor.inTopic, String(lux));
+    Serial.println("8");
     mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
     mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
+    mqtt.sendMsg(motionSensor.inTopic, String(isMotion));
+
+    mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
+    mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
+    mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
 }
 
-void registerItemChannels()
+void getItemChannels(char** mqttChannelList)
 {
     mqttChannelList[0] = nodeMCUDiode.outTopic;
+    mqttChannelList[1] = solidStateRelay.outTopic;
 }
 
 void setupItems()
 {
-    nodeMCUDiode.off();
+    nodeMCUDiode.setup();
     ledDisplay.setup();
 }
 
@@ -77,10 +88,20 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
 {
     if (strcmp(nodeMCUDiode.outTopic, topic) == 0)
     {
-        if ((char)payload[0] == '0') {
+        char msg = payload != NULL && payload[0] != NULL ? (char)payload[0] : '\0';
+        
+        if (msg == '0') 
             nodeMCUDiode.off();
-        } else if ((char)payload[0] == '1') {
+        else if (msg == '1') 
             nodeMCUDiode.on();
-        }
+    }
+    else if (strcmp(solidStateRelay.outTopic, topic) == 0)
+    {
+        char msg = payload != NULL && payload[0] != NULL ? (char)payload[0] : '\0';
+
+        if (msg == '0') 
+            solidStateRelay.off();
+        else if (msg == '1') 
+            solidStateRelay.on();
     }
 }

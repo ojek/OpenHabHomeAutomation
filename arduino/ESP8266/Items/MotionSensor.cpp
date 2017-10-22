@@ -1,58 +1,18 @@
-#include <Wire.h>
-#include <math.h> 
-
 class MotionSensor
 {
-    int BH1750address = 0x23; //i2c address
-    byte buff[2];
+  #define	PIR_PIN	0 //D3
+  public:
+    char* outTopic = "openhab/out/MotionSensor/state";
+    char* inTopic = "openhab/in/MotionSensor/state";
+    
+    void setup()
+    {
+      pinMode(PIR_PIN, INPUT);
+    }
 
-        int BH1750_Read(int address)
-        {
-          int i=0;
-          Wire.beginTransmission(address);
-          Wire.requestFrom(address, 2);
-          while(Wire.available())
-          {
-            buff[i] = Wire.read();  // receive one byte
-            i++;
-          }
-          Wire.endTransmission();
-          return i;
-        }
-         
-        void BH1750_Init(int address)
-        {
-          Wire.beginTransmission(address);
-          Wire.write(0x10);//1lx reolution 120ms
-          Wire.endTransmission();
-        }
-        
-    public:
-      char* outTopic = "openhab/out/LuminositySensor/state";
-      char* inTopic = "openhab/in/LuminositySensor/state";
-      
-      void setup()
-      {
-          Wire.begin();
-          Wire.end();
-      }
-
-      void read(char* outStr)
-      {
-          int i;
-          char buf[6];
-          uint16_t val=0;
-          BH1750_Init(BH1750address);
-          delay(200);
-         
-          if(2==BH1750_Read(BH1750address))
-          {
-            val=((buff[0]<<8)|buff[1])/1.2;
-          }
-          sprintf(buf, "%u", val);
-          for(int i=0; i < 6; ++i)
-          {
-              outStr[i] = buf[i];
-          }
-      }
+    void loop(bool* isMotion)
+    {
+      int motion = digitalRead(PIR_PIN);
+      *isMotion = (motion == HIGH);
+    }
 };

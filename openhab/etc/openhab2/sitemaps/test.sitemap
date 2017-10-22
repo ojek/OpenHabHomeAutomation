@@ -1,8 +1,0 @@
-sitemap test label="My home automation" {
-	Frame label="Switch1" {
-		Switch item=Diode2 mappings=[1="ON", 0="OFF"] icon="light"
-		Text item=TemperatureSensor
-		Text item=HumiditySensor
-		Text item=LuminositySensor
-	}
-}

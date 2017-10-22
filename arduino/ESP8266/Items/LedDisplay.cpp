@@ -6,7 +6,7 @@ class LedDisplay
   //3.3V DC
 
   //must be in that order:
-  #define MAX_DEVICES 1
+  #define MAX_DEVICES 4
   #define DIN 13 // SPI Bus MOSI //D7
   #define CS 15 // SPI Bus MISO  //D8
   #define CLK 14 // SPI Bus SS (CS) //D5
@@ -16,29 +16,33 @@ class LedDisplay
   #define	CHAR_SPACING	1	// pixels between characters
 
   public:
-    char* outTempTopic = "openhab/out/LedDisplay/state";
-    char* inTempTopic = "openhab/in/LedDisplay/state";
+    char* outTopic = "openhab/out/LedDisplay/state";
+    char* inTopic = "openhab/in/LedDisplay/state";
+    char* currentState;
     
     void setup()
     {
       mx.begin();
     }
 
-    void loop(String msg)
+    void loop(String message)
     {
-      printText(msg);
+      printText(message);
     }
 
-    void printText(String msg)
+    void printText(String message)
     // Print the text string to the LED matrix modules specified.
     // Message area is padded with blank columns after printing.
     {
-      char* pMsg = new char[msg.length()+1];
-      strcpy(pMsg, msg.c_str());
+      int msgLen = message.length();
+      char* pMsg = new char[msgLen+1];
+      if (msgLen > 0)
+          strcpy(pMsg, message.c_str());
       if (pMsg == NULL || pMsg == "")
       {
         pMsg = "";
       }
+      currentState = pMsg;
 
       uint8_t modStart, modEnd;
       modStart = 0;
