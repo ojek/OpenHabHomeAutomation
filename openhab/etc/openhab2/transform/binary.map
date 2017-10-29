@@ -1,4 +1,5 @@
 ON=1
 OFF=0
+NULL=0
 1=ON
 0=OFF

@@ -1,3 +1,5 @@
+tail -f /var/log/openhab2/openhab.log -f /var/log/openhab2/events.log
+
 mosquitto_sub -t openhab/out/Diode2/command
 mosquitto_pub -t openhab/in/Temperature/state -m 2
 
