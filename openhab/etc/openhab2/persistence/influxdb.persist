@@ -5,5 +5,5 @@ Strategies {
 }
 
 Items {
-    LuminositySensor : strategy = everyChange, everyMinute
+    gPersistable* : strategy = everyChange, everyMinute
 }
