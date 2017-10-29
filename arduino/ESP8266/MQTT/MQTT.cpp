@@ -52,6 +52,10 @@ class MQTT
         
         void sendMsg(char* topic, String message, bool eraseMessage = true)
         {
+            if (!client.connected()) {
+                reconnect();
+            }
+
             int msgLen = message.length();
             char* pMsg = new char[msgLen];
             if (msgLen > 0)
