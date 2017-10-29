@@ -65,6 +65,7 @@ void loop()
     luminositySensor.loop(&lux);
     tempHumidSensor.loop(tempHumid);
     ledDisplay.loop(String(millis()/1000));
+    Serial.println(millis()/1000);
 
     mqttPublish();
 }
