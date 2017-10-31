@@ -1,0 +1,93 @@
+[
+    {
+        "id": "Main",
+        "name": "Main",
+        "widgets": [
+            {
+                "name": "Temperature",
+                "sizeX": 3,
+                "sizeY": 2,
+                "item": null,
+                "type": "template",
+                "row": 0,
+                "col": 0,
+                "template": "<iframe src=\"http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=1\" width=\"100%\" height=\"100%\" frameborder=\"0\"></iframe>",
+                "dontwrap": true,
+                "nobackground": true,
+                "$$hashKey": "object:49"
+            },
+            {
+                "name": "Humidity",
+                "sizeX": 3,
+                "sizeY": 2,
+                "item": null,
+                "type": "template",
+                "template": "<iframe src=\"http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2\" width=\"100%\" height=\"100%\" frameborder=\"0\"></iframe>",
+                "dontwrap": true,
+                "nobackground": true,
+                "row": 0,
+                "col": 3,
+                "$$hashKey": "object:50"
+            },
+            {
+                "name": "Motion",
+                "sizeX": 3,
+                "sizeY": 2,
+                "item": null,
+                "type": "template",
+                "template": "<iframe src=\"http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=3\" width=\"100%\" height=\"100%\" frameborder=\"0\"></iframe>",
+                "dontwrap": true,
+                "nobackground": true,
+                "row": 2,
+                "col": 3,
+                "$$hashKey": "object:51"
+            },
+            {
+                "name": "Luminosity",
+                "sizeX": 3,
+                "sizeY": 2,
+                "item": null,
+                "type": "template",
+                "template": "<iframe src=\"http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=4\" width=\"100%\" height=\"100%\" frameborder=\"0\"></iframe>",
+                "dontwrap": true,
+                "nobackground": true,
+                "row": 2,
+                "col": 0,
+                "$$hashKey": "object:52"
+            },
+            {
+                "name": "SSR",
+                "sizeX": 1,
+                "sizeY": 1,
+                "item": "SolidStateRelay",
+                "type": "switch",
+                "$$hashKey": "object:1826",
+                "row": 0,
+                "col": 6,
+                "hideonoff": true,
+                "iconset": "smarthome-set",
+                "icon": "power-button",
+                "icon_size": 32
+            },
+            {
+                "name": "LED Light",
+                "sizeX": 1,
+                "sizeY": 1,
+                "item": "LedLight",
+                "type": "switch",
+                "$$hashKey": "object:3437",
+                "row": 0,
+                "col": 7,
+                "hideonoff": true,
+                "backdrop_center": true,
+                "iconset": "smarthome-set",
+                "icon": "bulb",
+                "icon_size": 32
+            }
+        ],
+        "row": 0,
+        "col": 0,
+        "tile": {},
+        "$$hashKey": "object:16"
+    }
+]
