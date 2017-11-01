@@ -3,7 +3,10 @@ ogarnąć temat siłowników do rolet
 pomiar poboru prądu
 puszki montowane w ścianach, otwieralne
 agd smart home, openhab
-
+dobry kabel do lutowania
+https://www.banggood.com/50pcs-Tactile-Push-Button-Switch-Momentary-Tact-Cap-Assorted-Kit-12x12x7_3mm-KeyCaps-p-1007178.html?rmmds=category
+https://www.banggood.com/100A-Power-Monitor-Module-AC-Meter-Panel-p-983057.html?rmmds=category
+https://www.banggood.com/Wholesale-Arduino-Compatible-SCM-Components-c-2364-0-1-1-45-0_page2.html
 
 
 45880
