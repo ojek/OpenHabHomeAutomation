@@ -7,7 +7,9 @@
 #include "Items\LedDisplay.cpp"
 #include "Items\MotionSensor.cpp"
 #include "Items\SolidStateRelay.cpp"
-
+extern "C" {
+    #include "user_interface.h"
+    }
 /*
 #define D0 16
 #define D1 5 // I2C Bus SCL (clock)
@@ -22,6 +24,7 @@
 #define D10 1 // TX0 (Serial console)
 */
 
+#define LOOP_DELAY_MS 200
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY 500
 #define MQTT_PUBLISH_DELAY_MS 5000
 
@@ -58,14 +61,17 @@ void setup()
  
 void loop()
 {
-    delay(200); //safety, power saving
-
+    delay(LOOP_DELAY_MS); //safety, power saving
+    
     mqtt.loop();
     motionSensor.loop(&isMotion);
     luminositySensor.loop(&lux);
     tempHumidSensor.loop(tempHumid);
     ledDisplay.loop(String(millis()/1000));
-    Serial.println(millis()/1000);
+    
+    uint32_t free = system_get_free_heap_size();
+    Serial.print("memory: ");
+    Serial.println(free);
 
     mqttPublish();
 }

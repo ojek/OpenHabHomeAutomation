@@ -18,7 +18,7 @@ class LedDisplay
   public:
     char* outTopic = "openhab/out/LedDisplay/state";
     char* inTopic = "openhab/in/LedDisplay/state";
-    char* currentState;
+    char* currentState = new char[128];
     
     void setup()
     {
@@ -35,15 +35,7 @@ class LedDisplay
     // Print the text string to the LED matrix modules specified.
     // Message area is padded with blank columns after printing.
     {
-      int msgLen = message.length();
-      char* pMsg = new char[msgLen];
-      if (msgLen > 0)
-          strcpy(pMsg, message.c_str());
-      if (pMsg == NULL || pMsg == "")
-      {
-        pMsg = "";
-      }
-      currentState = pMsg;
+      strcpy(currentState, message.c_str());
 
       uint8_t modStart, modEnd;
       modStart = 0;
@@ -51,6 +43,7 @@ class LedDisplay
 
       uint8_t   state = 0;
       uint8_t	  curLen;
+      int	  curChar = 0;
       uint16_t  showLen;
       uint8_t	  cBuf[8];
       int16_t   col = ((modEnd + 1) * COL_SIZE) - 1;
@@ -63,7 +56,7 @@ class LedDisplay
         {
           case 0:	// Load the next character from the font table
             // if we reached end of message, reset the message pointer
-            if (*pMsg == '\0')
+            if (message.charAt(curChar) == '\0')
             {
               showLen = col - (modEnd * COL_SIZE);  // padding characters
               state = 2;
@@ -71,7 +64,7 @@ class LedDisplay
             }
     
             // retrieve the next character form the font file
-            showLen = mx.getChar(*pMsg++, sizeof(cBuf)/sizeof(cBuf[0]), cBuf);
+            showLen = mx.getChar(message.charAt(curChar++), sizeof(cBuf)/sizeof(cBuf[0]), cBuf);
             curLen = 0;
             state++;
             // !! deliberately fall through to next state to start displaying

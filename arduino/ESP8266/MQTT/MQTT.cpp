@@ -56,15 +56,13 @@ class MQTT
                 reconnect();
             }
 
-            int msgLen = message.length();
+            int msgLen = message.length()+1;
             char* pMsg = new char[msgLen];
-            if (msgLen > 0)
-                strcpy(pMsg, message.c_str());
-            if (pMsg == NULL || pMsg == "")
-            {
+            message.toCharArray(pMsg,msgLen);
+            if (pMsg == NULL)
               pMsg = "";
-            }
             
             client.publish(topic,pMsg);
+            delete[] pMsg;
         }
 };
