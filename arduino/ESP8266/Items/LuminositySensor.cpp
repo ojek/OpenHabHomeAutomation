@@ -56,7 +56,7 @@ class LuminositySensor
     void BH1750_Init(int address)
     {
       Wire.beginTransmission(address);
-      Wire.write(BH1750_CONTINUOUS_HIGH_RES_MODE);//1lx reolution 120ms
+      Wire.write(BH1750_CONTINUOUS_HIGH_RES_MODE_2);//1lx reolution 120ms
       Wire.endTransmission();
     }
 

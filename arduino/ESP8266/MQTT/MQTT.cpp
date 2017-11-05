@@ -25,7 +25,10 @@ class MQTT
         {
             if (mqttChannels[i] != NULL && strlen(mqttChannels[i]) > 0)
             {
+                delay(10);
                 client.subscribe(mqttChannels[i]); 
+                delay(10);
+                client.loop();
             }
             else
             {
@@ -64,5 +67,7 @@ class MQTT
             
             client.publish(topic,pMsg);
             delete[] pMsg;
+            delay(10);
+            client.loop();
         }
 };
