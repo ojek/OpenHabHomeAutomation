@@ -72,6 +72,10 @@ body {
 	margin: 20px;
 }
 
+.grafana body {
+	background: transparent !important;
+}
+
 .drawer {
     background: #000;
 }
