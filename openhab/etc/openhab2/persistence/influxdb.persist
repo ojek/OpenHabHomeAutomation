@@ -6,5 +6,5 @@ Strategies {
 
 Items {
     gPersistable_everyChange* : strategy = everyChange
-    gPersistable_everyMinute* : strategy =  everyMinute
+    gPersistable_everyMinute* : strategy = everyMinute
 }

@@ -350,15 +350,9 @@ body {
     }
 }
 
-
-
-.graph iframe {
-	border-bottom: 1px solid #565f58;
-}
 .graph .legend {
     font-size: 10px;
     text-transform: uppercase;
-    padding-top: 7px;
     color: #aaa;
     font-weight: 300;
 }
