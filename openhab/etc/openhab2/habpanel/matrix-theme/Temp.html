@@ -1,0 +1,63 @@
+<div class="section">
+	<div class="sectionIconContainer">
+		<div class="sectionIcon">
+			<svg viewBox="0 0 48 48">
+				<use xlink:href="/static/matrix-theme/squidink.svg#thermometer"/>
+			</svg>
+		</div>
+	</div>
+	<div class="title">System</div>
+	<div class="controls">
+		<div class="widget">
+			<div class="icon off">
+				<svg viewBox="0 0 48 48">
+					<use xlink:href="/static/matrix-theme/squidink.svg#thermometer"/>
+				</svg>
+			</div>
+			<div class="name">Memory Free</div>
+			<div class="valueGroup">
+				<div class="value">{{itemValue('TemperatureSensor') | number:1}}%</div>
+			</div>
+		</div>
+		
+		<div class="widget">
+			<div class="icon off">
+				<svg viewBox="0 0 48 48">
+					<use xlink:href="/static/matrix-theme/squidink.svg#thermometer"/>
+				</svg>
+			</div>
+			<div class="name">CPU Load (1min)</div>
+			<div class="valueGroup">
+				<div class="value">{{itemValue('TemperatureSensor') | number:1}}%</div>
+			</div>
+			<div class="graph">
+				<iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+				<div class="legend">Last day</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="sectionIconContainer">
+		<div class="sectionIcon">
+			<svg viewBox="0 0 48 48">
+				<use xlink:href="/static/matrix-theme/squidink.svg#thermometer"/>
+			</svg>
+		</div>
+	</div>
+	<div class="title">Rules</div>
+	<div class="controls">
+		<div class="widget" ng-if="itemValue('LedLight_Luminosity')=='OFF'" ng-click="sendCmd('LedLight_Luminosity', 'ON')">
+			<div class="icon off" >
+				<svg viewBox="0 0 48 48">
+					<use xlink:href="/static/matrix-theme/matrixicons.svg#off"/>
+				</svg>
+			</div>
+			<div class="name">Living Room Blinds Up</div>
+			<div class="valueGroup">
+				<div class="value">{{itemValue('LedLight_Luminosity') | date:'MMM d, HH:mm'}} last</div>
+				<div class="value">{{itemValue('LedLight_Luminosity') | number:0}} executions</div>
+			</div>
+		</div>
+	</div>
+</div>

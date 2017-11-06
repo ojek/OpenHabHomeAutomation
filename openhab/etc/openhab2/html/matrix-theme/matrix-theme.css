@@ -352,7 +352,7 @@ body {
 
 
 
-.graph img {
+.graph iframe {
 	border-bottom: 1px solid #565f58;
 }
 .graph .legend {
