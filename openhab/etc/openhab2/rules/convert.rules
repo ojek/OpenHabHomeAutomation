@@ -1,0 +1,6 @@
+rule "Convert_StringRaspberryPi_Temperature"
+when
+    Item StringRaspberryPi_Temperature changed
+then
+    RaspberryPi_Temperature.postUpdate(Float::parseFloat(String::format("%s",StringRaspberryPi_Temperature.state).replace(' ','')))
+end

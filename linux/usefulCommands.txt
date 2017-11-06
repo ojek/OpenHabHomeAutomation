@@ -1,7 +1,8 @@
 tail -f /var/log/openhab2/openhab.log -f /var/log/openhab2/events.log
 influx -username admin -password 12345 -host localhost
-USE openhab_db 
+USE openhab_db
 SHOW series
+SELECT * FROM "RaspberryPi_Temperature"
 
 #14C072
 
