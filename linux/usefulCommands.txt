@@ -1,5 +1,5 @@
 tail -f /var/log/openhab2/openhab.log -f /var/log/openhab2/events.log
-influx -username admin -password admin -host localhost
+influx -username admin -password 12345 -host localhost
 USE openhab_db 
 SHOW series
 

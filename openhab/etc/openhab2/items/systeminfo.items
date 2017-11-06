@@ -47,18 +47,12 @@ Number Raspberry_Swap_Total                    { channel="systeminfo:computer:ra
 Number Raspberry_Swap_Available_Percent        { channel="systeminfo:computer:raspberrypi:swap#availablePercent" }
 Number Raspberry_Swap_Used_Percent             { channel="systeminfo:computer:raspberrypi:swap#usedPercent" }
 
-/* Battery information*/
-String Raspberry_Battery_Name                  { channel="systeminfo:computer:raspberrypi:battery#name" }
-Number Raspberry_Battery_RemainingCapacity     { channel="systeminfo:computer:raspberrypi:battery#remainingCapacity" }
-Number Raspberry_Battery_RemainingTime         { channel="systeminfo:computer:raspberrypi:battery#remainingTime" }
-
 /* Display information*/
 String Raspberry_Display_Description           { channel="systeminfo:computer:raspberrypi:display#information" }
 
 /* Sensors information*/
 Number Raspberry_Sensor_CPUTemp { channel="systeminfo:computer:raspberrypi:sensors#cpuTemp" }
 Number Raspberry_Sensor_CPUVoltage             { channel="systeminfo:computer:raspberrypi:sensors#cpuVoltage" }
-Number Raspberry_Sensor_FanSpeed               { channel="systeminfo:computer:raspberrypi:sensors#fanSpeed" }
 
 /* Process information*/
 Number Raspberry_Process_load                  { channel="systeminfo:computer:raspberrypi:process#load" }
