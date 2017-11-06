@@ -1,0 +1,1 @@
+//Thing exec:command:rpiTemp "Raspberry Pi Temperature" [command="/etc/openhab2/scripts/rpiTemp.sh", interval=10, autorun=false, timeout=15]

@@ -1,0 +1,92 @@
+<div class="section">
+	<div class="sectionIconContainer">
+		<div class="sectionIcon">
+			<svg viewBox="0 0 48 48">
+				<use xlink:href="/static/matrix-theme/icons.svg#computer"/>
+			</svg>
+		</div>
+	</div>
+	<div class="title">Raspberry Pi</div>
+	<div class="controls">
+
+		<div class="widget">
+			<div class="icon off">
+				<svg viewBox="0 0 48 48">
+					<use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+				</svg>
+			</div>
+			<div class="name">Memory Free</div>
+			<div class="valueGroup">
+				<div class="value">{{itemValue('Raspberry_Memory_Available') | number:1}}%</div>
+			</div>
+        </div>
+        
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+                </svg>
+            </div>
+            <div class="name">Storage Free</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('Raspberry_Storage_Available') | number:1}}%</div>
+            </div>
+        </div>
+        
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+                </svg>
+            </div>
+            <div class="name">CPU Temperature</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('Raspberry_Sensor_CPUTemp') | number:1}}°C</div>
+            </div>
+        </div>     
+
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+                </svg>
+            </div>
+            <div class="name">CPU Load</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('Raspberry_CPU_Load') | number:1}}°C</div>
+            </div>
+			<div class="graph">
+				<iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+				<div class="legend">Last day</div>
+			</div>
+        </div>        
+
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+                </svg>
+            </div>
+            <div class="name">Uptime</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('Raspberry_CPU_Uptime') | number:1}}°C</div>
+            </div>
+        </div>
+		
+		<div class="widget">
+			<div class="icon off">
+				<svg viewBox="0 0 48 48">
+					<use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+				</svg>
+			</div>
+			<div class="name">CPU Load (1min)</div>
+			<div class="valueGroup">
+				<div class="value">{{itemValue('TemperatureSensor') | number:1}}%</div>
+			</div>
+			<div class="graph">
+				<iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+				<div class="legend">Last day</div>
+			</div>
+		</div>
+	</div>
+</div>

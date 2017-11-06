@@ -1,0 +1,1 @@
+//Number RaspberryPi_Temperature { channel="exec:command:rpiTemp" }
