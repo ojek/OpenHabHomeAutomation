@@ -1,1 +1,1 @@
-Number RaspberryPi_Temperature (gPersistable_everyMinute) { channel="exec:command:rpiTemp:output" }
+Number RaspberryPi_Temperature (gPersistable_everyChange) { channel="exec:command:rpiTemp:output" }

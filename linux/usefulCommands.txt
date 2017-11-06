@@ -3,6 +3,8 @@ influx -username admin -password admin -host localhost
 USE openhab_db 
 SHOW series
 
+#14C072
+
 mosquitto_sub -t openhab/out/Diode2/command
 mosquitto_pub -t openhab/in/Temperature/state -m 2
 
