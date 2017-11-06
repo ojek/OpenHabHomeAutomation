@@ -56,7 +56,7 @@ Number Raspberry_Battery_RemainingTime         { channel="systeminfo:computer:ra
 String Raspberry_Display_Description           { channel="systeminfo:computer:raspberrypi:display#information" }
 
 /* Sensors information*/
-Number Raspberry_Sensor_CPUTemp (gPersistable_everyMinute) { channel="systeminfo:computer:raspberrypi:sensors#cpuTemp" }
+Number Raspberry_Sensor_CPUTemp { channel="systeminfo:computer:raspberrypi:sensors#cpuTemp" }
 Number Raspberry_Sensor_CPUVoltage             { channel="systeminfo:computer:raspberrypi:sensors#cpuVoltage" }
 Number Raspberry_Sensor_FanSpeed               { channel="systeminfo:computer:raspberrypi:sensors#fanSpeed" }
 

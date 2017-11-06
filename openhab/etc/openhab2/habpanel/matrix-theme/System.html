@@ -17,7 +17,7 @@
 			</div>
 			<div class="name">Memory Free</div>
 			<div class="valueGroup">
-				<div class="value">{{itemValue('Raspberry_Memory_Available') | number:1}}%</div>
+				<div class="value">{{itemValue('Raspberry_Memory_Available') | number:1}} MB</div>
 			</div>
         </div>
         
@@ -29,7 +29,7 @@
             </div>
             <div class="name">Storage Free</div>
             <div class="valueGroup">
-                <div class="value">{{itemValue('Raspberry_Storage_Available') | number:1}}%</div>
+                <div class="value">{{itemValue('Raspberry_Storage_Available') | number:1}} MB</div>
             </div>
         </div>
         
@@ -41,7 +41,7 @@
             </div>
             <div class="name">CPU Temperature</div>
             <div class="valueGroup">
-                <div class="value">{{itemValue('Raspberry_Sensor_CPUTemp') | number:1}}°C</div>
+                <div class="value">{{itemValue('RaspberryPi_Temperature') | number:1}}°C</div>
             </div>
         </div>     
 
@@ -53,7 +53,7 @@
             </div>
             <div class="name">CPU Load</div>
             <div class="valueGroup">
-                <div class="value">{{itemValue('Raspberry_CPU_Load') | number:1}}°C</div>
+                <div class="value">{{itemValue('Raspberry_CPU_Load') | number:1}}%</div>
             </div>
 			<div class="graph">
 				<iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
@@ -69,7 +69,7 @@
             </div>
             <div class="name">Uptime</div>
             <div class="valueGroup">
-                <div class="value">{{itemValue('Raspberry_CPU_Uptime') | number:1}}°C</div>
+                <div class="value">{{itemValue('Raspberry_CPU_Uptime') | number:0}} min</div>
             </div>
         </div>
 		
