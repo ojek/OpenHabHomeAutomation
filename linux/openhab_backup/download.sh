@@ -5,5 +5,9 @@ cd /home/pi/git/OpenHabHomeAutomation
 git pull https://github.com/ojek/OpenHabHomeAutomation
 rm -rf /etc/openhab2/*
 cp -r /home/pi/git/OpenHabHomeAutomation/openhab/etc/openhab2/* /etc/openhab2/
-./home/pi/git/OpenHabHomeAutomation/linux/openhab_backup/postDownloadScripts.sh
+
+#post download scripts begin
+chmod a+x /etc/openhab2/scripts/rpiTemp.sh
+#post download scripts end
+
 sudo systemctl restart openhab2.service
