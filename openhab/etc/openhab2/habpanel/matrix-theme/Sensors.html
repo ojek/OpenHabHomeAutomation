@@ -1,0 +1,76 @@
+<div class="section">
+	<div class="sectionIconContainer">
+		<div class="sectionIcon">
+			<svg viewBox="0 0 48 48">
+				<use xlink:href="/static/matrix-theme/icons.svg#sensor"/>
+			</svg>
+		</div>
+	</div>
+	<div class="title">Sensors</div>
+	<div class="controls">
+
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+                </svg>
+            </div>
+            <div class="name">Temperature</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('TemperatureSensor') | number:1}}°C</div>
+            </div>
+            <div class="graph">
+                <iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=5&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+                <div class="legend">Last day</div>
+            </div>
+        </div>     
+
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#waterDrop"/>
+                </svg>
+            </div>
+            <div class="name">Humidity</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('HumiditySensor') | number:1}}%</div>
+            </div>
+            <div class="graph">
+                <iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+                <div class="legend">Last day</div>
+            </div>
+        </div>
+
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#sun"/>
+                </svg>
+            </div>
+            <div class="name">Luminosity</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('LuminositySensor') | number:2}} lux</div>
+            </div>
+            <div class="graph">
+                <iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=3&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+                <div class="legend">Last day</div>
+            </div>
+        </div>
+
+        <div class="widget">
+            <div class="icon off">
+                <svg viewBox="0 0 48 48">
+                    <use xlink:href="/static/matrix-theme/icons.svg#doubleArrow"/>
+                </svg>
+            </div>
+            <div class="name">Motion</div>
+            <div class="valueGroup">
+                <div class="value">{{itemValue('MotionSensor') | number:0}}</div>
+            </div>
+            <div class="graph">
+                <iframe src="http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=4&from=now-24h&to=now" width="275" height="100" frameborder="0"></iframe>
+                <div class="legend">Last day</div>
+            </div>
+        </div>
+	</div>
+</div>
