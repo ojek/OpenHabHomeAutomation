@@ -192,6 +192,33 @@ body {
 	} 
 }
 
+@media only screen and (min-width: 2000px) {
+    /* For big esktop: */
+    .section {
+    }
+    .section .hueSelect {
+      width: 22%;
+      padding-right: 70px;
+    }
+
+	.section .widget {
+		width: 22%;
+		float: left;
+	}
+	.section .widget.wide {
+		width: 22%;
+		float: left;
+	}
+	.section .bigDash {
+		margin-left: auto;
+	    width: 22%;
+	    min-width: 430px;
+	    margin-right: auto;
+	}   
+	.header a {
+		display: inline;
+	} 
+}
 
 .section {
 	width: 100%;
