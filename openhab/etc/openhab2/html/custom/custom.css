@@ -1,0 +1,19 @@
+.custoWidget {
+    width: 100%;
+    height: 100%;
+}
+
+.infoRow {
+    width: 100%;
+    height: 20%;
+}
+
+.graph {
+    width: 100%;
+    height: 80%;
+}
+
+.graph iframe {
+    width: 100%;
+    height: 90%;
+}

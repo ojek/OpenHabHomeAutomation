@@ -1,0 +1,16 @@
+<div class="custoWidget">
+    <div class="infoRow">
+        <div class="icon">
+            <svg viewBox="0 0 48 48">
+                <use xlink:href="/static/matrix-theme/icons.svg#thermometer"/>
+            </svg>
+        </div>
+        <div class="name">CPU Temperature</div>
+        <div class="value">{{itemValue('RaspberryPi_Temperature') | number:1}}°C</div>
+    </div>
+    
+    <div class="graph">
+        <iframe src="http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=2&from=now-24h&to=now"></iframe>
+        <div class="legend">Last day</div>
+    </div>
+</div>
