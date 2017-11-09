@@ -1,62 +1,62 @@
-/* Network information*/
-String Raspberry_Network_AdapterName          { channel="systeminfo:computer:raspberrypi:network#networkDisplayName" }
-String Raspberry_Network_Name                 { channel="systeminfo:computer:raspberrypi:network#networkName" }
-String Raspberry_Network_IP                   { channel="systeminfo:computer:raspberrypi:network#ip" }
-String Raspberry_Network_Mac                  { channel="systeminfo:computer:raspberrypi:network#mac" }
-Number Raspberry_Network_DataSent             { channel="systeminfo:computer:raspberrypi:network#dataSent" }
-Number Raspberry_Network_DataRecevied         { channel="systeminfo:computer:raspberrypi:network#dataReceived" }
-Number Raspberry_Network_PacketsSent         { channel="systeminfo:computer:raspberrypi:network#packetsSent" }
-Number Raspberry_Network_PacketsRecevied     { channel="systeminfo:computer:raspberrypi:network#packetsReceived" }
-
-/* CPU information*/
-String Raspberry_CPU_Name                     { channel="systeminfo:computer:raspberrypi:cpu#name" }
-String Raspberry_CPU_Description              { channel="systeminfo:computer:raspberrypi:cpu#description" }
+// /* Network information*/
+// String Raspberry_Network_AdapterName          { channel="systeminfo:computer:raspberrypi:network#networkDisplayName" }
+// String Raspberry_Network_Name                 { channel="systeminfo:computer:raspberrypi:network#networkName" }
+// String Raspberry_Network_IP                   { channel="systeminfo:computer:raspberrypi:network#ip" }
+// String Raspberry_Network_Mac                  { channel="systeminfo:computer:raspberrypi:network#mac" }
+// Number Raspberry_Network_DataSent             { channel="systeminfo:computer:raspberrypi:network#dataSent" }
+// Number Raspberry_Network_DataRecevied         { channel="systeminfo:computer:raspberrypi:network#dataReceived" }
+// Number Raspberry_Network_PacketsSent         { channel="systeminfo:computer:raspberrypi:network#packetsSent" }
+// Number Raspberry_Network_PacketsRecevied     { channel="systeminfo:computer:raspberrypi:network#packetsReceived" }
+// 
+// /* CPU information*/
+// String Raspberry_CPU_Name                     { channel="systeminfo:computer:raspberrypi:cpu#name" }
+// String Raspberry_CPU_Description              { channel="systeminfo:computer:raspberrypi:cpu#description" }
 Number Raspberry_CPU_Load (gPersistable_everyMinute) { channel="systeminfo:computer:raspberrypi:cpu#load"} 
-Number Raspberry_CPU_Load1                    { channel="systeminfo:computer:raspberrypi:cpu#load1" }
-Number Raspberry_CPU_Load5                    { channel="systeminfo:computer:raspberrypi:cpu#load5" }
-Number Raspberry_CPU_Load15                   { channel="systeminfo:computer:raspberrypi:cpu#load15" }
-Number Raspberry_CPU_Threads                  { channel="systeminfo:computer:raspberrypi:cpu#threads" }
+// Number Raspberry_CPU_Load1                    { channel="systeminfo:computer:raspberrypi:cpu#load1" }
+// Number Raspberry_CPU_Load5                    { channel="systeminfo:computer:raspberrypi:cpu#load5" }
+// Number Raspberry_CPU_Load15                   { channel="systeminfo:computer:raspberrypi:cpu#load15" }
+// Number Raspberry_CPU_Threads                  { channel="systeminfo:computer:raspberrypi:cpu#threads" }
 Number Raspberry_CPU_Uptime                   { channel="systeminfo:computer:raspberrypi:cpu#uptime" }
-
-/* Drive information*/
-String Raspberry_Drive_Name                    { channel="systeminfo:computer:raspberrypi:drive#name" }
-String Raspberry_Drive_Model                   { channel="systeminfo:computer:raspberrypi:drive#model" }
-String Raspberry_Drive_Serial                  { channel="systeminfo:computer:raspberrypi:drive#serial" }
-
-/* Storage information*/
-String Raspberry_Storage_Name                  { channel="systeminfo:computer:raspberrypi:storage#name" }
-String Raspberry_Storage_Type                  { channel="systeminfo:computer:raspberrypi:storage#type" }
-String Raspberry_Storage_Description           { channel="systeminfo:computer:raspberrypi:storage#description" }
+// 
+// /* Drive information*/
+// String Raspberry_Drive_Name                    { channel="systeminfo:computer:raspberrypi:drive#name" }
+// String Raspberry_Drive_Model                   { channel="systeminfo:computer:raspberrypi:drive#model" }
+// String Raspberry_Drive_Serial                  { channel="systeminfo:computer:raspberrypi:drive#serial" }
+// 
+// /* Storage information*/
+// String Raspberry_Storage_Name                  { channel="systeminfo:computer:raspberrypi:storage#name" }
+// String Raspberry_Storage_Type                  { channel="systeminfo:computer:raspberrypi:storage#type" }
+// String Raspberry_Storage_Description           { channel="systeminfo:computer:raspberrypi:storage#description" }
 Number Raspberry_Storage_Available             { channel="systeminfo:computer:raspberrypi:storage#available" }
-Number Raspberry_Storage_Used                  { channel="systeminfo:computer:raspberrypi:storage#used" }
-Number Raspberry_Storage_Total                 { channel="systeminfo:computer:raspberrypi:storage#total" }
-Number Raspberry_Storage_Available_Percent     { channel="systeminfo:computer:raspberrypi:storage#availablePercent" }
-Number Raspberry_Storage_Used_Percent          { channel="systeminfo:computer:raspberrypi:storage#usedPercent" }
-
-/* Memory information*/
+// Number Raspberry_Storage_Used                  { channel="systeminfo:computer:raspberrypi:storage#used" }
+// Number Raspberry_Storage_Total                 { channel="systeminfo:computer:raspberrypi:storage#total" }
+// Number Raspberry_Storage_Available_Percent     { channel="systeminfo:computer:raspberrypi:storage#availablePercent" }
+// Number Raspberry_Storage_Used_Percent          { channel="systeminfo:computer:raspberrypi:storage#usedPercent" }
+// 
+// /* Memory information*/
 Number Raspberry_Memory_Available              { channel="systeminfo:computer:raspberrypi:memory#available" }
-Number Raspberry_Memory_Used                   { channel="systeminfo:computer:raspberrypi:memory#used" }
-Number Raspberry_Memory_Total                  { channel="systeminfo:computer:raspberrypi:memory#total" }
-Number Raspberry_Memory_Available_Percent      { channel="systeminfo:computer:raspberrypi:memory#availablePercent" }
-Number Raspberry_Memory_Used_Percent           { channel="systeminfo:computer:raspberrypi:memory#usedPercent" }
-
-/* Swap memory information*/
-Number Raspberry_Swap_Available                { channel="systeminfo:computer:raspberrypi:swap#available" }
-Number Raspberry_Swap_Used                     { channel="systeminfo:computer:raspberrypi:swap#used" }
-Number Raspberry_Swap_Total                    { channel="systeminfo:computer:raspberrypi:swap#total" }
-Number Raspberry_Swap_Available_Percent        { channel="systeminfo:computer:raspberrypi:swap#availablePercent" }
-Number Raspberry_Swap_Used_Percent             { channel="systeminfo:computer:raspberrypi:swap#usedPercent" }
-
-/* Display information*/
-String Raspberry_Display_Description           { channel="systeminfo:computer:raspberrypi:display#information" }
-
-/* Sensors information*/
-Number Raspberry_Sensor_CPUTemp { channel="systeminfo:computer:raspberrypi:sensors#cpuTemp" }
-Number Raspberry_Sensor_CPUVoltage             { channel="systeminfo:computer:raspberrypi:sensors#cpuVoltage" }
-
-/* Process information*/
-Number Raspberry_Process_load                  { channel="systeminfo:computer:raspberrypi:process#load" }
-Number Raspberry_Process_used                  { channel="systeminfo:computer:raspberrypi:process#used" }
-String Raspberry_Process_name                  { channel="systeminfo:computer:raspberrypi:process#name" }
-Number Raspberry_Process_threads               { channel="systeminfo:computer:raspberrypi:process#threads" }
-String Raspberry_Process_path                  { channel="systeminfo:computer:raspberrypi:process#path" }
+// Number Raspberry_Memory_Used                   { channel="systeminfo:computer:raspberrypi:memory#used" }
+// Number Raspberry_Memory_Total                  { channel="systeminfo:computer:raspberrypi:memory#total" }
+// Number Raspberry_Memory_Available_Percent      { channel="systeminfo:computer:raspberrypi:memory#availablePercent" }
+// Number Raspberry_Memory_Used_Percent           { channel="systeminfo:computer:raspberrypi:memory#usedPercent" }
+// 
+// /* Swap memory information*/
+// Number Raspberry_Swap_Available                { channel="systeminfo:computer:raspberrypi:swap#available" }
+// Number Raspberry_Swap_Used                     { channel="systeminfo:computer:raspberrypi:swap#used" }
+// Number Raspberry_Swap_Total                    { channel="systeminfo:computer:raspberrypi:swap#total" }
+// Number Raspberry_Swap_Available_Percent        { channel="systeminfo:computer:raspberrypi:swap#availablePercent" }
+// Number Raspberry_Swap_Used_Percent             { channel="systeminfo:computer:raspberrypi:swap#usedPercent" }
+// 
+// /* Display information*/
+// String Raspberry_Display_Description           { channel="systeminfo:computer:raspberrypi:display#information" }
+// 
+// /* Sensors information*/
+// Number Raspberry_Sensor_CPUTemp { channel="systeminfo:computer:raspberrypi:sensors#cpuTemp" }
+// Number Raspberry_Sensor_CPUVoltage             { channel="systeminfo:computer:raspberrypi:sensors#cpuVoltage" }
+// 
+// /* Process information*/
+// Number Raspberry_Process_load                  { channel="systeminfo:computer:raspberrypi:process#load" }
+// Number Raspberry_Process_used                  { channel="systeminfo:computer:raspberrypi:process#used" }
+// String Raspberry_Process_name                  { channel="systeminfo:computer:raspberrypi:process#name" }
+// Number Raspberry_Process_threads               { channel="systeminfo:computer:raspberrypi:process#threads" }
+// String Raspberry_Process_path                  { channel="systeminfo:computer:raspberrypi:process#path" }

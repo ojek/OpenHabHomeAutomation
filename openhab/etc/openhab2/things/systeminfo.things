@@ -1,1 +1,1 @@
-Thing systeminfo:computer:raspberrypi "Raspberry Pi" [interval_high=1, interval_medium=60] 
+Thing systeminfo:computer:raspberrypi "Raspberry Pi" [interval_high=10, interval_medium=60] 
