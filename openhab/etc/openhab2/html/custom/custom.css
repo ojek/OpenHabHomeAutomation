@@ -23,9 +23,15 @@
     float: left;
 }
 
+.infoRow .icon svg {
+    width: 100%;
+    height: 100%;
+}
+
 .infoRow .name {
     width: 60%;
     height: 100%;
+    text-align: left;
 }
 
 .infoRow span {
