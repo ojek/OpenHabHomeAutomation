@@ -1,11 +1,38 @@
+.template-contents{
+    height: 100%;
+}
+
 .custoWidget {
     width: 100%;
     height: 100%;
+    font-size: 0.8vw;
 }
 
 .infoRow {
     width: 100%;
     height: 20%;
+}
+
+.infoRow div {
+    display: inline-block;
+}
+
+.infoRow .icon {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.infoRow .name {
+    width: 60%;
+    height: 100%;
+    font-size: 
+}
+
+.infoRow .value {
+    width: 20%;
+    height: 100%;
+    float: right;
 }
 
 .graph {
