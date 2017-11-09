@@ -231,6 +231,7 @@ body {
 	float: left;
 	text-align: left;
 	color: white;
+	font-size: 0.7vw;
 }
 .section a {
   color: #ff2c0a;
@@ -241,7 +242,7 @@ body {
   	zoom: 1;
 }
 .section .title  {
-	font-size: 30px;
+	font-size: 1.6vw;
 	font-weight: 100;
 	text-transform: uppercase;
 	padding-bottom: 20px;
@@ -277,8 +278,8 @@ body {
 	width: 100%;
 }
 .section .sectionIcon {
-	width: 50px;
-	height: 50px;
+    width: 3%;
+    height: 3%;
 	position: absolute;
 	right: 0px;
 }
@@ -388,9 +389,9 @@ body {
 .section .widget {
   cursor: pointer;
 }
-.section .widget .icon {
-	width: 30px;
-	height: 30px;
+.section .widget .icon {    
+    width: 5%;
+    height: 5%;
 	margin-right: 10px;
 	float: left;
 }
