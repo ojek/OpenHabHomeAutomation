@@ -32,7 +32,6 @@
     position: relative;
     top: 30%;
     display: block;
-    font-size: 1.0vw;
 }
 
 .infoRow .value {
@@ -53,15 +52,6 @@
 }
 
 .icon svg {
-    stroke-width: 2px;
-}
-
-.icon.off svg {
-    stroke: #565f58;
-    fill: #565f58;
-}
-
-.icon.on svg {
-    stroke: #26bf75;
-    fill: #26bf75;
+    stroke-width: 1px;
+    stroke: var(--colorpicker-stroke);
 }
