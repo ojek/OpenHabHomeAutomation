@@ -385,6 +385,10 @@ body {
     font-weight: 300;
 }
 
+.graph iframe {
+    position: absolute;
+}
+
 .section .widget {
   cursor: pointer;
 }
