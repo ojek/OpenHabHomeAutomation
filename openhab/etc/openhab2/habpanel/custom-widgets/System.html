@@ -2,11 +2,11 @@
     <div class="infoRow">
         <div class="icon">
             <svg viewBox="0 0 48 48">
-                <use xlink:href="/static/custom/icons.svg#thermometer"/>
+                <use xlink:href="{{config.icon}}"/>
             </svg>
         </div>
-        <div class="name"><span>CPU Temperature</span></div>
-        <div class="value"><span>{{itemValue('RaspberryPi_Temperature') | number:1}}°C</span></div>
+        <div class="name"><span>{{config.title}}</span></div>
+        <div class="value"><span>{{itemValue(config.item) | number:1}}°C</span></div>
     </div>
     
     <div class="graph">
