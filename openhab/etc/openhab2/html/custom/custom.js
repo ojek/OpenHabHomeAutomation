@@ -1,4 +1,4 @@
-angular.module('app', [])
-.config(function($sceProvider) {
+var app = angular.module('app', ['ngSanitize']);
+app.config(['$sceProvider',function($sceProvider){
     $sceProvider.enabled(false);
-});
+}]);
