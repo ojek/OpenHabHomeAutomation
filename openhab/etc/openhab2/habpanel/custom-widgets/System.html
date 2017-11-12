@@ -1,5 +1,5 @@
 <div class="customWidget">
-    <div class="infoRow">
+    <div class="header">
         <div class="icon">
             <svg viewBox="0 0 48 48">
                 <use xlink:href="{{config.icon}}"/>
@@ -9,6 +9,6 @@
         <div class="value"><span>{{itemValue(config.item) | number:1}}°C</span></div>
     </div>
     
-    <div class="graph iframe">{{config.chartlink}}</div>
+    <div class="content iframe">{{config.chartlink}}</div>
     <div oc-lazy-load="['/static/custom/custom.js']"></div>
 </div>

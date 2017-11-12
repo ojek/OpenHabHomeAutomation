@@ -1,3 +1,9 @@
+:root {
+    --main-bg: rgb(21, 98, 161);
+    --main-opq-bg: rgba(21, 98, 161, 0.9);
+    --main-opq2-bg: rgba(21, 98, 161, 0.5);
+}
+
 body {
     background-image: url("/static/custom/smartHome.jpg");
 }
@@ -7,7 +13,7 @@ body {
 }
 
 .box{
-    opacity: 0.9;
+    background: none !important;
 }
 
 .customWidget {
@@ -16,50 +22,52 @@ body {
     font-size: 0.8vw;
 }
 
-.infoRow {
+.header {
     width: 100%;
     height: 20%;
+    background: var(--main-opq2-bg);
 }
 
-.infoRow div {
+.header div {
     display: inline-block;
 }
 
-.infoRow .icon {
+.header .icon {
     width: 20%;
     height: 100%;
     float: left;
 }
 
-.infoRow .icon svg {
+.header .icon svg {
     width: 100%;
     height: 100%;
 }
 
-.infoRow .name {
+.header .name {
     width: 60%;
     height: 100%;
     text-align: left;
 }
 
-.infoRow span {
+.header span {
     position: relative;
     top: 30%;
     display: block;
 }
 
-.infoRow .value {
+.header .value {
     width: 20%;
     height: 100%;
     float: right;
 }
 
-.graph {
+.content {
     width: 100%;
     height: 80%;
+    background: var(--main-opq-bg);
 }
 
-.graph iframe {
+.content iframe {
     width: 100%;
     height: 100%;
     border: 0px;
