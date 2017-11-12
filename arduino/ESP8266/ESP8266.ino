@@ -39,7 +39,9 @@ SolidStateRelay solidStateRelay;
 ESP_8266 esp8266;
 
 char* mqttChannelList[3];
-int lastMQTTPublishTimeStamp = 0;
+int piorityHighTimeStamp = 0;
+int piorityMedTimeStamp = 0;
+int piorityLowTimeStamp = 0;
 
 void setup()
 {
@@ -58,9 +60,6 @@ void setup()
 void loop()
 {
     delay(LOOP_DELAY_MS); //safety, power saving
-    
-    ledDisplay.loop(String(millis()/1000));
-    
     mqtt.loop();
         
     priorityLoop();
@@ -69,32 +68,49 @@ void loop()
 void priorityLoop()
 {
     int currentTimeStamp = millis();
-    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH)
+    bool priorityHit = false;
+    if (currentTimeStamp - piorityHighTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH)
     {
-        lastMQTTPublishTimeStamp = currentTimeStamp;
-
-        motionSensor.loop();
-        luminositySensor.loop();
-
-        mqttPublishHigh();
+        loopHigh();
+        priorityHit = true;
+        piorityHighTimeStamp = currentTimeStamp;
     }
-    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW)
+    if (currentTimeStamp - piorityMedTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_MED)
     {
-        lastMQTTPublishTimeStamp = currentTimeStamp;
-
-        esp8266.loop();
-        tempHumidSensor.loop();
-
-        mqttPublishLow();
-        return;
+        if (priorityHit) delay(100);
+        loopMed();
+        priorityHit = true;
+        piorityMedTimeStamp = currentTimeStamp;
     }
-    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_MED)
+    if (currentTimeStamp - piorityLowTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW)
     {
-        lastMQTTPublishTimeStamp = currentTimeStamp;
-
-
-        mqttPublishMed();
+        if (priorityHit) delay(100);
+        loopLow();
+        priorityHit = true;
+        piorityLowTimeStamp = currentTimeStamp;
     }
+}
+
+void loopHigh()
+{
+    ledDisplay.loop(String(millis()/1000));
+    motionSensor.loop();
+    luminositySensor.loop();
+
+    mqttPublishHigh();
+}
+
+void loopMed()
+{
+    mqttPublishMed();
+}
+
+void loopLow()
+{
+    esp8266.loop();
+    tempHumidSensor.loop();
+
+    mqttPublishLow();
 }
 
 void mqttPublishHigh()

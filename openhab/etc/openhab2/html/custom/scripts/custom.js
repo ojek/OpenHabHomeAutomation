@@ -7,7 +7,7 @@ if (typeof loadJQuery != "function") {
         var newscript = document.createElement('script');
         newscript.type = 'text/javascript';
         newscript.async = true;
-        newscript.src = '/static/custom/jQuery/jquery-3.2.1.min.js';
+        newscript.src = '/static/custom/scripts/jQuery/jquery-3.2.1.min.js';
         (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
     };
     loadJQuery();
@@ -28,7 +28,7 @@ if (typeof loadContent != "function") {
             };
             clearInterval(interval);
             loadContent('div.iframe', '<iframe src="@replace@"></iframe>');
-            loadContent('div.icon', '<svg viewBox="0 0 48 48"><use xlink:href="/static/custom/icons.svg#@replace@"/></svg>');
+            loadContent('div.icon', '<svg viewBox="0 0 48 48"><use xlink:href="/static/custom/icons/icons.svg#@replace@"/></svg>');
         } else {
             clearInterval(interval);
         }
@@ -37,5 +37,5 @@ if (typeof loadContent != "function") {
 
 if (typeof loadContent === "function") { 
     loadContent('div.iframe', '<iframe src="@replace@"></iframe>');
-    loadContent('div.icon', '<svg viewBox="0 0 48 48"><use xlink:href="/static/custom/icons.svg#@replace@"/></svg>');
+    loadContent('div.icon', '<svg viewBox="0 0 48 48"><use xlink:href="/static/custom/icons/icons.svg#@replace@"/></svg>');
 }

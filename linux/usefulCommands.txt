@@ -6,10 +6,13 @@ SELECT * FROM "RaspberryPi_Temperature"
 
 sudo chown -hR openhab:openhab /etc/openhab2
 
+select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="wroclaw, pl") and u='c'
+
 #14C072
 
 mosquitto_sub -t openhab/out/Diode2/command
 mosquitto_pub -t openhab/in/Temperature/state -m 2
+mosquitto_sub -t openhab/in/Temperature/state -m 2
 
 mosquitto_sub -t openhab/in/LuminositySensor/state
 mosquitto_pub -t openhab/in/LuminositySensor/state -m 3

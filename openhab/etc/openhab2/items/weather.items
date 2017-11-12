@@ -1,0 +1,2 @@
+Number   WrocTemperature   "Temperature [%.2f °C]"   {weather="locationId=home, type=temperature, property=current"}
+Number   Humidity      "Humidity [%d %%]"        {weather="locationId=home, type=atmosphere, property=humidity"}
