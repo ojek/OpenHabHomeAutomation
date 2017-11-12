@@ -60,7 +60,7 @@
 
 .customHeader {
     width: 100%;
-    height: 55px;
+    height: 10vh;
     background: var(--main-opq2-bg);
 }
 
