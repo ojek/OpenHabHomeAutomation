@@ -44,9 +44,12 @@
     padding: 2%;
 }
 
-.customHeader .weatherIcon img {
+.customHeader .icon img {
     height: 100%;
     width: 100%;
+}
+
+.invert {
     filter: invert(100%);
 }
 
