@@ -21,6 +21,7 @@ if (typeof loadContent != "function") {
                 for(var i = 0; i < iframeDivs.length; i++){
                     var text = $(iframeDivs[i]).text();
                     if (text.indexOf('#loading_') === -1) continue;
+                    text = text.replace('#loading_', '');
                     $(iframeDivs[i]).text('');
                     $(iframeDivs[i]).append(element.replace('@replace@', text));
                 }
