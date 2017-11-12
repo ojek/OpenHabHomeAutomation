@@ -48,6 +48,7 @@ body {
     width: 60%;
     height: 100%;
     text-align: left;
+    color: var(--main-text);
 }
 
 .customHeader span {
@@ -60,6 +61,7 @@ body {
     width: 20%;
     height: 100%;
     float: right;
+    color: var(--main-text) !important;
 }
 
 .content {
@@ -75,6 +77,8 @@ body {
 }
 
 .icon svg {
-    stroke-width: 1px;
-    stroke: var(--colorpicker-stroke);
+    fill: var(--main-text);
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
 }
