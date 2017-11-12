@@ -4,6 +4,8 @@ USE openhab_db
 SHOW series
 SELECT * FROM "RaspberryPi_Temperature"
 
+sudo chown -hR openhab:openhab /etc/openhab2
+
 #14C072
 
 mosquitto_sub -t openhab/out/Diode2/command
@@ -13,3 +15,5 @@ mosquitto_sub -t openhab/in/LuminositySensor/state
 mosquitto_pub -t openhab/in/LuminositySensor/state -m 3
 
 mosquitto_sub -t openhab/in/MotionSensor/state
+
+mosquitto_sub -t openhab/in/LedDisplayIntensity/command

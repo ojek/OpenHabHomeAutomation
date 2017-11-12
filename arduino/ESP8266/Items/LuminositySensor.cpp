@@ -63,8 +63,9 @@ class LuminositySensor
   public:
     char* outTopic = "openhab/out/LuminositySensor/state";
     char* inTopic = "openhab/in/LuminositySensor/state";
+    double lux;
 
-    void loop(double* val)
+    void loop()
     {
       int i;
       BH1750_Init(BH1750address);
@@ -72,7 +73,7 @@ class LuminositySensor
       
       if(2==BH1750_Read(BH1750address))
       {
-        *val=((buff[0]<<8)|buff[1])/1.2;
+        lux=((buff[0]<<8)|buff[1])/1.2;
       }
     }
 };

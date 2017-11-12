@@ -18,17 +18,15 @@ class LedDisplay
   public:
     char* outTopic = "openhab/out/LedDisplay/state";
     char* inTopic = "openhab/in/LedDisplay/state";
-    char* outIntensityTopic = "openhab/out/LedDisplayIntensity/state";
-    char* inIntensityTopic = "openhab/in/LedDisplayIntensity/state";
+    char* outIntensityTopic = "openhab/out/LedDisplayIntensity/command";
+    char* inIntensityTopic = "openhab/in/LedDisplayIntensity/command";
     char* currentState = new char[128];
     int intensity = 8;
-    bool isOff = true;
     
     void setup()
     {
       mx.begin();
       currentState = "";
-      isOff = false;
     }
 
     void loop(String message)

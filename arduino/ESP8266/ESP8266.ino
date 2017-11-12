@@ -7,9 +7,8 @@
 #include "Items\LedDisplay.cpp"
 #include "Items\MotionSensor.cpp"
 #include "Items\SolidStateRelay.cpp"
-extern "C" {
-    #include "user_interface.h"
-    }
+#include "Items\ESP8266.cpp"
+
 /*
 #define D0 16
 #define D1 5 // I2C Bus SCL (clock)
@@ -25,8 +24,9 @@ extern "C" {
 */
 
 #define LOOP_DELAY_MS 200
-#define MQTT_PUBLISH_DELAY_MS_PRIORITY 500
-#define MQTT_PUBLISH_DELAY_MS 5000
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 500
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
 
 ESPHelper espHelper;
 MQTT mqtt;
@@ -36,14 +36,10 @@ TempHumidSensor tempHumidSensor;
 LedDisplay ledDisplay;
 MotionSensor motionSensor;
 SolidStateRelay solidStateRelay;
+ESP_8266 esp8266;
 
-char* mqttChannelList[2];
-int lastMQTTPublishTimeStampPriority = 0;
+char* mqttChannelList[3];
 int lastMQTTPublishTimeStamp = 0;
-
-float tempHumid[2] = {0,0};
-double lux;
-bool isMotion;
 
 void setup()
 {
@@ -63,44 +59,72 @@ void loop()
 {
     delay(LOOP_DELAY_MS); //safety, power saving
     
-    mqtt.loop();
-    motionSensor.loop(&isMotion);
-    luminositySensor.loop(&lux);
-    tempHumidSensor.loop(tempHumid);
     ledDisplay.loop(String(millis()/1000));
     
-    uint32_t free = system_get_free_heap_size();
-    Serial.print("memory: ");
-    Serial.println(free);
-
-    mqttPublish();
+    mqtt.loop();
+        
+    priorityLoop();
 }
 
-void mqttPublish()
+void priorityLoop()
 {
     int currentTimeStamp = millis();
-    if (currentTimeStamp - lastMQTTPublishTimeStampPriority > MQTT_PUBLISH_DELAY_MS_PRIORITY)
-    {
-        lastMQTTPublishTimeStampPriority = currentTimeStamp;
-        mqtt.sendMsg(luminositySensor.inTopic, String(lux));
-        mqtt.sendMsg(motionSensor.inTopic, String(isMotion));
-    }
-    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS)
+    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH)
     {
         lastMQTTPublishTimeStamp = currentTimeStamp;
-        mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
-        mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
-        mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
-        mqtt.sendMsg(ledDisplay.inIntensityTopic, String(ledDisplay.intensity));
-        mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
-        mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
+
+        motionSensor.loop();
+        luminositySensor.loop();
+
+        mqttPublishHigh();
     }
+    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW)
+    {
+        lastMQTTPublishTimeStamp = currentTimeStamp;
+
+        esp8266.loop();
+        tempHumidSensor.loop();
+
+        mqttPublishLow();
+        return;
+    }
+    if (currentTimeStamp - lastMQTTPublishTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_MED)
+    {
+        lastMQTTPublishTimeStamp = currentTimeStamp;
+
+
+        mqttPublishMed();
+    }
+}
+
+void mqttPublishHigh()
+{
+    mqtt.sendMsg(luminositySensor.inTopic, String(luminositySensor.lux));
+    mqtt.sendMsg(motionSensor.inTopic, String(motionSensor.isMotion));
+}
+
+void mqttPublishMed()
+{
+    mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
+    mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
+    mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
+    mqtt.sendMsg(ledDisplay.inIntensityTopic, String(ledDisplay.intensity));
+}
+
+void mqttPublishLow()
+{
+    mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumidSensor.tempHumid[0]));
+    mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumidSensor.tempHumid[1]));
+    mqtt.sendMsg(esp8266.inFreeMemTopic, esp8266.mem_free);
+    mqtt.sendMsg(esp8266.inCPUFreqTopic, esp8266.cpu_freq);
+    mqtt.sendMsg(esp8266.inUptimeTopic, esp8266.uptime);
 }
 
 void getItemChannels(char** mqttChannelList)
 {
     mqttChannelList[0] = nodeMCUDiode.outTopic;
     mqttChannelList[1] = solidStateRelay.outTopic;
+    mqttChannelList[2] = ledDisplay.outIntensityTopic;
 }
 
 void setupItems()
@@ -133,7 +157,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
     }
     else if (strcmp(ledDisplay.outIntensityTopic, topic) == 0)
     {
-        String str = String((char*)payload);
-        ledDisplay.setIntensity(str.toInt());
+        String strPayload = String((char*)payload);
+        ledDisplay.setIntensity(strPayload.toInt());
     }
 }

@@ -4,15 +4,16 @@ class MotionSensor
   public:
     char* outTopic = "openhab/out/MotionSensor/state";
     char* inTopic = "openhab/in/MotionSensor/state";
+    bool isMotion;
     
     void setup()
     {
       pinMode(PIR_PIN, INPUT);
     }
 
-    void loop(bool* isMotion)
+    void loop()
     {
       int motion = digitalRead(PIR_PIN);
-      *isMotion = (motion == HIGH);
+      isMotion = (motion == HIGH);
     }
 };

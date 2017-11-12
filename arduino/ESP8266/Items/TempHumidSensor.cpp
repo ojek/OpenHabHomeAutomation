@@ -17,8 +17,9 @@ class TempHumidSensor
     char* inTempTopic = "openhab/in/TemperatureSensor/state";
     char* outHumidTopic = "openhab/out/HumiditySensor/state";
     char* inHumidTopic = "openhab/in/HumiditySensor/state";
+    float tempHumid[2] = {0,0};
 
-    void loop(float* tempHumid)
+    void loop()
     {
       float temp,humid;
       temp = dht.readTemperature();
