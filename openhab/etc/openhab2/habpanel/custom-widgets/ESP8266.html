@@ -1,0 +1,16 @@
+<div class="customWidget">
+    <div class="customHeader">
+        <div class="icon">
+            <img class="invert" src="/static/custom/icons/main/chip.svg" />
+        </div>
+        <div class="name"><span>ESP8266 - Main</span></div>
+        <div class="value"><span></span></div>
+    </div>
+    
+    <div class="content info">
+        <div class="row"><span class="left">Uptime</span><span class="right">{{itemValue(config.uptime)}}</span></div>
+        <div class="row"><span class="left">Memory free</span><span class="right">{{itemValue(config.memfree)}}</span></div>
+        <div class="row"><span class="left">CPU Frequency</span><span class="right">{{itemValue(config.cpufreq)}}</span></div>
+    </div>
+    <div oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
+</div>

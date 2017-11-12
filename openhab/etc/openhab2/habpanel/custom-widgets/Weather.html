@@ -7,10 +7,10 @@
         <div class="value"><span>{{itemValue(config.temperature) | number:1}}°C</span></div>
     </div>
     
-    <div class="content weather">
-            <div class="row"><span class="left">Condition</span><span class="right">{{itemValue(config.condition)}}</span></div>
-            <div class="row"><span class="left">Humidity</span><span class="right">{{itemValue(config.humidity)|number:1}}%</span></div>
-            <div class="row"><span class="left">Wind</span><span class="right">{{(itemValue(config.wind)|number:1) + " km/h"}}</span></div>
+    <div class="content weather info">
+        <div class="row"><span class="left">Condition</span><span class="right">{{itemValue(config.condition)}}</span></div>
+        <div class="row"><span class="left">Humidity</span><span class="right">{{itemValue(config.humidity)|number:1}}%</span></div>
+        <div class="row"><span class="left">Wind</span><span class="right">{{(itemValue(config.wind)|number:1) + " km/h"}}</span></div>
     </div>
     <div oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
 </div>

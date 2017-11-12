@@ -1,4 +1,4 @@
-String  Weather_Temperature     "Temperature [%s °C]"  {weather="locationId=home, type=condition, property=temp"}
+Number  Weather_Temperature     "Temperature [%.2f °C]"  {weather="locationId=home, type=temperature, property=current"}
 Number  Weather_Humidity        "Humidity [%d %%]"       {weather="locationId=home, type=atmosphere, property=humidity"}
 String  Weather_Condition       "Pogoda [%s]"            {weather="locationId=home, type=condition, property=text"}
 Number  Weather_Wind            "Humidity [%d kms]"      {weather="locationId=home, type=wind, property=speed"}
