@@ -13,25 +13,27 @@ if (typeof loadJQuery != "function") {
     loadJQuery();
 }
 
-if (typeof loadIframes != "function") {   
+if (typeof loadContent != "function") {   
     interval = window.setInterval(function(){
-        if (typeof jQuery != 'undefined' && typeof loadIframes != "function") {
-            function loadIframes(){
-                var iframeDivs = $('div.iframe');
+        if (typeof jQuery != 'undefined' && typeof loadContent != "function") {
+            function loadContent(selector, element){
+                var iframeDivs = $(selector);
                 for(var i = 0; i < iframeDivs.length; i++){
                     var text = $(iframeDivs[i]).text();
                     $(iframeDivs[i]).text('');
-                    $(iframeDivs[i]).append('<iframe src="'+text+'"></iframe>');
+                    $(iframeDivs[i]).append(element.replace('@replace@', text));
                 }
             };
             clearInterval(interval);
-            loadIframes();
+            loadContent('div.iframe', '<iframe src="@replace@"></iframe>');
+            loadContent('div.icon', '<svg viewBox="0 0 48 48"><use xlink:href="/static/custom/icons.svg#@replace@"/></svg>');
         } else {
             clearInterval(interval);
         }
     }, 1000);
 }
 
-if (typeof loadIframes === "function") { 
-    loadIframes();
+if (typeof loadContent === "function") { 
+    loadContent('div.iframe', '<iframe src="@replace@"></iframe>');
+    loadContent('div.icon', '<svg viewBox="0 0 48 48"><use xlink:href="/static/custom/icons.svg#@replace@"/></svg>');
 }

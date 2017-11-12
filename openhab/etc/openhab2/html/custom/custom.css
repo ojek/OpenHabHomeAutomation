@@ -1,7 +1,7 @@
 :root {
     --main-bg: rgb(21, 98, 161);
-    --main-opq-bg: rgba(21, 98, 161, 0.9);
-    --main-opq2-bg: rgba(21, 98, 161, 0.5);
+    --main-opq-bg: rgba(0, 0, 0, 0.6);
+    --main-opq2-bg: rgba(0, 0, 0, 0.4);
 }
 
 body {
