@@ -24,6 +24,7 @@ if (typeof loadIframes != "function") {
                     $(iframeDivs[i]).append('<iframe src="'+text+'"></iframe>');
                 }
             };
+            clearInterval(interval);
             loadIframes();
         } else {
             clearInterval(interval);
