@@ -2,6 +2,7 @@
     --main-bg: rgb(21, 98, 161);
     --main-opq-bg: rgba(0, 0, 0, 0.6);
     --main-opq2-bg: rgba(0, 0, 0, 0.4);
+    --main-text: rgba(255, 255, 255, 1);
 }
 
 body {

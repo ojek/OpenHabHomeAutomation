@@ -1,10 +1,10 @@
 <div class="customWidget">
     <div class="customHeader">
-        <div class="icon">{{config.icon}}</div>
+        <div class="icon">#loading_{{config.icon}}</div>
         <div class="name"><span>{{config.title}}</span></div>
         <div class="value"><span>{{itemValue(config.item) | number:1}}°C</span></div>
     </div>
     
-    <div class="content iframe">{{config.chartlink}}</div>
+    <div class="content iframe">#loading_{{config.chartlink}}</div>
     <div oc-lazy-load="['/static/custom/custom.js']"></div>
 </div>
