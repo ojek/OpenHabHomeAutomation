@@ -5,8 +5,8 @@
     --main-text: rgba(255, 255, 255, 1);
 }
 
-body {
-    background-image: url("/static/custom/images/background.jpg");
+.container {
+    background-image: url("/static/custom/images/background.jpg") !important;
 }
 
 .template-contents{
