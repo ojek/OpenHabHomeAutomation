@@ -1,8 +1,17 @@
+body {
+    background-image: url("/static/custom/smartHome.jpg");
+    background-color: #cccccc;
+}
+
 .template-contents{
     height: 100%;
 }
 
-.custoWidget {
+.box{
+    opacity: 0.9;
+}
+
+.customWidget {
     width: 100%;
     height: 100%;
     font-size: 0.8vw;
