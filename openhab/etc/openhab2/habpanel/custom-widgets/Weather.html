@@ -1,6 +1,11 @@
 <div class="customWidget">
     <div class="customHeader">
-        <div class="icon">#loading_{{config.icon}}</div>
+        <div class="icon">
+                <img style=\"filter: invert(60%) sepia(100%) hue-rotate(185deg) saturate(1000%);\"\t\tsrc=\"/icon/climacon?iconset=climacons&format=svg&state={{itemValue(config.icon)}}\" />
+               <!-- <svg viewBox="0 0 48 48"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/static/custom/icons/icons.svg#{{itemValue(config.item)}}"></use></svg>
+            
+            #loading_{{config.icon}} -->
+        </div>
         <div class="name"><span>{{config.title}}</span></div>
         <div class="value"><span>{{itemValue(config.item) | number:1}}°C</span></div>
     </div>
