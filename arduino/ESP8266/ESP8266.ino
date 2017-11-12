@@ -91,6 +91,7 @@ void mqttPublish()
         mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumid[0]));
         mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumid[1]));
         mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
+        mqtt.sendMsg(ledDisplay.inIntensityTopic, String(ledDisplay.intensity));
         mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
         mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
     }
@@ -129,5 +130,10 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
             solidStateRelay.off();
         else if ((char)payload[0] == '1') 
             solidStateRelay.on();
+    }
+    else if (strcmp(ledDisplay.outIntensityTopic, topic) == 0)
+    {
+        String str = String((char*)payload);
+        ledDisplay.setIntensity(str.toInt());
     }
 }
