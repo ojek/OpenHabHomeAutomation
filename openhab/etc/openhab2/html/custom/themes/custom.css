@@ -90,3 +90,19 @@
     height: 100%;
     border: 0px;
 }
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.block {
+    display: block;
+}
+
+.row {
+    width: 100%;
+}

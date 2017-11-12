@@ -1,14 +1,16 @@
 <div class="customWidget">
     <div class="customHeader">
         <div class="icon">
-            <img src="/static/custom/icons/weatherIcons/{{config.icon}}.svg" />
+            <img class="invert" src="/static/custom/icons/weatherIcons/{{config.icon}}.svg" />
         </div>
         <div class="name"><span>{{config.title}}</span></div>
         <div class="value"><span>{{itemValue(config.item) | number:1}}°C</span></div>
     </div>
     
     <div class="content weather">
-        <div class="weatherIcon"></div>
+            <div class="row"><span>Status</span><span>{{itemValue(config.status.label)}}</span></div>
+            <div class="row"><span>Humidity</span><span>{{itemValue(config.item)}}</span></div>
+            <div class="row"><span>Wind</span><span>{{itemValue(config.item)}}</span></div>
         <div class="weatherStatus">
             <!--
             //wilgotność
