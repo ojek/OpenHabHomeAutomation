@@ -5,8 +5,19 @@
     --main-text: rgba(255, 255, 255, 1);
 }
 
+.customWidget .row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
 .container {
     background-image: url("/static/custom/images/background.jpg") !important;
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
 }
 
 .template-contents{
