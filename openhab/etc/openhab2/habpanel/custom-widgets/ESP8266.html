@@ -8,9 +8,9 @@
     </div>
     
     <div class="content info">
-        <div class="row"><span class="left">Uptime</span><span class="right">{{itemValue(config.uptime)}}</span></div>
-        <div class="row"><span class="left">Memory free</span><span class="right">{{itemValue(config.memfree)}}</span></div>
-        <div class="row"><span class="left">CPU Frequency</span><span class="right">{{itemValue(config.cpufreq)}}</span></div>
+        <div class="row"><span class="left">Uptime</span><span class="right">{{((itemValue(config.uptime)/86400)|number:2) + " Days"}}</span></div>
+        <div class="row"><span class="left">Memory free</span><span class="right">{{((itemValue(config.memfree)/1000)|number:1) + " KiB"}}</span></div>
+        <div class="row"><span class="left">CPU Frequency</span><span class="right">{{(itemValue(config.cpufreq)) + " MHz"}}</span></div>
     </div>
     <div oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
 </div>

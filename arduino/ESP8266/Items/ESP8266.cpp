@@ -25,7 +25,7 @@ class ESP_8266
         void loop() 
         {
             mem_free = String(system_get_free_heap_size());
-            mem_free = String(system_get_cpu_freq());
-            mem_free = String(millis()/1000);
+            cpu_freq = String(system_get_cpu_freq());
+            uptime = String(millis()/1000);
         }
 };

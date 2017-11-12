@@ -35,12 +35,32 @@
 .customWidget {
     width: 100%;
     height: 100%;
-    font-size: 0.8vw;
+    font-size: 0.8vw;   
+    display: flex;
+    flex-flow: column;
+}
+
+.customWidget.s {
+}
+
+.customWidget.m {
+}
+
+.customWidget.l {
+}
+
+.customWidget.xl {
+}
+
+.customWidget.xxl {
+}
+
+.customWidget.max {
 }
 
 .customHeader {
     width: 100%;
-    height: 20%;
+    height: 55px;
     background: var(--main-opq2-bg);
 }
 
@@ -58,6 +78,7 @@
 .customHeader .icon img {
     height: 100%;
     width: 100%;
+    vertical-align: unset !important;
 }
 
 .invert {
@@ -91,8 +112,8 @@
 }
 
 .content {
-    width: 100%;
-    height: 80%;
+    width: 100%;    
+    flex: 1 1 auto;
     background: var(--main-opq-bg);
 }
 
