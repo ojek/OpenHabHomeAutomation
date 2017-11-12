@@ -72,7 +72,7 @@
     width: 20%;
     height: 100%;
     float: left;
-    padding: 2%;
+    padding: 0.4vw;
 }
 
 .customHeader .icon img {
@@ -94,13 +94,13 @@
 .customHeader .name {
     width: 60%;
     height: 100%;
-    text-align: left;
+    text-align: center;
     color: var(--main-text);
 }
 
 .customHeader span {
     position: relative;
-    top: 30%;
+    top: 0.53vw;
     display: block;
 }
 
