@@ -73,12 +73,13 @@
     height: 100%;
     float: left;
     padding: 0.4vw;
+    padding-left: 0.7vw;
 }
 
 .customHeader .icon img {
     height: 100%;
-    width: 100%;
     vertical-align: unset !important;
+    float: left;
 }
 
 .invert {
