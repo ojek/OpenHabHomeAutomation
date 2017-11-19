@@ -1,10 +1,10 @@
-if (interval === 'undefined'){
+if (interval == undefined){
     var interval = null;
 }
-if (repeatTime === 'undefined'){
+if (repeatTime == undefined){
     var repeatTime = 300000; //5m
 }
-if (repeatInterval === 'undefined'){
+if (repeatInterval == undefined){
     var repeatInterval = null;
 }
 
@@ -19,9 +19,9 @@ if (typeof loadJQuery != "function") {
     loadJQuery();
 }
 
-if (typeof loadContent != "function") {   
-    interval = window.setInterval(function(){
-        if (typeof jQuery != 'undefined' && typeof loadContent != "function") {
+if (typeof loadContent != "function" && window.interval === null) {   
+    window.interval = window.setInterval(function(){
+        if (typeof jQuery != undefined && typeof loadContent != "function") {
             function loadContent(source, element){
                 var srcElems = $(source);
                 for(var i = 0; i < srcElems.length; i++){
@@ -33,15 +33,15 @@ if (typeof loadContent != "function") {
                     $(adjacentElem).append(element.replace('@replace@', text));
                 }
             };
-            clearInterval(interval);
+            clearInterval(window.interval);
             loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>');
 
-            if (repeatInterval === null) {
-                repeatInterval = window.setInterval(function(){loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>')},repeatTime);                
+            if (window.repeatInterval === null) {
+                window.repeatInterval = window.setInterval(function(){loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>')},repeatTime);                
             }
         } 
         else {
-            clearInterval(interval);
+            clearInterval(window.interval);
         }
     }, 1000);
 }
