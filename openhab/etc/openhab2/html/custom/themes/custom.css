@@ -174,10 +174,10 @@ input[type=range] {
 
 /* Special styling for WebKit/Blink */
 input[type=range]::-webkit-slider-thumb {
+    height: 100%;
+    width: 10%;
     -webkit-appearance: none;
     border: 1px solid #000000;
-    height: 36px;
-    width: 16px;
     border-radius: 3px;
     background: #ffffff;
     cursor: pointer;
@@ -187,20 +187,20 @@ input[type=range]::-webkit-slider-thumb {
   
   /* All the same stuff for Firefox */
   input[type=range]::-moz-range-thumb {
+    height: 100%;
+    width: 10%;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
     border: 1px solid #000000;
-    height: 36px;
-    width: 16px;
     border-radius: 3px;
     background: #ffffff;
     cursor: pointer;
   }
   
   input[type=range]::-ms-thumb {
+    height: 100%;
+    width: 10%;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
     border: 1px solid #000000;
-    height: 36px;
-    width: 16px;
     border-radius: 3px;
     background: #ffffff;
     cursor: pointer;
