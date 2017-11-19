@@ -158,6 +158,12 @@
     display: none;
 }
 
+.dst {
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+}
+
 .rz-bar {
     display: none !important;
 }

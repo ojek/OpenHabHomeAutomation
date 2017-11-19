@@ -34,10 +34,10 @@ if (typeof loadContent != "function") {
                 }
             };
             clearInterval(interval);
-            loadContent('div.iframe src', '<iframe src="@replace@"></iframe>');
+            loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>');
 
             if (repeatInterval === null) {
-                repeatInterval = window.setInterval(function(){loadContent('div.iframe src', '<iframe src="@replace@"></iframe>')},repeatTime);                
+                repeatInterval = window.setInterval(function(){loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>')},repeatTime);                
             }
         } 
         else {
