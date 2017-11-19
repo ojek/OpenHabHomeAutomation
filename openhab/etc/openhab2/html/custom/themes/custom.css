@@ -3,6 +3,7 @@
     --main-opq-bg: rgba(0, 0, 0, 0.4);
     --main-opq2-bg: rgba(0, 0, 0, 0.3);
     --main-text: rgba(255, 255, 255, 1);
+    --primary-color: rgba(255, 255, 255, 1) !important;
 }
 
 .customWidget .row {
@@ -164,7 +165,11 @@
     border-radius: 0px !important;
 }
 
-.rzslider .rz-pointer:after, .rzslider .rz-pointer:hover {
+.rzslider .rz-pointer:after {
+    background-color: transparent;
+}
+
+.rzslider .rz-pointer:hover:after {
     background-color: transparent;
 }
 
