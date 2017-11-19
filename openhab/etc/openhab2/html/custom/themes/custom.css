@@ -127,14 +127,10 @@
     padding: 2%;
 }
 
-.content.iframe {
-    display: flex;
-}
-
 .content iframe {
     width: 100%;
     border: 0px;
-    flex: 1 1 auto;
+    height: 100%;
 }
 
 .left {
@@ -154,14 +150,8 @@
     padding: 1% 2% 0% 2%;
 }
 
-.hidden {
-    display: none;
-}
-
 .dst {
     width: 100%;
-    height: 100%;
-    flex: 1 1 auto;
 }
 
 .rz-bar {
