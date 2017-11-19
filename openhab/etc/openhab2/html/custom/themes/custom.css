@@ -154,6 +154,10 @@
     padding: 1% 2% 0% 2%;
 }
 
+.hidden {
+    display: none;
+}
+
 .rz-bar {
     display: none !important;
 }

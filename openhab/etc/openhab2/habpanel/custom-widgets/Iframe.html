@@ -7,6 +7,9 @@
         <div class="value"><span>{{itemValue(config.item) | number:1}}{{config.unit}}</span></div>
     </div>
     
-    <div class="content iframe">#loading_{{config.chartlink}}</div>
-    <div oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
+    <div class="content iframe dst">
+        <div class="hidden src">#loading_{{config.chartlink}}</div>
+        <div class="dst"></div>
+    </div>
+    <div class="hidden" oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
 </div>
