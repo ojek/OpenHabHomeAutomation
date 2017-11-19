@@ -1,7 +1,7 @@
 :root {
     --main-bg: rgb(21, 98, 161);
-    --main-opq-bg: rgba(0, 0, 0, 0.6);
-    --main-opq2-bg: rgba(0, 0, 0, 0.4);
+    --main-opq-bg: rgba(0, 0, 0, 0.4);
+    --main-opq2-bg: rgba(0, 0, 0, 0.3);
     --main-text: rgba(255, 255, 255, 1);
 }
 
@@ -30,7 +30,7 @@
 
 .box-content {
     padding: 0px !important;
-    background-color: var(--main-opq2-bg) !important;
+    background-color: var(--main-opq-bg) !important;
 }
 
 .header {
@@ -151,4 +151,15 @@
 .row {
     width: 100%;
     padding: 1% 2% 0% 2%;
+}
+
+.rz-bar {
+    display: none !important;
+}
+
+.rzslider .rz-pointer {
+    background-color: var(--main-opq2-bg) !important;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
 }
