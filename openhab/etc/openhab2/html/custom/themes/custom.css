@@ -148,3 +148,24 @@
     width: 100%;
     padding: 1% 2% 0% 2%;
 }
+
+.slider {
+    -webkit-appearance: none;
+    background: rgba(0, 0, 0, 0);
+    height: 100%;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10%;
+    height: 100%;
+    background: var(--main-text);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 10%;
+    height: 100%;
+    background: var(--main-text);
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+<div class="customWidget">
+    <div class="customHeader">
+        <div class="icon">
+            <img class="invert" src="/static/custom/icons/main/{{config.icon}}.svg" />
+        </div>
+        <div class="name"><span>{{config.title}}</span></div>
+        <div class="value"><span>{{itemValue(config.item) | number:1}}{{config.unit}}</span></div>
+    </div>
+    
+    <div class="content">
+        <input type="range" min="{{config.min}}" max="{{config.max}}" value="{{config.default}}" class="slider" id="{{config.id}}">
+    </div>
+    <div oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
+</div>
