@@ -163,3 +163,11 @@
     -moz-border-radius: 0px !important;
     border-radius: 0px !important;
 }
+
+.rzslider .rz-pointer:after, .rzslider .rz-pointer:hover {
+    background-color: transparent;
+}
+
+:not(.bigslider).rz-bubble {
+    color: var(--main-text);
+}
