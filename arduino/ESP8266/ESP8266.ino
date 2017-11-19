@@ -33,7 +33,7 @@ MQTT mqtt;
 NodeMCUDiode nodeMCUDiode;
 LuminositySensor luminositySensor;
 TempHumidSensor tempHumidSensor;
-LedDisplay ledDisplay;
+//LedDisplay ledDisplay;
 MotionSensor motionSensor;
 SolidStateRelay solidStateRelay;
 ESP_8266 esp8266;
@@ -93,7 +93,7 @@ void priorityLoop()
 
 void loopHigh()
 {
-    ledDisplay.loop(String(millis()/1000));
+    //ledDisplay.loop(String(millis()/1000));
     motionSensor.loop();
     luminositySensor.loop();
 
@@ -123,8 +123,8 @@ void mqttPublishMed()
 {
     mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
     mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
-    mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
-    mqtt.sendMsg(ledDisplay.inIntensityTopic, String(ledDisplay.intensity));
+    //mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
+    //mqtt.sendMsg(ledDisplay.inIntensityTopic, String(ledDisplay.intensity));
 }
 
 void mqttPublishLow()
@@ -140,13 +140,13 @@ void getItemChannels(char** mqttChannelList)
 {
     mqttChannelList[0] = nodeMCUDiode.outTopic;
     mqttChannelList[1] = solidStateRelay.outTopic;
-    mqttChannelList[2] = ledDisplay.outIntensityTopic;
+    //mqttChannelList[2] = ledDisplay.outIntensityTopic;
 }
 
 void setupItems()
 {
     nodeMCUDiode.setup();
-    ledDisplay.setup();
+    //ledDisplay.setup();
     solidStateRelay.setup();
     motionSensor.setup();
 }
@@ -171,9 +171,9 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
         else if ((char)payload[0] == '1') 
             solidStateRelay.on();
     }
-    else if (strcmp(ledDisplay.outIntensityTopic, topic) == 0)
-    {
-        String strPayload = String((char*)payload);
-        ledDisplay.setIntensity(strPayload.toInt());
-    }
+    //else if (strcmp(ledDisplay.outIntensityTopic, topic) == 0)
+    //{
+    //    String strPayload = String((char*)payload);
+    //    ledDisplay.setIntensity(strPayload.toInt());
+    //}
 }
