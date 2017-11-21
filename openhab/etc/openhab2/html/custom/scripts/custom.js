@@ -21,7 +21,8 @@ if (typeof loadJQuery != "function") {
 
 if (typeof loadContent != "function" && window.interval === null) {   
     window.interval = window.setInterval(function(){
-        if (typeof jQuery != undefined && typeof loadContent != "function") {
+        if (typeof loadContent != "function") {
+            if (typeof jQuery === undefined || typeof($) === "undefined") return;
             function loadContent(source, element){
                 var srcElems = $(source);
                 for(var i = 0; i < srcElems.length; i++){
