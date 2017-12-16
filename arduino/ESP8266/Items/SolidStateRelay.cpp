@@ -21,8 +21,8 @@ class SolidStateRelay : public IItem
     void setup(String _name, String _loopPriority)
     {
       IItem::setProps(_name, _loopPriority);
-      subChannels["currentState"] = "openhab/out/SolidStateRelay/command";
-      pubChannels["currentState"] = "openhab/in/SolidStateRelay/state";
+      subChannels["currentState"] = "openhab/out/"+_name+"/command";
+      pubChannels["currentState"] = "openhab/in/"+_name+"/state";
       pinMode(SSR_PIN, OUTPUT);
       currentState = "0";
     }

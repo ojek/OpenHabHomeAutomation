@@ -18,10 +18,10 @@ class ESP_8266 : public IItem
         void setup(String _name, String _loopPriority)
         {
             IItem::setProps(_name, _loopPriority);
-            pubChannels["freemem"] = "openhab/in/ESP8266_FreeMem/state";
-            pubChannels["cpufreq"] = "openhab/in/ESP8266_CPUFreq/state";
-            pubChannels["uptime"] = "openhab/in/ESP8266_Uptime/state";
-            pubChannels["esp8266"] = "openhab/in/ESP8266/state";
+            pubChannels["freemem"] = "openhab/in/"+_name+"_FreeMem/state";
+            pubChannels["cpufreq"] = "openhab/in/"+_name+"_CPUFreq/state";
+            pubChannels["uptime"] = "openhab/in/"+_name+"_Uptime/state";
+            pubChannels["esp8266"] = "openhab/in/"+_name+"/state";
         }
 
         void loop()

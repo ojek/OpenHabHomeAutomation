@@ -9,8 +9,8 @@ class MotionSensor : public IItem
     void setup(String _name, String _loopPriority)
     {
       IItem::setProps(_name, _loopPriority);
-      subChannels["currentState"] = "openhab/out/MotionSensor/state";
-      pubChannels["currentState"] = "openhab/in/MotionSensor/state";
+      subChannels["currentState"] = "openhab/out/"+_name+"/state";
+      pubChannels["currentState"] = "openhab/in/"+_name+"/state";
       pinMode(PIR_PIN, INPUT);
     }
 

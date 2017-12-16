@@ -1,21 +1,21 @@
 #include "Abstract\Item.cpp"
 
-class Diode : public IItem
+class PinSwitch : public IItem
 {
-    #define diode_pin 16
-    #define diode_on LOW
-    #define diode_off HIGH
+    #define switch_pin 16
+    #define switch_on LOW
+    #define switch_off HIGH
     char* currentState;
 
     void on() 
     {
-        digitalWrite(diode_pin, diode_on);
+        digitalWrite(switch_pin, switch_on);
         currentState = "1";
     }
 
     void off() 
     {
-        digitalWrite(diode_pin, diode_off);
+        digitalWrite(switch_pin, switch_off);
         currentState = "0";
     }
     
@@ -25,9 +25,9 @@ class Diode : public IItem
         {
             IItem::setProps(_name, _loopPriority);
 
-            pubChannels["currentState"] = "openhab/in/LedLight/state";
-            subChannels["currentState"] = "openhab/out/LedLight/command";
-            pinMode(diode_pin, OUTPUT);
+            pubChannels["currentState"] = "openhab/in/"+_name+"/state";
+            subChannels["currentState"] = "openhab/out/"+_name+"/command";
+            pinMode(switch_pin, OUTPUT);
             off();
         }
         

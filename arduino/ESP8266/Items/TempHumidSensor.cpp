@@ -17,10 +17,10 @@ class TempHumidSensor : public IItem
     void setup(String _name, String _loopPriority)
     {
       IItem::setProps(_name, _loopPriority);
-      pubChannels["temp"] = "openhab/in/TemperatureSensor/state";
-      pubChannels["humid"] = "openhab/in/HumiditySensor/state";
-      subChannels["temp"] = "openhab/out/TemperatureSensor/state";
-      subChannels["humid"] = "openhab/out/HumiditySensor/state";
+      pubChannels["temp"] = "openhab/in/"+_name+"_Temperature/state";
+      pubChannels["humid"] = "openhab/in/"+_name+"_Humidity/state";
+      subChannels["temp"] = "openhab/out/"+_name+"_Temperature/state";
+      subChannels["humid"] = "openhab/out/"+_name+"_Humidity/state";
     }
 
     void loop()

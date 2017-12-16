@@ -68,8 +68,8 @@ class LuminositySensor : public IItem
     void setup(String _name, String _loopPriority)
     {
         IItem::setProps(_name, _loopPriority);
-        pubChannels["currentState"] = "openhab/in/LuminositySensor/state";
-        subChannels["currentState"] = "openhab/out/LuminositySensor/state";
+        pubChannels["currentState"] = "openhab/in/"+_name+"/state";
+        subChannels["currentState"] = "openhab/out/"+_name+"/state";
     }
     
     virtual void loop()

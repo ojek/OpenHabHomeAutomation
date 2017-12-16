@@ -1,7 +1,7 @@
 #include "WiFi\HomeWiFi.cpp"
 #include "MQTT\MQTT.cpp"
 #include "Other\ESPHelper.cpp"
-#include "Items\Diode.cpp"
+#include "Items\PinSwitch.cpp"
 #include "Items\LuminositySensor.cpp"
 #include "Items\TempHumidSensor.cpp"
 #include "Items\LedDisplay.cpp"
@@ -30,6 +30,8 @@
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
 
+
+String ESP_ID = "Bedroom_Main"
 std::vector<IItem*> items;
 std::vector<String> mqttSubscribeChannels;
 ESPHelper espHelper;
@@ -56,27 +58,27 @@ void setup()
 void setupItems()
 {
     IItem* motionSensor = new MotionSensor;
-    motionSensor->setup(String("motionSensor"), String("high"));
+    motionSensor->setup(String("MotionSensor_" + ESP_ID), String("high"));
     items.push_back(motionSensor);
 
     IItem* luminositySensor = new LuminositySensor;
-    luminositySensor->setup(String("luminositySensor"), String("high"));
+    luminositySensor->setup(String("LuminositySensor_" + ESP_ID), String("high"));
     items.push_back(luminositySensor);
 
-    IItem* diode = new Diode;
-    diode->setup(String("diode"), String("medium"));
-    items.push_back(diode);
+    IItem* _switch = new PinSwitch;
+    _switch->setup(String("PinSwitch_" + ESP_ID), String("medium"));
+    items.push_back(_switch);
 
     IItem* solidStateRelay = new SolidStateRelay;
-    solidStateRelay->setup(String("solidStateRelay"), String("medium"));
+    solidStateRelay->setup(String("SolidStateRelay_" + ESP_ID), String("medium"));
     items.push_back(solidStateRelay);
 
     IItem* esp8266 = new ESP_8266;
-    esp8266->setup(String("esp8266"), String("low"));
+    esp8266->setup(String("ESP8266_" + ESP_ID), String("low"));
     items.push_back(esp8266);
 
     IItem* tempHumidSensor = new TempHumidSensor;
-    tempHumidSensor->setup(String("tempHumidSensor"), String("low"));
+    tempHumidSensor->setup(String("TempHumidSensor_" + ESP_ID), String("low"));
     items.push_back(tempHumidSensor);
 
     for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) 
