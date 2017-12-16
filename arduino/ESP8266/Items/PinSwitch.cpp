@@ -24,7 +24,6 @@ class PinSwitch : public IItem
         void setup(String _name, String _loopPriority)
         {
             IItem::setProps(_name, _loopPriority);
-
             pubChannels["currentState"] = "openhab/in/"+_name+"/state";
             subChannels["currentState"] = "openhab/out/"+_name+"/command";
             pinMode(switch_pin, OUTPUT);

@@ -31,7 +31,7 @@
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
 
 
-String ESP_ID = "Bedroom_Main"
+String ESP_ID = "Bedroom_Main";
 std::vector<IItem*> items;
 std::vector<String> mqttSubscribeChannels;
 ESPHelper espHelper;
@@ -64,26 +64,26 @@ void setupItems()
     IItem* luminositySensor = new LuminositySensor;
     luminositySensor->setup(String("LuminositySensor_" + ESP_ID), String("high"));
     items.push_back(luminositySensor);
-
+    
     IItem* _switch = new PinSwitch;
     _switch->setup(String("PinSwitch_" + ESP_ID), String("medium"));
     items.push_back(_switch);
-
+    
     IItem* solidStateRelay = new SolidStateRelay;
     solidStateRelay->setup(String("SolidStateRelay_" + ESP_ID), String("medium"));
     items.push_back(solidStateRelay);
-
+    
     IItem* esp8266 = new ESP_8266;
     esp8266->setup(String("ESP8266_" + ESP_ID), String("low"));
     items.push_back(esp8266);
-
+    
     IItem* tempHumidSensor = new TempHumidSensor;
     tempHumidSensor->setup(String("TempHumidSensor_" + ESP_ID), String("low"));
     items.push_back(tempHumidSensor);
 
     for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) 
     {
-        for (std::map<String, char*>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
+        for (std::map<String, String>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
         {
             mqttSubscribeChannels.push_back(subChannel->second);
         }
@@ -130,7 +130,7 @@ void _loop(String priority)
         if ((*it)->loopPriority == priority)
         {
             (*it)->loop();
-            for (std::map<String, char*>::iterator pubChannel = (*it)->pubChannels.begin(); pubChannel != (*it)->pubChannels.end(); pubChannel++ )
+            for (std::map<String, String>::iterator pubChannel = (*it)->pubChannels.begin(); pubChannel != (*it)->pubChannels.end(); pubChannel++ )
             {
                 mqtt.sendMsg(pubChannel->second, (*it)->command(std::initializer_list<String>({pubChannel->first}).begin()));
             }
@@ -148,7 +148,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
     }
 
     for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) {
-        for (std::map<String, char*>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
+        for (std::map<String, String>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
         {
             (*it)->command(std::initializer_list<String>({String((char*)payload)}).begin());
         }

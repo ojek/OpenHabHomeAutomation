@@ -49,7 +49,7 @@ class MQTT
             client.loop();
         }
         
-        void sendMsg(char* topic, String message)
+        void sendMsg(String topic, String message)
         {
             if (!client.connected()) {
                 reconnect();
@@ -61,7 +61,7 @@ class MQTT
             if (pMsg == NULL)
               pMsg = "";
 
-            client.publish(topic,pMsg);
+            client.publish(topic.c_str(),pMsg);
             delete[] pMsg;
             delay(10);
             client.loop();

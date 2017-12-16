@@ -18,8 +18,8 @@ public:
     virtual void loop()=0;
     virtual String command(const String* args)=0;
 
-    std::map<String, char*> pubChannels; //in
-    std::map<String, char*> subChannels; //out
+    std::map<String, String> pubChannels; //in
+    std::map<String, String> subChannels; //out
 
     String name;
     String loopPriority;
