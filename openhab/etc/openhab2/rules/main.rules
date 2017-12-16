@@ -2,7 +2,7 @@ rule "Bedroom_Temperature"
 when
      Item TempHumidSensor_Bedroom_Main_Temperature received update
 then
-    if (Temp_Outside.averageSince(now.minusMinutes(10) < 26.0))
+    if (TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10) < 26.0))
     {
         Diode.sendCommand("ON")
         SolidStateRelay.sendCommand("ON")
