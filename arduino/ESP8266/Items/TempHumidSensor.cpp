@@ -1,8 +1,9 @@
 #include "DHT.h"
+#include "Abstract\Item.cpp"
 #define DHTPIN 2 // what digital pin the DHT22 is conected to (D4)
 #define DHTTYPE DHT22   // there are multiple kinds of DHT sensors
 
-class TempHumidSensor
+class TempHumidSensor : public IItem
 {
   //3.3-5.5V DC. Typical: 5V
   //1-1.5 mA Typical in between
@@ -13,11 +14,14 @@ class TempHumidSensor
   float temperature;
   
   public:
-    char* outTempTopic = "openhab/out/TemperatureSensor/state";
-    char* inTempTopic = "openhab/in/TemperatureSensor/state";
-    char* outHumidTopic = "openhab/out/HumiditySensor/state";
-    char* inHumidTopic = "openhab/in/HumiditySensor/state";
-    float tempHumid[2] = {0,0};
+    void setup(String _name, String _loopPriority)
+    {
+      IItem::setProps(_name, _loopPriority);
+      pubChannels["temp"] = "openhab/in/TemperatureSensor/state";
+      pubChannels["humid"] = "openhab/in/HumiditySensor/state";
+      subChannels["temp"] = "openhab/out/TemperatureSensor/state";
+      subChannels["humid"] = "openhab/out/HumiditySensor/state";
+    }
 
     void loop()
     {
@@ -26,8 +30,16 @@ class TempHumidSensor
       humid = dht.readHumidity();
       if (temp != NULL && humid != NULL && temp > 0 && humid > 0)
       {
-        tempHumid[0] = temp;
-        tempHumid[1] = humid;
+        temperature = temp;
+        humidity = humid;
       }
+    }
+
+    String command(const String* args)
+    {
+      if (args == NULL || args[0] == NULL) return "";
+      if (args[0] == "temp") return String(temperature);
+      if (args[0] == "humid") return String(humidity);
+      return "";
     }
 };

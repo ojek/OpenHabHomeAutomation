@@ -1,13 +1,15 @@
 #include "WiFi\HomeWiFi.cpp"
 #include "MQTT\MQTT.cpp"
 #include "Other\ESPHelper.cpp"
-#include "Items\NodeMCUDiode.cpp"
+#include "Items\Diode.cpp"
 #include "Items\LuminositySensor.cpp"
 #include "Items\TempHumidSensor.cpp"
 #include "Items\LedDisplay.cpp"
 #include "Items\MotionSensor.cpp"
 #include "Items\SolidStateRelay.cpp"
 #include "Items\ESP8266.cpp"
+#include <string.h>
+#include <vector>
 
 /*
 #define D0 16
@@ -28,17 +30,11 @@
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
 
+std::vector<IItem*> items;
+std::vector<String> mqttSubscribeChannels;
 ESPHelper espHelper;
 MQTT mqtt;
-NodeMCUDiode nodeMCUDiode;
-LuminositySensor luminositySensor;
-TempHumidSensor tempHumidSensor;
-//LedDisplay ledDisplay;
-MotionSensor motionSensor;
-SolidStateRelay solidStateRelay;
-ESP_8266 esp8266;
 
-char* mqttChannelList[3];
 int piorityHighTimeStamp = 0;
 int piorityMedTimeStamp = 0;
 int piorityLowTimeStamp = 0;
@@ -51,10 +47,45 @@ void setup()
     wifi.setup_wifi();
     espHelper.setup();
 
-    getItemChannels(mqttChannelList);
-    mqtt.setup(mqttChannelList, mqttCallback);
-
     setupItems();
+
+    mqtt.setup(mqttSubscribeChannels, mqttCallback);
+
+}
+
+void setupItems()
+{
+    IItem* motionSensor = new MotionSensor;
+    motionSensor->setup(String("motionSensor"), String("high"));
+    items.push_back(motionSensor);
+
+    IItem* luminositySensor = new LuminositySensor;
+    luminositySensor->setup(String("luminositySensor"), String("high"));
+    items.push_back(luminositySensor);
+
+    IItem* diode = new Diode;
+    diode->setup(String("diode"), String("medium"));
+    items.push_back(diode);
+
+    IItem* solidStateRelay = new SolidStateRelay;
+    solidStateRelay->setup(String("solidStateRelay"), String("medium"));
+    items.push_back(solidStateRelay);
+
+    IItem* esp8266 = new ESP_8266;
+    esp8266->setup(String("esp8266"), String("low"));
+    items.push_back(esp8266);
+
+    IItem* tempHumidSensor = new TempHumidSensor;
+    tempHumidSensor->setup(String("tempHumidSensor"), String("low"));
+    items.push_back(tempHumidSensor);
+
+    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) 
+    {
+        for (std::map<String, char*>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
+        {
+            mqttSubscribeChannels.push_back(subChannel->second);
+        }
+    }
 }
  
 void loop()
@@ -71,84 +102,40 @@ void priorityLoop()
     bool priorityHit = false;
     if (currentTimeStamp - piorityHighTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH)
     {
-        loopHigh();
+        _loop("high");
         priorityHit = true;
         piorityHighTimeStamp = currentTimeStamp;
     }
     if (currentTimeStamp - piorityMedTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_MED)
     {
         if (priorityHit) delay(100);
-        loopMed();
+        _loop("medium");
         priorityHit = true;
         piorityMedTimeStamp = currentTimeStamp;
     }
     if (currentTimeStamp - piorityLowTimeStamp > MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW)
     {
         if (priorityHit) delay(100);
-        loopLow();
+        _loop("low");
         priorityHit = true;
         piorityLowTimeStamp = currentTimeStamp;
     }
 }
 
-void loopHigh()
+void _loop(String priority)
 {
-    //ledDisplay.loop(String(millis()/1000));
-    motionSensor.loop();
-    luminositySensor.loop();
-
-    mqttPublishHigh();
-}
-
-void loopMed()
-{
-    mqttPublishMed();
-}
-
-void loopLow()
-{
-    esp8266.loop();
-    tempHumidSensor.loop();
-
-    mqttPublishLow();
-}
-
-void mqttPublishHigh()
-{
-    mqtt.sendMsg(luminositySensor.inTopic, String(luminositySensor.lux));
-    mqtt.sendMsg(motionSensor.inTopic, String(motionSensor.isMotion));
-}
-
-void mqttPublishMed()
-{
-    mqtt.sendMsg(nodeMCUDiode.inTopic, String(nodeMCUDiode.currentState));
-    mqtt.sendMsg(solidStateRelay.inTopic, String(solidStateRelay.currentState));
-    //mqtt.sendMsg(ledDisplay.inTopic, String(ledDisplay.currentState));
-    //mqtt.sendMsg(ledDisplay.inIntensityTopic, String(ledDisplay.intensity));
-}
-
-void mqttPublishLow()
-{
-    mqtt.sendMsg(tempHumidSensor.inTempTopic, String(tempHumidSensor.tempHumid[0]));
-    mqtt.sendMsg(tempHumidSensor.inHumidTopic, String(tempHumidSensor.tempHumid[1]));
-    mqtt.sendMsg(esp8266.inFreeMemTopic, esp8266.mem_free);
-    mqtt.sendMsg(esp8266.inCPUFreqTopic, esp8266.cpu_freq);
-    mqtt.sendMsg(esp8266.inUptimeTopic, esp8266.uptime);
-}
-
-void getItemChannels(char** mqttChannelList)
-{
-    mqttChannelList[0] = nodeMCUDiode.outTopic;
-    mqttChannelList[1] = solidStateRelay.outTopic;
-    //mqttChannelList[2] = ledDisplay.outIntensityTopic;
-}
-
-void setupItems()
-{
-    nodeMCUDiode.setup();
-    //ledDisplay.setup();
-    solidStateRelay.setup();
-    motionSensor.setup();
+    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) {
+        if ((*it)->loopPriority == priority)
+        {
+            (*it)->loop();
+            for (std::map<String, char*>::iterator pubChannel = (*it)->pubChannels.begin(); pubChannel != (*it)->pubChannels.end(); pubChannel++ )
+            {
+                mqtt.sendMsg(pubChannel->second, (*it)->command(std::initializer_list<String>({pubChannel->first}).begin()));
+            }
+        }
+    }
+    ////ledDisplay.loop(String(millis()/1000));
+    //mqtt.sendMsg(items["temphumid"]->pubChannels["temp"], items["temphumid"]->command(std::initializer_list<String>({"temp"}).begin()));
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
@@ -157,23 +144,11 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
     {
         return;
     }
-    if (strcmp(nodeMCUDiode.outTopic, topic) == 0)
-    {
-        if ((char)payload[0] == '0') 
-            nodeMCUDiode.off();
-        else if ((char)payload[0] == '1') 
-            nodeMCUDiode.on();
+
+    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) {
+        for (std::map<String, char*>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
+        {
+            (*it)->command(std::initializer_list<String>({String((char*)payload)}).begin());
+        }
     }
-    else if (strcmp(solidStateRelay.outTopic, topic) == 0)
-    {
-        if ((char)payload[0] == '0') 
-            solidStateRelay.off();
-        else if ((char)payload[0] == '1') 
-            solidStateRelay.on();
-    }
-    //else if (strcmp(ledDisplay.outIntensityTopic, topic) == 0)
-    //{
-    //    String strPayload = String((char*)payload);
-    //    ledDisplay.setIntensity(strPayload.toInt());
-    //}
 }

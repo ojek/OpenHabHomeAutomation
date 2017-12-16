@@ -1,4 +1,7 @@
 #include <PubSubClient.h>
+#include <vector>
+#include <string>
+
 WiFiClient espClient = WiFiClient();
 PubSubClient client = PubSubClient(espClient);
 
@@ -6,7 +9,7 @@ class MQTT
 {
     const char* mqtt_server = "192.168.0.5";
     const char* client_name = "ESP8266Client";
-    char** mqttChannels;
+    std::vector<String> mqttChannels;
     
     void reconnect() 
     {
@@ -21,24 +24,17 @@ class MQTT
 
     void resubscribe()
     {
-        for (int i = 0; i < sizeof(mqttChannels); i++) 
+        for (std::vector<String>::iterator mqttChannel = mqttChannels.begin(); mqttChannel != mqttChannels.end(); mqttChannel++ )
         {
-            if (mqttChannels[i] != NULL && strlen(mqttChannels[i]) > 0)
-            {
-                delay(10);
-                client.subscribe(mqttChannels[i]); 
-                delay(10);
-                client.loop();
-            }
-            else
-            {
-                return;
-            }
+            delay(10);
+            client.subscribe(String(*mqttChannel).c_str()); 
+            delay(10);
+            client.loop();
         }
     }
 
     public:
-        void setup(char** mqttChannelList, MQTT_CALLBACK_SIGNATURE)
+        void setup(std::vector<String> mqttChannelList, MQTT_CALLBACK_SIGNATURE)
         {
             client.setServer(mqtt_server, 1883);
             client.setCallback(callback);
@@ -53,7 +49,7 @@ class MQTT
             client.loop();
         }
         
-        void sendMsg(char* topic, String message, bool eraseMessage = true)
+        void sendMsg(char* topic, String message)
         {
             if (!client.connected()) {
                 reconnect();
@@ -64,7 +60,7 @@ class MQTT
             message.toCharArray(pMsg,msgLen);
             if (pMsg == NULL)
               pMsg = "";
-            
+
             client.publish(topic,pMsg);
             delete[] pMsg;
             delay(10);

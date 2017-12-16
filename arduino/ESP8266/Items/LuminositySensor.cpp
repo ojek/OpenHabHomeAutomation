@@ -1,5 +1,7 @@
 #include <Wire.h>
 #include <math.h> 
+#include "Abstract\Item.cpp"
+
 // No active state
 #define BH1750_POWER_DOWN 0x00
 
@@ -30,7 +32,7 @@
 // Device is automatically set to Power Down after measurement.
 #define BH1750_ONE_TIME_LOW_RES_MODE  0x23
 
-class LuminositySensor
+class LuminositySensor : public IItem
 {
     //May want to change the mode in BH1750_Init()
     //Connections: D1 => SCL; D2 => SDA;
@@ -60,12 +62,17 @@ class LuminositySensor
       Wire.endTransmission();
     }
 
-  public:
-    char* outTopic = "openhab/out/LuminositySensor/state";
-    char* inTopic = "openhab/in/LuminositySensor/state";
-    double lux;
+    double currentState;
 
-    void loop()
+  public:
+    void setup(String _name, String _loopPriority)
+    {
+        IItem::setProps(_name, _loopPriority);
+        pubChannels["currentState"] = "openhab/in/LuminositySensor/state";
+        subChannels["currentState"] = "openhab/out/LuminositySensor/state";
+    }
+    
+    virtual void loop()
     {
       int i;
       BH1750_Init(BH1750address);
@@ -73,7 +80,14 @@ class LuminositySensor
       
       if(2==BH1750_Read(BH1750address))
       {
-        lux=((buff[0]<<8)|buff[1])/1.2;
+        currentState=((buff[0]<<8)|buff[1])/1.2;
       }
+    }
+
+    virtual String command(const String* args)
+    {
+        if (args == NULL || args[0] == NULL) return "";
+        if (args[0] == "currentState") return String(currentState);
+        return "";
     }
 };
