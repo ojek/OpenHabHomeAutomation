@@ -10,13 +10,13 @@ class PinSwitch : public IItem
     void on() 
     {
         digitalWrite(switch_pin, switch_on);
-        currentState = "1";
+        currentState = "ON";
     }
 
     void off() 
     {
         digitalWrite(switch_pin, switch_off);
-        currentState = "0";
+        currentState = "OFF";
     }
     
     public:
@@ -38,8 +38,8 @@ class PinSwitch : public IItem
         String command(const String* args)
         {
             if (args == NULL || args[0] == NULL) return "";
-            if (args[0] == "1") on();
-            if (args[0] == "0") off();
+            if (args[0] == "ON") on();
+            if (args[0] == "OFF") off();
             if (args[0] == "currentState") String(currentState);
             return "";
         }

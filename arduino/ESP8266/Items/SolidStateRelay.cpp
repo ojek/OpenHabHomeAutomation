@@ -8,13 +8,13 @@ class SolidStateRelay : public IItem
   void on()
   {
     digitalWrite(SSR_PIN, HIGH);
-    currentState = "1";
+    currentState = "ON";
   }
 
   void off()
   {
     digitalWrite(SSR_PIN, LOW);
-    currentState = "0";
+    currentState = "OFF";
   }
 
   public:
@@ -35,8 +35,8 @@ class SolidStateRelay : public IItem
     String command(const String* args)
     {
       if (args == NULL || args[0] == NULL) return "";
-      if (args[0] == "1") on();
-      if (args[0] == "0") off();
+      if (args[0] == "ON") on();
+      if (args[0] == "OFF") off();
       if (args[0] == "currentState") return String(currentState);
       return "";
     }

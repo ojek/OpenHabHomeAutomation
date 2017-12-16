@@ -1,15 +1,15 @@
-rule "LedLight_Luminosity"
+rule "Bedroom_Temperature"
 when
-     Item LuminositySensor changed
+     Item TempHumidSensor_Bedroom_Main_Temperature received update
 then
-    if (LuminositySensor.state > 13)
+    if (Temp_Outside.averageSince(now.minusMinutes(10) < 26.0))
     {
-        LedLight.sendCommand(1)
-        SolidStateRelay.sendCommand(1)
+        Diode.sendCommand("ON")
+        SolidStateRelay.sendCommand("ON")
     }
     else
     {
-        LedLight.sendCommand(0)
-        SolidStateRelay.sendCommand(0)
+        LedLight.sendCommand("OFF")
+        SolidStateRelay.sendCommand("OFF")
     }
 end

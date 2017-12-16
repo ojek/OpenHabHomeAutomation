@@ -150,7 +150,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
     for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) {
         for (std::map<String, String>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
         {
-            (*it)->command(std::initializer_list<String>({String((char*)payload)}).begin());
+            (*it)->command(std::initializer_list<String>({String((char*)payload).substring(0,length)}).begin());
         }
     }
 }

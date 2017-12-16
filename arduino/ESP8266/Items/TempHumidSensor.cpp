@@ -19,8 +19,6 @@ class TempHumidSensor : public IItem
       IItem::setProps(_name, _loopPriority);
       pubChannels["temp"] = "openhab/in/"+_name+"_Temperature/state";
       pubChannels["humid"] = "openhab/in/"+_name+"_Humidity/state";
-      subChannels["temp"] = "openhab/out/"+_name+"_Temperature/state";
-      subChannels["humid"] = "openhab/out/"+_name+"_Humidity/state";
     }
 
     void loop()
