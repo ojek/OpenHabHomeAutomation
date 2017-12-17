@@ -29,10 +29,10 @@ std::vector<String> itemNames =
     {
         //"MotionSensor",
         //"LuminositySensor",
-        "PinSwitch",
-        "SolidStateRelay",
         //"ESP8266",
         //"TempHumidSensor",
+        "SolidStateRelay",
+        "PinSwitch",
     };
 std::vector<IItem*> items;
 std::vector<String> mqttSubscribeChannels;
@@ -53,7 +53,7 @@ void setup()
 
     setupItems();
 
-    mqtt.setup(mqttSubscribeChannels, mqttCallback);
+    mqtt.setup(ESP_ID, mqttSubscribeChannels, mqttCallback);
 
 }
 

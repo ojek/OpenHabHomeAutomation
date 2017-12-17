@@ -8,13 +8,13 @@ PubSubClient client = PubSubClient(espClient);
 class MQTT
 {
     const char* mqtt_server = "192.168.0.5";
-    const char* client_name = "ESP8266Client";
+    String client_name = "ESP8266_MQTT_";
     std::vector<String> mqttChannels;
     
     void reconnect() 
     {
         while (!client.connected()) {
-            if (client.connect(client_name)) {
+            if (client.connect(client_name.c_str())) {
                 resubscribe();
             } else {
                 delay(500);
@@ -34,8 +34,9 @@ class MQTT
     }
 
     public:
-        void setup(std::vector<String> mqttChannelList, MQTT_CALLBACK_SIGNATURE)
+        void setup(String clientID, std::vector<String> mqttChannelList, MQTT_CALLBACK_SIGNATURE)
         {
+            client_name = client_name + clientID;
             client.setServer(mqtt_server, 1883);
             client.setCallback(callback);
             mqttChannels = mqttChannelList;
