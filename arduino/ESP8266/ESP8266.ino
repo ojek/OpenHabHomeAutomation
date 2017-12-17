@@ -19,7 +19,7 @@
 #define D10 1 // TX0 (Serial console)
 */
 
-#define ESP_ID "Bedroom_Main"
+#define ESP_ID "Bedroom_Radiator"
 #define LOOP_DELAY_MS 200
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 500
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
@@ -27,12 +27,12 @@
 
 std::vector<String> itemNames = 
     {
-        "MotionSensor",
-        "LuminositySensor",
+        //"MotionSensor",
+        //"LuminositySensor",
         "PinSwitch",
         "SolidStateRelay",
-        "ESP8266",
-        "TempHumidSensor",
+        //"ESP8266",
+        //"TempHumidSensor",
     };
 std::vector<IItem*> items;
 std::vector<String> mqttSubscribeChannels;

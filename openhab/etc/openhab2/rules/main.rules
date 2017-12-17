@@ -6,12 +6,12 @@ then
     val Number BedroomTemp = TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10))
     if (BedroomTemp < TargetTemp)
     {
-        PinSwitch_Bedroom_Main.sendCommand("ON")
-        SolidStateRelay_Bedroom_Main.sendCommand("ON")
+        PinSwitch_Bedroom_Radiator.sendCommand("ON")
+        SolidStateRelay_Bedroom_Radiator.sendCommand("ON")
     }
     else
     {
-        PinSwitch_Bedroom_Main.sendCommand("OFF")
-        SolidStateRelay_Bedroom_Main.sendCommand("OFF")
+        PinSwitch_Bedroom_Radiator.sendCommand("OFF")
+        SolidStateRelay_Bedroom_Radiator.sendCommand("OFF")
     }
 end

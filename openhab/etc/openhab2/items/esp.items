@@ -8,6 +8,9 @@ String LedDisplay "Display Text [%s]" <text> {mqtt="<[MQTT:default:state:default
 String LedDisplayIntensity "Intensity [%s]" <text> {mqtt="<[MQTT:default:state:default]"}
 String SolidStateRelay_Bedroom_Main "SSR Position" <wallswitch> {mqtt="<[MQTT:default:command:default]"}
 
+String SolidStateRelay_Bedroom_Radiator "SSR Position" <wallswitch> {mqtt="<[MQTT:default:command:default]"}
+String PinSwitch_Bedroom_Radiator "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
+
 Number ESP8266_Bedroom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
 Number ESP8266_Bedroom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
 Number ESP8266_Bedroom_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
