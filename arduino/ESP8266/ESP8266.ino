@@ -1,13 +1,7 @@
 #include "WiFi\HomeWiFi.cpp"
 #include "MQTT\MQTT.cpp"
 #include "Other\ESPHelper.cpp"
-#include "Items\PinSwitch.cpp"
-#include "Items\LuminositySensor.cpp"
-#include "Items\TempHumidSensor.cpp"
-#include "Items\LedDisplay.cpp"
-#include "Items\MotionSensor.cpp"
-#include "Items\SolidStateRelay.cpp"
-#include "Items\ESP8266.cpp"
+#include "Other\ItemFactory.cpp"
 #include <string.h>
 #include <vector>
 
@@ -25,13 +19,21 @@
 #define D10 1 // TX0 (Serial console)
 */
 
+#define ESP_ID "Bedroom_Main"
 #define LOOP_DELAY_MS 200
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 500
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
 
-
-String ESP_ID = "Bedroom_Main";
+std::vector<String> itemNames = 
+    {
+        "MotionSensor",
+        "LuminositySensor",
+        "PinSwitch",
+        "SolidStateRelay",
+        "ESP8266",
+        "TempHumidSensor",
+    };
 std::vector<IItem*> items;
 std::vector<String> mqttSubscribeChannels;
 ESPHelper espHelper;
@@ -57,29 +59,8 @@ void setup()
 
 void setupItems()
 {
-    IItem* motionSensor = new MotionSensor;
-    motionSensor->setup(String("MotionSensor_" + ESP_ID), String("high"));
-    items.push_back(motionSensor);
-
-    IItem* luminositySensor = new LuminositySensor;
-    luminositySensor->setup(String("LuminositySensor_" + ESP_ID), String("high"));
-    items.push_back(luminositySensor);
-    
-    IItem* _switch = new PinSwitch;
-    _switch->setup(String("PinSwitch_" + ESP_ID), String("medium"));
-    items.push_back(_switch);
-    
-    IItem* solidStateRelay = new SolidStateRelay;
-    solidStateRelay->setup(String("SolidStateRelay_" + ESP_ID), String("medium"));
-    items.push_back(solidStateRelay);
-    
-    IItem* esp8266 = new ESP_8266;
-    esp8266->setup(String("ESP8266_" + ESP_ID), String("low"));
-    items.push_back(esp8266);
-    
-    IItem* tempHumidSensor = new TempHumidSensor;
-    tempHumidSensor->setup(String("TempHumidSensor_" + ESP_ID), String("low"));
-    items.push_back(tempHumidSensor);
+    ItemFactory itemFactory;
+    items = itemFactory.GetItems(ESP_ID, itemNames);
 
     for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) 
     {
@@ -126,7 +107,8 @@ void priorityLoop()
 
 void _loop(String priority)
 {
-    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) {
+    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) 
+    {
         if ((*it)->loopPriority == priority)
         {
             (*it)->loop();
@@ -136,8 +118,6 @@ void _loop(String priority)
             }
         }
     }
-    ////ledDisplay.loop(String(millis()/1000));
-    //mqtt.sendMsg(items["temphumid"]->pubChannels["temp"], items["temphumid"]->command(std::initializer_list<String>({"temp"}).begin()));
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) 
@@ -147,7 +127,8 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
         return;
     }
 
-    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) {
+    for(std::vector<IItem*>::iterator it = items.begin(); it != items.end(); ++it) 
+    {
         for (std::map<String, String>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
         {
             (*it)->command(std::initializer_list<String>({String((char*)payload).substring(0,length)}).begin());
