@@ -19,25 +19,26 @@
 #define D10 1 // TX0 (Serial console)
 */
 
-#define ESP_ID "Bedroom_Radiator"
+#define ESP_ID "Bedroom_Main"
 #define LOOP_DELAY_MS 200
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 500
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
 
 std::vector<String> itemNames = 
-    {
-        //"MotionSensor",
-        //"LuminositySensor",
-        //"ESP8266",
-        //"TempHumidSensor",
-        "SolidStateRelay",
-        "PinSwitch",
-    };
+{
+    "MotionSensor",
+    "LuminositySensor",
+    "ESP8266",
+    "TempHumidSensor",
+    "SolidStateRelay",
+    "PinSwitch",
+};
 std::vector<IItem*> items;
 std::vector<String> mqttSubscribeChannels;
 ESPHelper espHelper;
 MQTT mqtt;
+HomeWiFi wifi;
 
 int piorityHighTimeStamp = 0;
 int piorityMedTimeStamp = 0;
@@ -47,7 +48,6 @@ void setup()
 {
     Serial.begin(115200);
 
-    HomeWiFi wifi;
     wifi.setup_wifi();
     espHelper.setup();
 

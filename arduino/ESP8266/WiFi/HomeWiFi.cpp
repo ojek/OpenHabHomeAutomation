@@ -2,8 +2,8 @@
 
 class HomeWiFi
 {
-    const char* ssid = "multimedia_test";
-    const char* password = "1234567890";
+    const char* ssid = "ojek";
+    const char* password = "1996199619";
     int status = WL_IDLE_STATUS;
 
     public:
@@ -12,12 +12,14 @@ class HomeWiFi
         delay(10);
         WiFi.mode(WIFI_STA);
     
-        // attempt to connect to Wifi network:
-        while ( status != WL_CONNECTED) {
-            status = WiFi.begin(ssid, password);
-
-            // wait 10 seconds for connection:
-            delay(10000);
+        for (int i = 0;;++i)
+        {
+            //Serial.println("WiFi connecting...");
+            //Serial.println(WiFi.status());
+            if (WiFi.status() == WL_CONNECTED) break;
+            if (i%30==0) WiFi.begin(ssid, password);
+            delay(1000);
         }
+        //Serial.println("WiFi connected!");
     }
 };
