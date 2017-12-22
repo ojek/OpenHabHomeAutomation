@@ -2,9 +2,8 @@ rule "Bedroom_Temperature"
 when
     Item TempHumidSensor_Bedroom_Main_Temperature received update
 then
-    val Number TargetTemp = 26.5d
     val Number BedroomTemp = TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10))
-    if (BedroomTemp < TargetTemp)
+    if (BedroomTemp < Bedroom_Desired_Temp.state)
     {
         PinSwitch_Bedroom_Radiator.sendCommand("ON")
         SolidStateRelay_Bedroom_Radiator.sendCommand("ON")

@@ -7,13 +7,13 @@ class SolidStateRelay : public IItem
 
   void on()
   {
-    digitalWrite(SSR_PIN, HIGH);
+    digitalWrite(SSR_PIN, LOW); //low to trigger active
     currentState = "ON";
   }
 
   void off()
   {
-    digitalWrite(SSR_PIN, LOW);
+    digitalWrite(SSR_PIN, HIGH);
     currentState = "OFF";
   }
 
