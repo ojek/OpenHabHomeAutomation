@@ -3,7 +3,7 @@ when
     Item TempHumidSensor_Bedroom_Main_Temperature received update
 then
     val Number BedroomTemp = TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10))
-    if (BedroomTemp < Bedroom_Desired_Temp.state)
+    if (BedroomTemp < Desired_Temp_Bedroom.state)
     {
         PinSwitch_Bedroom_Radiator.sendCommand("ON")
         SolidStateRelay_Bedroom_Radiator.sendCommand("ON")
