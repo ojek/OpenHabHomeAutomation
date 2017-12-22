@@ -105,7 +105,7 @@
 }
 
 .customHeader span {
-    position: relative;
+    line-height: 5vh;
     top: 0.9vw;
     display: block;
 }
@@ -183,4 +183,16 @@
 
 :not(.bigslider).rz-bubble {
     color: var(--main-text);
+}
+
+.slider-label {
+    font-size: 0.8vw;
+}
+
+.rzslider .rz-bubble {
+    font-size: 0.8vw;
+}
+
+.slider-content {
+    margin-top: 0.4vw;
 }
