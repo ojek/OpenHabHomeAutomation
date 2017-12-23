@@ -109,7 +109,6 @@
 .customHeader span {
     line-height: 5vh;
     top: 0.9vw;
-    display: block;
 }
 
 .customHeader .value {
@@ -205,7 +204,7 @@
     margin-top: 1.3vh;
 }
 
-.active::after {
+.itemActive::after {
     content: " ●";
     color: var(--secondary-color);
 }
