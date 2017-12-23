@@ -162,6 +162,10 @@
     width: 100%;
 }
 
+.rzslider {
+    margin: 3vw 0 1vw 0 !important;
+}
+
 .rz-bar {
     display: none !important;
 }
@@ -171,6 +175,8 @@
     -webkit-border-radius: 0px !important;
     -moz-border-radius: 0px !important;
     border-radius: 0px !important;
+    width: 4vw !important;
+    height: 4vw !important;
 }
 
 .rzslider .rz-pointer:after {
@@ -194,5 +200,5 @@
 }
 
 .slider-content {
-    margin-top: 0.4vw;
+    margin-top: 1.3vh;
 }
