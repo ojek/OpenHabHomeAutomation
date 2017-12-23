@@ -1,7 +1,7 @@
-rule "Init"
-when
-	System started
-then
-    if (Desired_Temp_Bedroom.state == NULL && Desired_Temp_Bedroom.lastUpdate == NULL) Desired_Temp_Bedroom.postUpdate(0.0)
-    if (Desired_Temp_Bedroom.state == NULL && Desired_Temp_Bedroom.lastUpdate != NULL) Desired_Temp_Bedroom.postUpdate(Desired_Temp_Bedroom.lastUpdate)
-end
+//rule "Init"
+//when
+//	System started
+//then
+//    if (Desired_Temp_Bedroom.state == NULL && Desired_Temp_Bedroom.lastUpdate == NULL) Desired_Temp_Bedroom.postUpdate(0.0)
+//    if (Desired_Temp_Bedroom.state == NULL && Desired_Temp_Bedroom.lastUpdate != NULL) Desired_Temp_Bedroom.postUpdate(Desired_Temp_Bedroom.lastUpdate)
+//end

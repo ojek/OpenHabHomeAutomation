@@ -5,6 +5,7 @@ Strategies {
 }
 
 Items {
+    gPersistable_restore* : strategy = restoreOnStartup
     gPersistable_everyChange* : strategy = everyChange
     gPersistable_everyMinute* : strategy = everyMinute
 }
