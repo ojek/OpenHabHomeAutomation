@@ -2,5 +2,7 @@ rule "Init"
 when
 	System started
 then
-    if (Desired_Temp_Bedroom.state == NULL) Desired_Temp_Bedroom.postUpdate(Desired_Temp_Bedroom.lastUpdate)
+    createTimer(now.plusSeconds(30)) [|
+        if (Desired_Temp_Bedroom.state == NULL) Desired_Temp_Bedroom.postUpdate(Desired_Temp_Bedroom.lastUpdate)
+    ]
 end
