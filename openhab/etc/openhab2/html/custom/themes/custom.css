@@ -176,8 +176,8 @@
     -webkit-border-radius: 0px !important;
     -moz-border-radius: 0px !important;
     border-radius: 0px !important;
-    width: 4vw !important;
-    height: 4vw !important;
+    width: 3vw !important;
+    height: 3vw !important;
 }
 
 .rzslider .rz-pointer:after {
