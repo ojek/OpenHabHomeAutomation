@@ -4,6 +4,8 @@
     --main-opq2-bg: rgba(0, 0, 0, 0.3);
     --main-text: rgba(255, 255, 255, 1);
     --primary-color: rgba(255, 255, 255, 1) !important;
+    --secondary-color: rgba(20,192,114, 1) !important;
+    --secondary-opq-color: rgba(20,192,114, 0.4) !important;
 }
 
 .customWidget .row {
@@ -201,4 +203,9 @@
 
 .slider-content {
     margin-top: 1.3vh;
+}
+
+.active::after {
+    content: " ●";
+    color: var(--secondary-color);
 }
