@@ -9,8 +9,8 @@
                 "sizeY": 2,
                 "type": "template",
                 "customwidget": "SingleGraph",
-                "row": 0,
-                "col": 0,
+                "row": 4,
+                "col": 9,
                 "dontwrap": false,
                 "nobackground": false,
                 "config": {
@@ -19,24 +19,27 @@
                     "title": "CPU Temperature",
                     "chart_link": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=2&from=now-24h&to=now",
                     "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=2&from=now-24h&to=now",
-                    "unit": "°C"
-                }
+                    "unit": "°C",
+                    "statusItem": "OFF"
+                },
+                "$$hashKey": "object:24"
             },
             {
                 "name": "CPU Load",
-                "sizeX": 3,
-                "sizeY": 2,
+                "sizeX": 6,
+                "sizeY": 4,
                 "type": "template",
                 "customwidget": "SingleGraph",
-                "row": 2,
-                "col": 0,
+                "row": 0,
+                "col": 6,
                 "config": {
                     "item": "Raspberry_CPU_Load",
                     "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=3&from=now-24h&to=now",
                     "title": "CPU Load",
                     "icon": "cpu",
                     "unit": "%"
-                }
+                },
+                "$$hashKey": "object:25"
             },
             {
                 "name": "Temperature",
@@ -44,15 +47,17 @@
                 "sizeY": 2,
                 "type": "template",
                 "customwidget": "SingleGraph",
-                "row": 4,
+                "row": 2,
                 "col": 0,
                 "config": {
-                    "item": "TemperatureSensor",
+                    "item": "TempHumidSensor_Bedroom_Main_Temperature",
                     "icon": "thermometer",
                     "title": "Temperature",
                     "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=5&from=now-24h&to=now",
-                    "unit": "°C"
-                }
+                    "unit": "°C",
+                    "statusItem": "Desired_Temp_State_Bedroom"
+                },
+                "$$hashKey": "object:26"
             },
             {
                 "name": "Humidity",
@@ -60,30 +65,32 @@
                 "sizeY": 2,
                 "type": "template",
                 "customwidget": "SingleGraph",
-                "row": 0,
-                "col": 3,
+                "row": 4,
+                "col": 0,
                 "config": {
-                    "item": "HumiditySensor",
+                    "item": "TempHumidSensor_Bedroom_Main_Humidity",
                     "title": "Humidity",
                     "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now",
                     "icon": "waterdrop",
                     "unit": "%"
-                }
+                },
+                "$$hashKey": "object:27"
             },
             {
                 "name": "Motion",
                 "sizeX": 3,
-                "sizeY": 2,
+                "sizeY": 1,
                 "type": "template",
                 "customwidget": "SingleGraph",
-                "row": 0,
-                "col": 6,
+                "row": 3,
+                "col": 3,
                 "config": {
-                    "item": "MotionSensor",
+                    "item": "MotionSensor_Bedroom_Main",
                     "title": "Motion",
                     "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=3&from=now-24h&to=now",
                     "icon": "running"
-                }
+                },
+                "$$hashKey": "object:28"
             },
             {
                 "name": "Luminosity",
@@ -91,15 +98,16 @@
                 "sizeY": 2,
                 "type": "template",
                 "customwidget": "SingleGraph",
-                "row": 2,
+                "row": 4,
                 "col": 3,
                 "config": {
-                    "item": "LuminositySensor",
+                    "item": "LuminositySensor_Bedroom_Main",
                     "title": "Luminosity",
                     "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=4&from=now-24h&to=now",
                     "icon": "sun",
                     "unit": "lx"
-                }
+                },
+                "$$hashKey": "object:29"
             },
             {
                 "name": "Yahoo weather",
@@ -107,8 +115,8 @@
                 "sizeY": 2,
                 "type": "template",
                 "customwidget": "YahooWeather",
-                "row": 2,
-                "col": 6,
+                "row": 0,
+                "col": 0,
                 "config": {
                     "item": "Raspberry_CPU_Load",
                     "icon": "cloudy",
@@ -117,7 +125,8 @@
                     "wind": "Weather_Wind",
                     "condition": "Weather_Condition",
                     "temperature": "Weather_Temperature"
-                }
+                },
+                "$$hashKey": "object:30"
             },
             {
                 "name": "ESP8266",
@@ -125,18 +134,53 @@
                 "sizeY": 2,
                 "type": "template",
                 "customwidget": "ESP8266",
-                "row": 4,
+                "row": 0,
                 "col": 3,
                 "config": {
-                    "uptime": "ESP8266_Uptime",
-                    "memfree": "ESP8266_FreeMem",
-                    "cpufreq": "ESP8266_CPUFreq"
-                }
+                    "uptime": "ESP8266_Bedroom_Main_Uptime",
+                    "memfree": "ESP8266_Bedroom_Main_FreeMem",
+                    "cpufreq": "ESP8266_Bedroom_Main_CPUFreq"
+                },
+                "$$hashKey": "object:31"
+            },
+            {
+                "name": "Bedroom Desired Temp",
+                "sizeX": 3,
+                "sizeY": 1,
+                "item": "Desired_Temp_Bedroom",
+                "type": "slider",
+                "row": 4,
+                "col": 6,
+                "floor": 18,
+                "ceil": 27,
+                "step": 0.1,
+                "hidelabel": false,
+                "hidelimits": true,
+                "showticks": false,
+                "bigslider": false,
+                "$$hashKey": "object:32"
+            },
+            {
+                "name": "Heating",
+                "sizeX": 3,
+                "sizeY": 1,
+                "type": "template",
+                "customwidget": "SingleGraph",
+                "row": 2,
+                "col": 3,
+                "config": {
+                    "item": "0",
+                    "statusItem": "Desired_Temp_State_Bedroom",
+                    "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=4&from=now-24h&to=now",
+                    "title": "Heating",
+                    "icon": "thermometer"
+                },
+                "$$hashKey": "object:33"
             }
         ],
         "row": 0,
         "col": 0,
         "tile": {},
-        "$$hashKey": "object:19"
+        "$$hashKey": "object:20"
     }
 ]
