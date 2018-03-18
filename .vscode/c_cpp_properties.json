@@ -46,7 +46,8 @@
             "name": "Win32",
             "includePath": [
                 "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt",
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "C:\\Users\\galec\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.3.0\\cores\\esp8266"
             ],
             "defines": [
                 "_DEBUG",
@@ -58,9 +59,10 @@
                     "C:/Program Files (x86)/Windows Kits/10/Include/10.0.10240.0/ucrt",
                     "${workspaceRoot}",
                     "G:/FW_Allowed/Arduino",
-                    "G:/FW_Allowed/GithubProjects/OpenHabHomeAutomation/arduino"
+                    "G:/FW_Allowed/GithubProjects/OpenHabHomeAutomation/arduino",
+                    "C:\\Users\\galec\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.3.0\\cores\\esp8266"
                 ],
-                "limitSymbolsToIncludedHeaders": true,
+                "limitSymbolsToIncludedHeaders": false,
                 "databaseFilename": ""
             }
         }

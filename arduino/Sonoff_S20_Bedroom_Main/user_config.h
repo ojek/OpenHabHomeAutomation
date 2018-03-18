@@ -115,14 +115,14 @@
 
 // -- MQTT - Domoticz -----------------------------
 //#define USE_DOMOTICZ                             // Enable Domoticz (+6k code, +0.3k mem) - Disable by //
-//  #define DOMOTICZ_IN_TOPIC      "domoticz/in"   // Domoticz Input Topic
-//  #define DOMOTICZ_OUT_TOPIC     "domoticz/out"  // Domoticz Output Topic
-//  #define DOMOTICZ_UPDATE_TIMER  0               // [DomoticzUpdateTimer] Send relay status (0 = disable, 1 - 3600 seconds) (Optional)
-//
+  #define DOMOTICZ_IN_TOPIC      "domoticz/in"   // Domoticz Input Topic
+  #define DOMOTICZ_OUT_TOPIC     "domoticz/out"  // Domoticz Output Topic
+  #define DOMOTICZ_UPDATE_TIMER  0               // [DomoticzUpdateTimer] Send relay status (0 = disable, 1 - 3600 seconds) (Optional)
+
 //// -- MQTT - Home Assistant Discovery -------------
 //#define USE_HOME_ASSISTANT                       // Enable Home Assistant Discovery Support (+1k4 code)
-//  #define HOME_ASSISTANT_DISCOVERY_PREFIX "homeassistant"  // Home Assistant discovery prefix
-//  #define HOME_ASSISTANT_DISCOVERY_ENABLE 0      // [SetOption19] Home Assistant Discovery (0 = Disable, 1 = Enable)
+  #define HOME_ASSISTANT_DISCOVERY_PREFIX "homeassistant"  // Home Assistant discovery prefix
+  #define HOME_ASSISTANT_DISCOVERY_ENABLE 0      // [SetOption19] Home Assistant Discovery (0 = Disable, 1 = Enable)
 
 // -- HTTP ----------------------------------------
 #define USE_WEBSERVER                            // Enable web server and wifi manager (+66k code, +8k mem) - Disable by //
@@ -136,8 +136,8 @@
 
 // -- mDNS ----------------------------------------
 //#define USE_DISCOVERY                            // Enable mDNS for the following services (+8k code, +0.3k mem) - Disable by //
-//  #define WEBSERVER_ADVERTISE                    // Provide access to webserver by name <Hostname>.local/
-//  #define MQTT_HOST_DISCOVERY                    // Find MQTT host server (overrides MQTT_HOST if found)
+  #define WEBSERVER_ADVERTISE                    // Provide access to webserver by name <Hostname>.local/
+  #define MQTT_HOST_DISCOVERY                    // Find MQTT host server (overrides MQTT_HOST if found)
 
 // -- Time - Up to three NTP servers in your region
 #define NTP_SERVER1            "pool.ntp.org"       // [NtpServer1] Select first NTP server by name or IP address (129.250.35.250)
