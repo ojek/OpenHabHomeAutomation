@@ -39,7 +39,7 @@
 //#define MY_LANGUAGE            zh-CN           // Chinese (Simplified) in China
 
 // -- Project -------------------------------------
-#define PROJECT                "sonoff"          // PROJECT is used as the default topic delimiter and OTA file name
+#define PROJECT                "Sonoff_S20_Bedroom_Main"          // PROJECT is used as the default topic delimiter and OTA file name
                                                  //   As an IDE restriction it needs to be the same as the main .ino file
 
 #define CFG_HOLDER             0x20161209        // [Reset 1] Change this value to load following default configuration parameters
