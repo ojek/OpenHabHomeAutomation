@@ -7,11 +7,11 @@ then
     if (BedroomTemp < Desired_Temp_Bedroom.state)
     {
         Desired_Temp_State_Bedroom.sendCommand("ON")
-        SolidStateRelay_Bedroom_Main.sendCommand("ON")
+        Sonoff_S20_Bedroom_Main.sendCommand("ON")
     }
     else
     {
         Desired_Temp_State_Bedroom.sendCommand("OFF")
-        SolidStateRelay_Bedroom_Main.sendCommand("OFF")
+        Sonoff_S20_Bedroom_Main.sendCommand("OFF")
     }
 end
