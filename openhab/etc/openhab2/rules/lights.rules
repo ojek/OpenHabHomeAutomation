@@ -3,51 +3,59 @@ var Timer timer
 
 rule "Light1"
 when
-    Item MotionSensor_Bedroom_Main received update
+    Item MotionSensor_Bedroom_Main received update or
+    MotionSensor_LivingRoom_Main received update
 then
-    if(MotionSensor_Bedroom_Main.state == 1) {
+    if(MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) {
         if (timer != null)
         {
             timer.reschedule(now.plusSeconds(10))
         }
         else if (Yeelight1_switch.state == OFF)
         {
-            Yeelight1_switch.sendCommand("ON")
-            timer = createTimer(now.plusSeconds(10)) [|
-                Yeelight1_switch.sendCommand("OFF")
+            Yeelight1_switch_proxy.sendCommand("ON")
+            timer = createTimer(now.plusSeconds(20)) [|
+                Yeelight1_switch_proxy.sendCommand("OFF")
                 timer.cancel
                 timer = null
             ]
         }
-    } 
-    
-    //else {
-    //    if(timer != null) {
-    //        timer.cancel
-    //        timer = null
-    //    }
-    //}
-//
-    //if (MotionSensor_Bedroom_Main.state == 1 && Yeelight1_switch.state == OFF)
-    //{
-    //    Yeelight1_switch.sendCommand("ON")
-    //}
-    //else if (MotionSensor_Bedroom_Main.state == -1 && Sonoff_T1_LivingRoom_Main_SW1.state == "OFF")
-    //{
-    //    Yeelight1_switch.sendCommand("OFF")
-    //}
+    }
 end
 
-rule "Light3"
+rule "Light2"
 when
     Item Sonoff_T1_LivingRoom_Main_SW1 received update
 then
     if (Sonoff_T1_LivingRoom_Main_SW1.state == "ON")
     {
-        Yeelight1_switch.sendCommand("ON")
+        Yeelight1_switch_proxy.sendCommand("ON")
     }
     else
     {
-        Yeelight1_switch.sendCommand("OFF")
+        Yeelight1_switch_proxy.sendCommand("OFF")
+    }
+end
+
+rule "Light3"
+when
+    Item Yeelight1_switch_proxy received update
+then
+    if (Yeelight1_switch_proxy.state == "ON")
+    {
+        if (Yeelight1_switch.state == "OFF")
+        {
+            Yeelight1_switch.sendCommand("ON")
+        }
+    }
+    else if (Yeelight1_switch_proxy.state == "OFF")
+    {
+        if (Yeelight1_switch.state == "ON")
+        {
+            if (Sonoff_T1_LivingRoom_Main_SW1.state == "OFF")
+            {
+                Yeelight1_switch.sendCommand("OFF")
+            }
+        }
     }
 end

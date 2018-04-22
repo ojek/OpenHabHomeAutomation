@@ -1,3 +1,4 @@
+Switch Yeelight1_switch_proxy
 Switch Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:power"}
 //Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:brightness"}
 //Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:delayoff"}
