@@ -5,7 +5,7 @@ rule "Light1"
 when
     Item MotionSensor_Bedroom_Main received update
 then
-    if(MotionSensor_Bedroom_Main.state == 1 && ) {
+    if(MotionSensor_Bedroom_Main.state == 1) {
         if (timer != null)
         {
             timer.reschedule(now.plusSeconds(10))
