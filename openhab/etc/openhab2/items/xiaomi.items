@@ -1,0 +1,13 @@
+Switch Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:power"}
+//Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:brightness"}
+//Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:delayoff"}
+//Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:colorTemperature"}
+//Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:colorMode"}
+//String Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:name"}
+
+//String Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:actions#commands"}
+
+//String Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:network#ssid"}
+//String Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:network#bssid"}
+//Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:network#rssi"}
+//Number Yeelight1_switch "YeeLight" <light> {channel="miio:generic:90207d84:network#life"}
