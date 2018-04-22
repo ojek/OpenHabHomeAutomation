@@ -16,19 +16,19 @@ then
     }
 end
 
-//rule "Light1"
-//when
-//    Item MotionSensor_Bedroom_Main received update
-//then
-//    if (MotionSensor_Bedroom_Main.state == 1 and Yeelight1_switch.state == OFF)
-//    {
-//        Yeelight1_switch.sendCommand("ON")
-//    }
-//    else if (MotionSensor_Bedroom_Main.state == -1)
-//    {
-//        Yeelight1_switch.sendCommand("OFF")
-//    }
-//end
+rule "Light1"
+when
+    Item MotionSensor_Bedroom_Main received update
+then
+    if (MotionSensor_Bedroom_Main.state == 1 and Yeelight1_switch.state == OFF)
+    {
+        Yeelight1_switch.sendCommand("ON")
+    }
+    else if (MotionSensor_Bedroom_Main.state == -1 and onoff_T1_LivingRoom_Main_SW1.state == "OFF")
+    {
+        Yeelight1_switch.sendCommand("OFF")
+    }
+end
 
 rule "Light3"
 when

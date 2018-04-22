@@ -2,7 +2,7 @@ String PinSwitch_Bedroom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*
 Number TempHumidSensor_Bedroom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
 Number TempHumidSensor_Bedroom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
 Number LuminositySensor_Bedroom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-Number MotionSensor_Bedroom_Main "Motion [MAP(binary.map):%s]" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]", expire="10s,-1"}
+Number MotionSensor_Bedroom_Main "Motion [MAP(binary.map):%s]" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]", expire="10s,state=-1"}
 
 String PinSwitch_LivingRoom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
 Number TempHumidSensor_LivingRoom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
