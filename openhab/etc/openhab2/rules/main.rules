@@ -15,3 +15,34 @@ then
         Sonoff_S20_Bedroom_Main.sendCommand("OFF")
     }
 end
+
+rule "Light1"
+when
+    Item MotionSensor_Bedroom_Main received update
+then
+    if (MotionSensor_Bedroom_Main.state == 1)
+    {
+        Yeelight1_switch.sendCommand("ON")
+    }
+end
+
+rule "Light2"
+when
+    Item MotionSensor_Bedroom_Main received command OFF
+then
+    Yeelight1_switch.sendCommand("OFF")
+end
+
+rule "Light3"
+when
+    Item Sonoff_T1_LivingRoom_Main_SW1 received update
+then
+    if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
+    {
+        Yeelight1_switch.sendCommand("ON")
+    }
+    else
+    {
+        Yeelight1_switch.sendCommand("OFF")
+    }
+end
