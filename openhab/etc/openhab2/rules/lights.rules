@@ -8,13 +8,17 @@ when
 then
     if (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) 
     {
-        if (timer != null)
+        if (Yeelight1_switch.state == OFF)
+        {
+            Yeelight1_switch_proxy.sendCommand("ON")
+        }
+
+        if (timer !== null)
         {
             timer.reschedule(now.plusSeconds(20))
         }
-        else if (Yeelight1_switch.state == OFF)
+        else 
         {
-            Yeelight1_switch_proxy.sendCommand("ON")
             timer = createTimer(now.plusSeconds(20)) [|
                 Yeelight1_switch_proxy.sendCommand("OFF")
                 timer.cancel
