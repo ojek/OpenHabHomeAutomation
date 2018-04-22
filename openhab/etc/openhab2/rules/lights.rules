@@ -6,7 +6,8 @@ when
     Item MotionSensor_Bedroom_Main received update or
     Item MotionSensor_LivingRoom_Main received update
 then
-    if(MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) {
+    if (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) 
+    {
         if (timer != null)
         {
             timer.reschedule(now.plusSeconds(10))
@@ -43,14 +44,14 @@ when
 then
     if (Yeelight1_switch_proxy.state == "ON")
     {
-        if (Yeelight1_switch.state == "OFF")
+        if (Yeelight1_switch.state == OFF)
         {
             Yeelight1_switch.sendCommand("ON")
         }
     }
     else if (Yeelight1_switch_proxy.state == "OFF")
     {
-        if (Yeelight1_switch.state == "ON")
+        if (Yeelight1_switch.state == ON)
         {
             if (Sonoff_T1_LivingRoom_Main_SW1.state == "OFF")
             {
