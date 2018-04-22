@@ -3,9 +3,20 @@ Number TempHumidSensor_Bedroom_Main_Temperature "Temperature [%.1f °C]" <temper
 Number TempHumidSensor_Bedroom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
 Number LuminositySensor_Bedroom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
 Number MotionSensor_Bedroom_Main "Motion [MAP(binary.map):%s]" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-String Sonoff_S20_Bedroom_Main "Bedroom Radiator" <wallswitch> {mqtt=">[MQTT:tasmota/Sonoff_S20_Bedroom_Main/command/POWER:command:*:default],
-                                                                        <[MQTT:tasmota/Sonoff_S20_Bedroom_Main/state/POWER:state:default]"}
-String SolidStateRelay_Bedroom_Main "SSR Position" <wallswitch> {mqtt="<[MQTT:default:command:default]"}
+
+String PinSwitch_LivingRoom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
+Number TempHumidSensor_LivingRoom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_LivingRoom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number LuminositySensor_LivingRoom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number MotionSensor_LivingRoom_Main "Motion [MAP(binary.map):%s]" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+
+//String SolidStateRelay_Bedroom_Main "SSR Position" <wallswitch> {mqtt="<[MQTT:default:command:default]"}
+
+String Sonoff_S20_Bedroom_Main "Bedroom Radiator" <wallswitch> {mqtt=">[MQTT:tasmota/Sonoff_S20_Bedroom_Main/command/POWER:command:*:default],<[MQTT:tasmota/Sonoff_S20_Bedroom_Main/state/POWER:state:default]"}
+
+Number ESP8266_LivingRoom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_LivingRoom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_LivingRoom_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
 
 Number ESP8266_Bedroom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
 Number ESP8266_Bedroom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
