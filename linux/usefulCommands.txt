@@ -17,6 +17,8 @@ mosquitto_sub -t openhab/in/Temperature/state -m 2
 mosquitto_sub -t openhab/in/LuminositySensor/state
 mosquitto_pub -t openhab/in/LuminositySensor/state -m 3
 
+mosquitto_sub -t tasmota/Sonoff_T1_LivingRoom_Main/state/POWER1
+
 mosquitto_sub -t openhab/in/LuminositySensor_Bedroom_Main/state
 
 mosquitto_sub -t openhab/out/PinSwitch_Bedroom_Main/command

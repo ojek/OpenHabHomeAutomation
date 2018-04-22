@@ -24,13 +24,10 @@ then
     {
         Yeelight1_switch.sendCommand("ON")
     }
-end
-
-rule "Light2"
-when
-    Item MotionSensor_Bedroom_Main received command OFF
-then
-    Yeelight1_switch.sendCommand("OFF")
+    else if (MotionSensor_Bedroom_Main.state == -1)
+    {
+        Yeelight1_switch.sendCommand("OFF")
+    }
 end
 
 rule "Light3"
