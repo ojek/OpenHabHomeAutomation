@@ -10,7 +10,7 @@ then
     {
         if (timer != null)
         {
-            timer.reschedule(now.plusSeconds(10))
+            timer.reschedule(now.plusSeconds(20))
         }
         else if (Yeelight1_switch.state == OFF)
         {
@@ -42,14 +42,14 @@ rule "Light3"
 when
     Item Yeelight1_switch_proxy received update
 then
-    if (Yeelight1_switch_proxy.state == "ON")
+    if (Yeelight1_switch_proxy.state == ON)
     {
         if (Yeelight1_switch.state == OFF)
         {
             Yeelight1_switch.sendCommand("ON")
         }
     }
-    else if (Yeelight1_switch_proxy.state == "OFF")
+    else if (Yeelight1_switch_proxy.state == OFF)
     {
         if (Yeelight1_switch.state == ON)
         {
