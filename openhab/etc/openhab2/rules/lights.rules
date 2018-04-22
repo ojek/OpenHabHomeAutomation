@@ -4,7 +4,7 @@ var Timer timer
 rule "Light1"
 when
     Item MotionSensor_Bedroom_Main received update or
-    MotionSensor_LivingRoom_Main received update
+    Item MotionSensor_LivingRoom_Main received update
 then
     if(MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) {
         if (timer != null)
