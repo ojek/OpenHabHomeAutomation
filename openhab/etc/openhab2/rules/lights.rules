@@ -46,20 +46,21 @@ then
     }
     else
     {    
-        if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
-        {
-            Yeelight1_switch.sendCommand("ON")
-            buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
-                Yeelight1_switch.sendCommand("OFF")
-                Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
-                buttonTimer.cancel
-                buttonTimer = null
-            ]
-        }
-        else
-        {
+        buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
             Yeelight1_switch.sendCommand("OFF")
-        }
+            Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
+            buttonTimer.cancel
+            buttonTimer = null
+        ]
+    }
+    
+    if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
+    {
+        Yeelight1_switch.sendCommand("ON")
+    }
+    else
+    {
+        Yeelight1_switch.sendCommand("OFF")
     }
 end
 
