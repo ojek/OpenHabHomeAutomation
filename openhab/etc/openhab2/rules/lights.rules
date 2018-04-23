@@ -5,32 +5,31 @@ val int motionTimeout = 5
 var Timer buttonTimer
 val int buttonTimeout = 30
 
-//rule "Light1"
-//when
-//    Item MotionSensor_Bedroom_Main received update or
-//    Item MotionSensor_LivingRoom_Main received update
-//then
-//    if (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) 
-//    {
-//        if (Yeelight1_switch.state == OFF)
-//        {
-//            Yeelight1_switch_proxy.sendCommand("ON")
-//        }
-//
-//        if (motionTimer !== null)
-//        {
-//            motionTimer.reschedule(now.plusSeconds(motionTimeout))
-//        }
-//        else 
-//        {
-//            motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
-//                Yeelight1_switch_proxy.sendCommand("OFF")
-//                motionTimer.cancel
-//                motionTimer = null
-//            ]
-//        }
-//    }
-//end
+rule "Light1"
+when
+    Item MotionSensor_Bedroom_Main received update or
+    Item MotionSensor_LivingRoom_Main received update
+then
+    if (buttonTimer == null && (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) 
+    {
+        if (motionTimer !== null)
+        {
+            motionTimer.reschedule(now.plusSeconds(motionTimeout))
+        }
+        else 
+        {
+            if (Yeelight1_switch.state == OFF)
+            {
+                Yeelight1_switch.sendCommand("ON")
+                motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
+                    Yeelight1_switch.sendCommand("OFF")
+                    motionTimer.cancel
+                    motionTimer = null
+                ]
+            }
+        }
+    }
+end
 
 rule "Light2"
 when
@@ -48,21 +47,20 @@ then
     }
     else
     {    
-        buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
+        if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
+        {
+            Yeelight1_switch.sendCommand("ON")
+            buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
+                Yeelight1_switch.sendCommand("OFF")
+                Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
+                buttonTimer.cancel
+                buttonTimer = null
+            ]
+        }
+        else
+        {
             Yeelight1_switch.sendCommand("OFF")
-            Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
-            buttonTimer.cancel
-            buttonTimer = null
-        ]
-    }
-
-    if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
-    {
-        Yeelight1_switch.sendCommand("ON")
-    }
-    else
-    {
-        Yeelight1_switch.sendCommand("OFF")
+        }
     }
 end
 
@@ -70,7 +68,7 @@ end
 //when
 //    Item Yeelight1_switch_proxy received update
 //then
-//    if (buttonTimer == null)
+//    if ()
 //    {
 //        if (Yeelight1_switch_proxy.state == ON)
 //        {
