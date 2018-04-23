@@ -18,12 +18,12 @@ then
         else 
         {
             motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
-                Yeelight1_switch.sendCommand("OFF")
                 motionTimer.cancel
                 motionTimer = null
+                Yeelight1_switch.sendCommand("OFF")
             ]
         }
-        
+
         if (Yeelight1_switch.state == OFF)
         {
             Yeelight1_switch.sendCommand("ON")
@@ -47,12 +47,20 @@ then
     }
     else
     {    
-        buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
-            Yeelight1_switch.sendCommand("OFF")
-            Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
+        if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
+        {
+            buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
+                buttonTimer.cancel
+                buttonTimer = null
+                Yeelight1_switch.sendCommand("OFF")
+                Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
+            ]
+        }
+        else
+        {
             buttonTimer.cancel
             buttonTimer = null
-        ]
+        }
     }
 
     if (Sonoff_T1_LivingRoom_Main_SW1.state == ON)
