@@ -50,6 +50,7 @@ then
     {    
         buttomTimer = createTimer(now.plusSeconds(buttomTimeout)) [|
             Yeelight1_switch.sendCommand("OFF")
+            Sonoff_T1_LivingRoom_Main_SW1.postUpdate("OFF")
             buttomTimer.cancel
             buttomTimer = null
         ]
