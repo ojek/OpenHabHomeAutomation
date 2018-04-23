@@ -70,8 +70,7 @@ rule "Light3"
 when
     Item Yeelight1_switch_proxy received update
 then
-
-    if (buttomTimer !== null)
+    if (buttomTimer == null)
     {
         if (Yeelight1_switch_proxy.state == ON)
         {
