@@ -1,8 +1,8 @@
 import org.openhab.model.script.actions.Timer
-var Timer motionTimer
+var Timer motionTimer = null
 val int motionTimeout = 5
 
-var Timer buttonTimer
+var Timer buttonTimer = null
 val int buttonTimeout = 30
 
 rule "Light1"
