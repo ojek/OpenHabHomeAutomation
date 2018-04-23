@@ -25,7 +25,7 @@ then
         {
             motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
                 Yeelight1_switch_proxy.sendCommand("OFF")
-                motionTimer.cancel
+                buttomTimer.cancel()
                 motionTimer = null
             ]
         }
@@ -50,8 +50,8 @@ then
     {    
         buttomTimer = createTimer(now.plusSeconds(buttomTimeout)) [|
             Yeelight1_switch.sendCommand("OFF")
-            Sonoff_T1_LivingRoom_Main_SW1.postUpdate("OFF")
-            buttomTimer.cancel
+            Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
+            buttomTimer.cancel()
             buttomTimer = null
         ]
     }
