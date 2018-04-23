@@ -4,7 +4,7 @@ var Timer buttonTimer = null
 val int motionTimeout = 5
 val int buttonTimeout = 30
 
-rule "Light1"
+rule "CeilingLight_Motion"
 when
     Item MotionSensor_Bedroom_Main received update or
     Item MotionSensor_LivingRoom_Main received update
@@ -17,20 +17,21 @@ then
         }
         else 
         {
-            if (Yeelight1_switch.state == OFF)
-            {
-                Yeelight1_switch.sendCommand("ON")
-                motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
-                    Yeelight1_switch.sendCommand("OFF")
-                    motionTimer.cancel
-                    motionTimer = null
-                ]
-            }
+            motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
+                Yeelight1_switch.sendCommand("OFF")
+                motionTimer.cancel
+                motionTimer = null
+            ]
+        }
+        
+        if (Yeelight1_switch.state == OFF)
+        {
+            Yeelight1_switch.sendCommand("ON")
         }
     }
 end
 
-rule "Light2"
+rule "CeilingLight_WallSwitch"
 when
     Item Sonoff_T1_LivingRoom_Main_SW1 received update
 then
