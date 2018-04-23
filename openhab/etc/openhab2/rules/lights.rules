@@ -2,35 +2,35 @@ import org.openhab.model.script.actions.Timer
 var Timer motionTimer
 val int motionTimeout = 5
 
-var Timer buttomTimer
-val int buttomTimeout = 30
+var Timer buttonTimer
+val int buttonTimeout = 30
 
-rule "Light1"
-when
-    Item MotionSensor_Bedroom_Main received update or
-    Item MotionSensor_LivingRoom_Main received update
-then
-    if (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) 
-    {
-        if (Yeelight1_switch.state == OFF)
-        {
-            Yeelight1_switch_proxy.sendCommand("ON")
-        }
-
-        if (motionTimer !== null)
-        {
-            motionTimer.reschedule(now.plusSeconds(motionTimeout))
-        }
-        else 
-        {
-            motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
-                Yeelight1_switch_proxy.sendCommand("OFF")
-                buttomTimer.cancel
-                motionTimer = null
-            ]
-        }
-    }
-end
+//rule "Light1"
+//when
+//    Item MotionSensor_Bedroom_Main received update or
+//    Item MotionSensor_LivingRoom_Main received update
+//then
+//    if (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1) 
+//    {
+//        if (Yeelight1_switch.state == OFF)
+//        {
+//            Yeelight1_switch_proxy.sendCommand("ON")
+//        }
+//
+//        if (motionTimer !== null)
+//        {
+//            motionTimer.reschedule(now.plusSeconds(motionTimeout))
+//        }
+//        else 
+//        {
+//            motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
+//                Yeelight1_switch_proxy.sendCommand("OFF")
+//                motionTimer.cancel
+//                motionTimer = null
+//            ]
+//        }
+//    }
+//end
 
 rule "Light2"
 when
@@ -42,17 +42,17 @@ then
         motionTimer = null
     }
 
-    if (buttomTimer !== null)
+    if (buttonTimer !== null)
     {
-        buttomTimer.reschedule(now.plusSeconds(buttomTimeout))
+        buttonTimer.reschedule(now.plusSeconds(buttonTimeout))
     }
     else
     {    
-        buttomTimer = createTimer(now.plusSeconds(buttomTimeout)) [|
+        buttonTimer = createTimer(now.plusSeconds(buttonTimeout)) [|
             Yeelight1_switch.sendCommand("OFF")
             //Sonoff_T1_LivingRoom_Main_SW1.sendCommand("OFF")
-            buttomTimer.cancel
-            buttomTimer = null
+            buttonTimer.cancel
+            buttonTimer = null
         ]
     }
 
@@ -66,25 +66,25 @@ then
     }
 end
 
-rule "Light3"
-when
-    Item Yeelight1_switch_proxy received update
-then
-    if (buttomTimer == null)
-    {
-        if (Yeelight1_switch_proxy.state == ON)
-        {
-            if (Yeelight1_switch.state == OFF)
-            {
-                Yeelight1_switch.sendCommand("ON")
-            }
-        }
-        else if (Yeelight1_switch_proxy.state == OFF)
-        {
-            if (Yeelight1_switch.state == ON)
-            {
-                Yeelight1_switch.sendCommand("OFF")
-            }
-        }
-    }
-end
+//rule "Light3"
+//when
+//    Item Yeelight1_switch_proxy received update
+//then
+//    if (buttonTimer == null)
+//    {
+//        if (Yeelight1_switch_proxy.state == ON)
+//        {
+//            if (Yeelight1_switch.state == OFF)
+//            {
+//                Yeelight1_switch.sendCommand("ON")
+//            }
+//        }
+//        else if (Yeelight1_switch_proxy.state == OFF)
+//        {
+//            if (Yeelight1_switch.state == ON)
+//            {
+//                Yeelight1_switch.sendCommand("OFF")
+//            }
+//        }
+//    }
+//end
