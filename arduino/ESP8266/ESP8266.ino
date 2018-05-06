@@ -47,7 +47,7 @@ int piorityLowTimeStamp = 0;
 void setup()
 {
     Serial.begin(115200);
-
+    
     wifi.setup_wifi();
     espHelper.setup();
 
