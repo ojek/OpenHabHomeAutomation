@@ -23,6 +23,11 @@
     background-position:center;
 }
 
+div.kiosk.container {
+    background-image: none !important;
+    background-color: black;
+}
+
 .template-contents{
     height: 100%;
 }

@@ -23,7 +23,7 @@
                         "unit": "°C",
                         "statusItem": "OFF"
                     },
-                    "$$hashKey": "object:27"
+                    "$$hashKey": "object:30"
                 },
                 {
                     "name": "CPU Load",
@@ -40,7 +40,7 @@
                         "icon": "cpu",
                         "unit": "%"
                     },
-                    "$$hashKey": "object:28"
+                    "$$hashKey": "object:31"
                 },
                 {
                     "name": "Temperature",
@@ -58,7 +58,7 @@
                         "unit": "°C",
                         "statusItem": "Desired_Temp_State_Bedroom"
                     },
-                    "$$hashKey": "object:29"
+                    "$$hashKey": "object:32"
                 },
                 {
                     "name": "Humidity",
@@ -76,7 +76,7 @@
                         "unit": "%",
                         "statusItem": "OFF"
                     },
-                    "$$hashKey": "object:30"
+                    "$$hashKey": "object:33"
                 },
                 {
                     "name": "Motion",
@@ -93,7 +93,7 @@
                         "icon": "running",
                         "statusItem": "MotionSensor_Bedroom_Main"
                     },
-                    "$$hashKey": "object:31"
+                    "$$hashKey": "object:34"
                 },
                 {
                     "name": "Luminosity",
@@ -111,7 +111,7 @@
                         "unit": "lx",
                         "statusItem": "OFF"
                     },
-                    "$$hashKey": "object:32"
+                    "$$hashKey": "object:35"
                 },
                 {
                     "name": "Yahoo weather",
@@ -130,7 +130,7 @@
                         "condition": "Weather_Condition",
                         "temperature": "Weather_Temperature"
                     },
-                    "$$hashKey": "object:33"
+                    "$$hashKey": "object:36"
                 },
                 {
                     "name": "ESP8266",
@@ -145,7 +145,7 @@
                         "memfree": "ESP8266_Bedroom_Main_FreeMem",
                         "cpufreq": "ESP8266_Bedroom_Main_CPUFreq"
                     },
-                    "$$hashKey": "object:34"
+                    "$$hashKey": "object:37"
                 },
                 {
                     "name": "Bedroom Desired Temp",
@@ -162,7 +162,7 @@
                     "hidelimits": true,
                     "showticks": false,
                     "bigslider": false,
-                    "$$hashKey": "object:35"
+                    "$$hashKey": "object:38"
                 },
                 {
                     "name": "Heating",
@@ -179,7 +179,7 @@
                         "title": "Heating",
                         "icon": "thermometer"
                     },
-                    "$$hashKey": "object:36"
+                    "$$hashKey": "object:39"
                 },
                 {
                     "name": "LivingRoom Temp",
@@ -197,7 +197,7 @@
                         "title": "LivingRoom Temp",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=9&from=now-24h&to=now"
                     },
-                    "$$hashKey": "object:37"
+                    "$$hashKey": "object:40"
                 },
                 {
                     "name": "LivingRoom Lum",
@@ -215,7 +215,7 @@
                         "icon": "sun",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=8&from=now-24h&to=now"
                     },
-                    "$$hashKey": "object:38"
+                    "$$hashKey": "object:41"
                 },
                 {
                     "name": "LivingRoom Humidity",
@@ -233,7 +233,7 @@
                         "icon": "waterdrop",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=6&from=now-24h&to=now"
                     },
-                    "$$hashKey": "object:39"
+                    "$$hashKey": "object:42"
                 },
                 {
                     "name": "LivingRoom Motion",
@@ -250,7 +250,7 @@
                         "icon": "running",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=7&from=now-24h&to=now"
                     },
-                    "$$hashKey": "object:40"
+                    "$$hashKey": "object:43"
                 },
                 {
                     "name": "Yeelight",
@@ -260,13 +260,89 @@
                     "type": "switch",
                     "row": 6,
                     "col": 0,
-                    "$$hashKey": "object:41"
+                    "$$hashKey": "object:44"
+                },
+                {
+                    "name": "ESP8266 - LivingRoom",
+                    "sizeX": 3,
+                    "sizeY": 2,
+                    "type": "template",
+                    "customwidget": "ESP8266",
+                    "row": 6,
+                    "col": 1,
+                    "config": {
+                        "uptime": "ESP8266_LivingRoom_Main_Uptime",
+                        "memfree": "ESP8266_LivingRoom_Main_FreeMem",
+                        "cpufreq": "ESP8266_LivingRoom_Main_CPUFreq"
+                    },
+                    "$$hashKey": "object:45"
                 }
             ],
             "row": 0,
             "col": 0,
             "tile": {},
-            "$$hashKey": "object:19"
+            "$$hashKey": "object:22"
+        },
+        {
+            "id": "SmartMirror",
+            "name": "SmartMirror",
+            "widgets": [
+                {
+                    "name": "New Widget",
+                    "sizeX": 2,
+                    "sizeY": 2,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "$$hashKey": "object:210",
+                    "row": 0,
+                    "col": 0,
+                    "config": {
+                        "item": "TempHumidSensor_Bedroom_Main_Temperature",
+                        "icon": "thermometer",
+                        "title": "Temperature",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=5&from=now-24h&to=now",
+                        "unit": "°C",
+                        "statusItem": "Desired_Temp_State_Bedroom"
+                    }
+                },
+                {
+                    "name": "New Widget",
+                    "sizeX": 2,
+                    "sizeY": 2,
+                    "type": "template",
+                    "customwidget": "ESP8266",
+                    "$$hashKey": "object:706",
+                    "row": 0,
+                    "col": 2,
+                    "config": {
+                        "uptime": "ESP8266_Bedroom_Main_Uptime",
+                        "memfree": "ESP8266_Bedroom_Main_FreeMem",
+                        "cpufreq": "ESP8266_Bedroom_Main_CPUFreq"
+                    }
+                },
+                {
+                    "name": "New Widget",
+                    "sizeX": 2,
+                    "sizeY": 2,
+                    "type": "template",
+                    "customwidget": "YahooWeather",
+                    "$$hashKey": "object:713",
+                    "row": 2,
+                    "col": 0,
+                    "config": {
+                        "item": "Raspberry_CPU_Load",
+                        "icon": "cloudy",
+                        "status": "Weather_Condition",
+                        "humidity": "Weather_Humidity",
+                        "wind": "Weather_Wind",
+                        "condition": "Weather_Condition",
+                        "temperature": "Weather_Temperature"
+                    }
+                }
+            ],
+            "row": 1,
+            "col": 0,
+            "$$hashKey": "object:23"
         }
     ],
     "menucolumns": 1,
