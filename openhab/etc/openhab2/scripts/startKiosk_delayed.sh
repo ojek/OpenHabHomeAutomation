@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sleep 60
 unclutter &
 matchbox-window-manager &
