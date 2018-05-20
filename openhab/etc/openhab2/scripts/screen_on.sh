@@ -1,0 +1,1 @@
+sudo tvservice -p && sudo chvt 2 && sudo chvt 7

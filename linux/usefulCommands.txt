@@ -28,3 +28,17 @@ mosquitto_sub -t openhab/out/MotionSensor_Bedroom_Main/state
 mosquitto_sub -t openhab/in/MotionSensor/state
 
 mosquitto_sub -t openhab/in/LedDisplayIntensity/command
+
+##monitor setup
+sudo nano .config/lxsession/LXDE-pi/autostart
+
+Shell
+#@xscreensaver -no-splash
+
+# BEGIN ADDED
+@/usr/bin/chromium-browser --incognito --start-maximized --kiosk --allow-running-insecure-content --remember-cert-error-decisions http://192.168.0.5:8080/habpanel/index.html#/view/SmartMirror?kiosk=on
+@unclutter
+@xset s off
+@xset s noblank
+@xset -dpms
+# END ADDED
