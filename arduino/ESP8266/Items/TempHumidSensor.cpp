@@ -33,11 +33,11 @@ class TempHumidSensor : public IItem
       }
     }
 
-    String command(const String* args)
+    virtual String command(String command)
     {
-      if (args == NULL || args[0] == NULL) return "";
-      if (args[0] == "temp") return String(temperature);
-      if (args[0] == "humid") return String(humidity);
+      if (command == NULL || command.length() == 0) return "";
+      if (command == "temp") return String(temperature);
+      if (command == "humid") return String(humidity);
       return "";
     }
 };

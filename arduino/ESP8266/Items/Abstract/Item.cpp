@@ -16,7 +16,7 @@ public:
 
     virtual void setup(String _name, String _loopPriority)=0;
     virtual void loop()=0;
-    virtual String command(const String* args)=0;
+    virtual String command(String command)=0;
 
     std::map<String, String> pubChannels; //in
     std::map<String, String> subChannels; //out

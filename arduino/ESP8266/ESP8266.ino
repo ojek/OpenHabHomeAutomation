@@ -21,9 +21,9 @@
 
 #define ESP_ID "LivingRoom_Main"
 #define LOOP_DELAY_MS 200
-#define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 500
-#define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 5000
-#define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 60000
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 50
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 500
+#define MQTT_PUBLISH_DELAY_MS_PRIORITY_LOW 6000
 
 std::vector<String> itemNames = 
 {
@@ -114,7 +114,8 @@ void _loop(String priority)
             (*it)->loop();
             for (std::map<String, String>::iterator pubChannel = (*it)->pubChannels.begin(); pubChannel != (*it)->pubChannels.end(); pubChannel++ )
             {
-                mqtt.sendMsg(pubChannel->second, (*it)->command(std::initializer_list<String>({pubChannel->first}).begin()));
+                //Serial.println(pubChannel->second);
+                mqtt.sendMsg(pubChannel->second, (*it)->command(pubChannel->first));
             }
         }
     }
@@ -132,7 +133,7 @@ void mqttCallback(char* topic, byte* payload, unsigned int length)
         for (std::map<String, String>::iterator subChannel = (*it)->subChannels.begin(); subChannel != (*it)->subChannels.end(); subChannel++ )
         {
             if (subChannel->second == topic) 
-                (*it)->command(std::initializer_list<String>({String((char*)payload).substring(0,length)}).begin());
+                (*it)->command(String((char*)payload).substring(0,length));
         }
     }
 }

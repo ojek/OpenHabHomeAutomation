@@ -32,12 +32,12 @@ class SolidStateRelay : public IItem
 
     }
 
-    String command(const String* args)
+    virtual String command(String command)
     {
-      if (args == NULL || args[0] == NULL) return "";
-      if (args[0] == "ON") on();
-      if (args[0] == "OFF") off();
-      if (args[0] == "currentState") return String(currentState);
+      if (command == NULL || command.length() == 0) return "";
+      if (command == "ON") on();
+      if (command == "OFF") off();
+      if (command == "currentState") return String(currentState);
       return "";
     }
 };

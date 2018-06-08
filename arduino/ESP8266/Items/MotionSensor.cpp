@@ -19,10 +19,10 @@ class MotionSensor : public IItem
       currentState = (motion == HIGH);
     }
 
-    String command(const String* args)
+    virtual String command(String command)
     {
-      if (args == NULL || args[0] == NULL) return "";
-      if (args[0] == "currentState") return String(currentState);
+      if (command == NULL || command.length() == 0) return "";
+      if (command == "currentState") return String(currentState);
       return "";
     }
 };

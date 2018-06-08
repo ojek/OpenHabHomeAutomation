@@ -29,6 +29,8 @@ mosquitto_sub -t openhab/in/MotionSensor/state
 
 mosquitto_sub -t openhab/in/LedDisplayIntensity/command
 
+iceweasel http://192.168.0.5:8080/habpanel/index.html#/view/Main --display=:0
+
 ##monitor setup
 sudo nano .config/lxsession/LXDE-pi/autostart
 
