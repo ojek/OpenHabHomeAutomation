@@ -5,7 +5,7 @@ class PinSwitch : public IItem
     #define switch_pin 16
     #define switch_on LOW
     #define switch_off HIGH
-    char* currentState;
+    char* currentState = "OFF";
 
     void on() 
     {
@@ -40,7 +40,7 @@ class PinSwitch : public IItem
             if (command == NULL || command.length() == 0) return "";
             if (command == "ON") on();
             if (command == "OFF") off();
-            if (command == "currentState") String(currentState);
+            if (command == "currentState") return String(currentState);
             return "";
         }
 };

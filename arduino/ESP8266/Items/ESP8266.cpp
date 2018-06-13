@@ -9,7 +9,7 @@ class ESP_8266 : public IItem
     #define diode_on LOW
     #define diode_off HIGH
 
-    char* currentState;
+    char* currentState = "ON";
     String mem_free = "0";
     String cpu_freq = "0";
     String uptime = "0";

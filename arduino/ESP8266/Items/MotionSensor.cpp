@@ -3,7 +3,7 @@
 class MotionSensor : public IItem
 {
   #define	PIR_PIN	12 //D6
-  bool currentState;
+  bool currentState = false;
 
   public:
     void setup(String _name, String _loopPriority)

@@ -114,7 +114,6 @@ void _loop(String priority)
             (*it)->loop();
             for (std::map<String, String>::iterator pubChannel = (*it)->pubChannels.begin(); pubChannel != (*it)->pubChannels.end(); pubChannel++ )
             {
-                //Serial.println(pubChannel->second);
                 mqtt.sendMsg(pubChannel->second, (*it)->command(pubChannel->first));
             }
         }

@@ -10,8 +10,8 @@ class TempHumidSensor : public IItem
   //Collecting period: 2s
 
   DHT dht = DHT(DHTPIN, DHTTYPE); //4 - DHT pin (D2), I2C Bus SDA (data)
-  float humidity;
-  float temperature;
+  float humidity = 0.0;
+  float temperature = 0.0;
   
   public:
     void setup(String _name, String _loopPriority)

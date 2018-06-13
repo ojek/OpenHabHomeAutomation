@@ -62,7 +62,7 @@ class LuminositySensor : public IItem
       Wire.endTransmission();
     }
 
-    double currentState;
+    double currentState = 0.0;
 
   public:
     void setup(String _name, String _loopPriority)
