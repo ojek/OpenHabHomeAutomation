@@ -63,6 +63,15 @@ div.kiosk.container {
     background: var(--main-opq2-bg);
     vertical-align: top;
     height: 80%;
+    width: 100%;
+    position: absolute;
+}
+
+.content iframe {    
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: none;
 }
 
 /*
@@ -70,11 +79,6 @@ div.kiosk.container {
     height: 20%
 }
 
-.content iframe {
-    width: 100%;
-    border: 0px;
-    height: 100%;
-}
 
 .dst {
     height: 100%;

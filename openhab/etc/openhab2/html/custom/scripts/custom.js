@@ -35,10 +35,10 @@ if (typeof loadContent != "function" && window.interval === null) {
                 }
             };
             clearInterval(window.interval);
-            loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>');
+            loadContent('td.iframe .src', '<iframe src="@replace@"></iframe>');
 
             if (window.repeatInterval === null) {
-                window.repeatInterval = window.setInterval(function(){loadContent('div.iframe .src', '<iframe src="@replace@"></iframe>')},repeatTime);                
+                window.repeatInterval = window.setInterval(function(){loadContent('td.iframe .src', '<iframe src="@replace@"></iframe>')},repeatTime);                
             }
         } 
         else {
