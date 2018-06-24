@@ -1,16 +1,40 @@
 <div class="customWidget">
-    <div class="customHeader">
-        <div class="icon">
-            <img class="invert" src="/static/custom/icons/main/chip.svg" />
-        </div>
-        <div class="name"><span>ESP8266 - Main</span></div>
-        <div class="value"><span></span></div>
-    </div>
-    
-    <div class="content info">
-        <div class="row"><span class="left">Uptime</span><span class="right">{{((itemValue(config.uptime)/86400)|number:2) + " Days"}}</span></div>
-        <div class="row"><span class="left">Memory free</span><span class="right">{{((itemValue(config.memfree)/1000)|number:1) + " KiB"}}</span></div>
-        <div class="row"><span class="left">CPU Frequency</span><span class="right">{{(itemValue(config.cpufreq)) + " MHz"}}</span></div>
-    </div>
-    <div oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
+    <table>
+        <tr class="customHeader">
+            <td class="icon">
+                <img class="invert" src="/static/custom/icons/main/chip.svg" />
+            </td>
+            <td class="name">
+                <span>{{config.title}}</span>
+            </td>
+            <td class="value">
+                <span></span>
+            </td>
+        </tr>
+        <tr class="content">
+            <td>
+                <span>Uptime</span>
+            </td>
+            <td>
+                <span>{{((itemValue(config.uptime)/86400)|number:2) + " Days"}}</span>
+            </td>
+        </tr>
+        <tr class="content">
+            <td>
+                <span>Memory free</span>
+            </td>
+            <td>
+                <span>{{((itemValue(config.memfree)/1000)|number:1) + " KiB"}}</span>
+            </td>
+        </tr>
+        <tr class="content">
+            <td>
+                <span>CPU Frequency</span>
+            </td>
+            <td>
+                <span>{{(itemValue(config.cpufreq)) + " MHz"}}</span>
+            </td>
+        </tr>
+    </table>
+    <div class="hidden" oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
 </div>

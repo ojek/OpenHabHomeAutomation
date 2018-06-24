@@ -59,31 +59,27 @@ div.kiosk.container {
     height: 20%;
 }
 
+.customHeader .icon img {
+    height: 15%
+}
+
 .content {
     background: var(--main-opq2-bg);
+}
+
+.iframe {
     vertical-align: top;
     height: 80%;
     width: 100%;
     position: absolute;
 }
 
-.content iframe {    
+.iframe iframe {    
     position: absolute;
     height: 100%;
     width: 100%;
     border: none;
 }
-
-/*
-.customHeader .icon img {
-    height: 20%
-}
-
-
-.dst {
-    height: 100%;
-}
-*/
 
 .invert {
     filter: invert(100%);
