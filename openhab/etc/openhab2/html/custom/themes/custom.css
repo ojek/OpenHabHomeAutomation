@@ -27,6 +27,10 @@ div.kiosk.container {
     display: block !important;
 }
 
+.template-contents {
+    height: 100%;
+}
+
 .box{
     background: none !important;
 }
@@ -51,12 +55,11 @@ div.kiosk.container {
 }
 
 .customHeader {
-    width: 100%;    
-    height: 25%;
+    width: 100%;
 }
 
 .customHeader .icon img {
-    height: 25%
+    height: 15%
 }
 
 .invert {
@@ -73,12 +76,12 @@ div.kiosk.container {
 
 .content {
     background: var(--main-opq2-bg);
+    vertical-align: top;
 }
 
 .content iframe {
     width: 100%;
     border: 0px;
-    height: 75%;
 }
 
 /*
