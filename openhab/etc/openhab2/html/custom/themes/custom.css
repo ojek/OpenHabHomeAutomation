@@ -59,9 +59,27 @@ div.kiosk.container {
     height: 20%;
 }
 
+.content {
+    background: var(--main-opq2-bg);
+    vertical-align: top;
+    height: 80%;
+}
+
+/*
 .customHeader .icon img {
     height: 20%
 }
+
+.content iframe {
+    width: 100%;
+    border: 0px;
+    height: 100%;
+}
+
+.dst {
+    height: 100%;
+}
+*/
 
 .invert {
     filter: invert(100%);
@@ -73,21 +91,6 @@ div.kiosk.container {
 
 .customHeader .value {
     color: var(--main-text) !important;
-}
-
-.content {
-    background: var(--main-opq2-bg);
-    vertical-align: top;
-}
-
-.content iframe {
-    width: 100%;
-    border: 0px;
-    height: 100%
-}
-
-.dst {
-    height: 100%
 }
 
 /*
