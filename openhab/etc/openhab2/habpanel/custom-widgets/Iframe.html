@@ -1,17 +1,17 @@
 <div class="customWidget">
     <table>
         <tr class="customHeader">
-            <td class="icon">
+            <th class="icon">
                 <img class="invert" src="/static/custom/icons/main/{{config.icon}}.svg" />
-            </td>
-            <td class="name" ng-class="{true: 'itemActive'}[itemValue(config.statusItem)=='ON']">
+            </th>
+            <th class="name" ng-class="{true: 'itemActive'}[itemValue(config.statusItem)=='ON']">
                 <span>{{config.title}}</span>
-            </td>
-            <td class="value">
+            </th>
+            <th class="value">
                 <span>{{itemValue(config.item) | number:1}}{{config.unit}}</span>
-            </td>
+            </th>
         </tr>
-        <tr class="iframe">
+        <tr class="iframe content">
             <td colspan="3">
                 <div class="hidden src">#loading_{{config.chartlink}}</div>
                 <div class="dst"></div>
