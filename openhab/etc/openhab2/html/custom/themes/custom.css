@@ -101,6 +101,11 @@ th.name {
     width: 60%;
 }
 
+th {
+    text-align: center;
+    font-weight: normal;
+}
+
 .labelValue tr td:nth-child(1) {
     width: 40%;    
     text-align: left;
@@ -109,8 +114,8 @@ th.name {
 
 .labelValue tr td:nth-child(2) {
     width: 60%;
-    text-align: left;
-    padding-left: 10%;
+    text-align: right;
+    padding-right: 10%;
 }
 
 .rzslider {
