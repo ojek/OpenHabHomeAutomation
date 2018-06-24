@@ -61,6 +61,7 @@ div.kiosk.container {
 .customHeader {
     width: 100%;
     height: 20%;
+    position: absolute;
 }
 
 .customHeader .icon img {
@@ -75,6 +76,7 @@ div.kiosk.container {
     vertical-align: top;
     height: 80%;
     width: 100%;
+    top: 20%;
     position: absolute;
 }
 
@@ -97,17 +99,24 @@ div.kiosk.container {
     color: var(--main-text) !important;
 }
 
-th.icon, th.value {
+th.value {
+    width: 20%;
+    left: 80%;
+}
+
+th.icon {
     width: 20%;
 }
 
 th.name {
     width: 60%;
+    left: 20%;
 }
 
 th {
     text-align: center;
     font-weight: normal;
+    position: absolute;
 }
 
 .labelValue tr td:nth-child(1) {
