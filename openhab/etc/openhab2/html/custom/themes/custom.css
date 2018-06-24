@@ -18,6 +18,10 @@
     background-position:center;
 }
 
+span {
+    font-size: 0.8vw;
+}
+
 div.kiosk.container {
     background-image: none !important;
     background-color: black;
@@ -60,7 +64,7 @@ div.kiosk.container {
 }
 
 .customHeader .icon img {
-    height: 15%
+    width: 1.2vw;
 }
 
 .content {
