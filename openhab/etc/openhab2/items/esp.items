@@ -1,23 +1,44 @@
-Number MotionSensor_Bedroom_Main "Motion" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_LivingRoom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_LivingRoom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_LivingRoom_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number LuminositySensor_LivingRoom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_LivingRoom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_LivingRoom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+String PinSwitch_LivingRoom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
 Number MotionSensor_LivingRoom_Main "Motion" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
 
-String PinSwitch_Bedroom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
-String PinSwitch_LivingRoom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
-
-Number TempHumidSensor_Bedroom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-Number TempHumidSensor_LivingRoom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-
-Number TempHumidSensor_Bedroom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-Number TempHumidSensor_LivingRoom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-
-Number LuminositySensor_Bedroom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-Number LuminositySensor_LivingRoom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
-
-Number ESP8266_LivingRoom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
 Number ESP8266_Bedroom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
-
-Number ESP8266_LivingRoom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
 Number ESP8266_Bedroom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
-
-Number ESP8266_LivingRoom_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
 Number ESP8266_Bedroom_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Bedroom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Bedroom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number LuminositySensor_Bedroom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+String PinSwitch_Bedroom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
+Number MotionSensor_Bedroom_Main "Motion" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+
+Number ESP8266_Bathroom_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_Bathroom_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_Bathroom_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Bathroom_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Bathroom_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number LuminositySensor_Bathroom_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+String PinSwitch_Bathroom_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
+Number MotionSensor_Bathroom_Main "Motion" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+
+Number ESP8266_Hallway_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_Hallway_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_Hallway_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Hallway_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Hallway_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number LuminositySensor_Hallway_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+String PinSwitch_Hallway_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
+Number MotionSensor_Hallway_Main "Motion" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+
+Number ESP8266_Kitchen_Main_FreeMem "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_Kitchen_Main_CPUFreq "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number ESP8266_Kitchen_Main_Uptime "[%d]" {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Kitchen_Main_Temperature "Temperature [%.1f °C]" <temperature> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number TempHumidSensor_Kitchen_Main_Humidity "Humidity [%.1f %%]" <humidity> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+Number LuminositySensor_Kitchen_Main "Luminosity [%.2f lux]" <sun> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
+String PinSwitch_Kitchen_Main "LED Light" <light> {mqtt=">MQTT:default:command:*:default"}
+Number MotionSensor_Kitchen_Main "Motion" <motion> (gPersistable_everyMinute) {mqtt="<[MQTT:default:state:default]"}
