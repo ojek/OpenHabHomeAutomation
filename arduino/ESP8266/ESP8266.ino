@@ -19,7 +19,7 @@
 #define D10 1 // TX0 (Serial console)
 */
 
-#define ESP_ID "Bedroom_Main"
+#define ESP_ID "Hallway_Main"
 #define LOOP_DELAY_MS 200
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_HIGH 50
 #define MQTT_PUBLISH_DELAY_MS_PRIORITY_MED 500
