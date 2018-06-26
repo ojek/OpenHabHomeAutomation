@@ -60,12 +60,12 @@ div.kiosk.container {
 
 .customHeader {
     width: 100%;
-    height: 20%;
-    position: absolute;
+    height: 2vw;
 }
 
 .customHeader .icon img {
-    width: 1.2vw;
+    height: 1vw;
+    margin-top: 0.4vw;
 }
 
 .content {
@@ -74,9 +74,9 @@ div.kiosk.container {
 
 .iframe {
     vertical-align: top;
-    height: 80%;
+    height: 6vw;
     width: 100%;
-    top: 20%;
+    top: 2vw;
     position: absolute;
 }
 
@@ -117,14 +117,14 @@ th {
     text-align: center;
     font-weight: normal;
     position: absolute;
-    height: 100%;
+    height: 2vw;
 }
 
 th span {
     font-size: 0.8vw;
     position: absolute;
     display: block;
-    top: 20%;
+    top: 0.4vw;
     width: 100%;
 }
 
