@@ -5,19 +5,19 @@
             "name": "Main",
             "widgets": [
                 {
-                    "name": "Raspberry Temp",
+                    "name": "Raspberry temperature",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 0,
-                    "col": 9,
+                    "row": 1,
+                    "col": 0,
                     "dontwrap": false,
                     "nobackground": false,
                     "config": {
                         "item": "RaspberryPi_Temperature",
                         "icon": "thermometer",
-                        "title": "CPU Temperature",
+                        "title": "Raspberry temperature",
                         "chart_link": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=2&from=now-24h&to=now",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=2&from=now-24h&to=now",
                         "unit": "°C",
@@ -26,34 +26,35 @@
                     "$$hashKey": "object:30"
                 },
                 {
-                    "name": "CPU Load",
+                    "name": "Raspberry CPU load",
                     "sizeX": 3,
-                    "sizeY": 2,
-                    "type": "template",
-                    "customwidget": "SingleGraph",
-                    "row": 0,
-                    "col": 6,
-                    "config": {
-                        "item": "Raspberry_CPU_Load",
-                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=3&from=now-24h&to=now",
-                        "title": "CPU Load",
-                        "icon": "cpu",
-                        "unit": "%"
-                    },
-                    "$$hashKey": "object:31"
-                },
-                {
-                    "name": "Temperature",
-                    "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
                     "row": 2,
                     "col": 0,
                     "config": {
+                        "item": "Raspberry_CPU_Load",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=3&from=now-24h&to=now",
+                        "title": "Raspberry CPU load",
+                        "icon": "cpu",
+                        "unit": "%",
+                        "statusItem": "OFF"
+                    },
+                    "$$hashKey": "object:31"
+                },
+                {
+                    "name": "Bedroom temperature",
+                    "sizeX": 3,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "row": 3,
+                    "col": 0,
+                    "config": {
                         "item": "TempHumidSensor_Bedroom_Main_Temperature",
                         "icon": "thermometer",
-                        "title": "Temperature",
+                        "title": "Bedroom temperature",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=5&from=now-24h&to=now",
                         "unit": "°C",
                         "statusItem": "Desired_Temp_State_Bedroom"
@@ -61,16 +62,16 @@
                     "$$hashKey": "object:32"
                 },
                 {
-                    "name": "Humidity",
+                    "name": "Bedroom humidity",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 2,
+                    "row": 3,
                     "col": 3,
                     "config": {
                         "item": "TempHumidSensor_Bedroom_Main_Humidity",
-                        "title": "Humidity",
+                        "title": "Bedroom humidity",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=2&from=now-24h&to=now",
                         "icon": "waterdrop",
                         "unit": "%",
@@ -79,16 +80,16 @@
                     "$$hashKey": "object:33"
                 },
                 {
-                    "name": "Motion",
-                    "sizeX": 3,
+                    "name": "Bedroom motion",
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 2,
-                    "col": 9,
+                    "row": 0,
+                    "col": 5,
                     "config": {
                         "item": "MotionSensor_Bedroom_Main",
-                        "title": "Motion",
+                        "title": "Bedroom motion",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=3&from=now-24h&to=now",
                         "icon": "running",
                         "statusItem": "MotionSensor_Bedroom_Main"
@@ -96,16 +97,16 @@
                     "$$hashKey": "object:34"
                 },
                 {
-                    "name": "Luminosity",
+                    "name": "Bedroom luminosity",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 2,
-                    "col": 6,
+                    "row": 0,
+                    "col": 9,
                     "config": {
                         "item": "LuminositySensor_Bedroom_Main",
-                        "title": "Luminosity",
+                        "title": "Bedroom luminosity",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=4&from=now-24h&to=now",
                         "icon": "sun",
                         "unit": "lx",
@@ -116,7 +117,7 @@
                 {
                     "name": "Yahoo weather",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "YahooWeather",
                     "row": 0,
@@ -133,28 +134,28 @@
                     "$$hashKey": "object:36"
                 },
                 {
-                    "name": "ESP8266",
-                    "sizeX": 3,
-                    "sizeY": 2,
+                    "name": "Bedroom ESP status",
+                    "sizeX": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "ESP8266",
-                    "row": 0,
+                    "row": 1,
                     "col": 3,
                     "config": {
                         "uptime": "ESP8266_Bedroom_Main_Uptime",
                         "memfree": "ESP8266_Bedroom_Main_FreeMem",
                         "cpufreq": "ESP8266_Bedroom_Main_CPUFreq",
-                        "title": "ESP8266 - Bedroom"
+                        "title": "Bedroom ESP status"
                     },
                     "$$hashKey": "object:37"
                 },
                 {
-                    "name": "Bedroom Desired Temp",
+                    "name": "Bedroom desired temperature",
                     "sizeX": 3,
                     "sizeY": 1,
                     "item": "Desired_Temp_Bedroom",
                     "type": "slider",
-                    "row": 4,
+                    "row": 3,
                     "col": 9,
                     "floor": 18,
                     "ceil": 27,
@@ -166,26 +167,26 @@
                     "$$hashKey": "object:38"
                 },
                 {
-                    "name": "Heating",
+                    "name": "Bedroom heating",
                     "sizeX": 3,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 5,
+                    "row": 4,
                     "col": 9,
                     "config": {
                         "item": "0",
                         "statusItem": "Desired_Temp_State_Bedroom",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/system?orgId=1&panelId=4&from=now-24h&to=now",
-                        "title": "Heating",
+                        "title": "Bedroom heating",
                         "icon": "thermometer"
                     },
                     "$$hashKey": "object:39"
                 },
                 {
-                    "name": "LivingRoom Temp",
+                    "name": "Living room temperature",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
                     "row": 4,
@@ -195,23 +196,23 @@
                         "statusItem": "Desired_Temp_State_LivingRoom",
                         "icon": "thermometer",
                         "unit": "°C",
-                        "title": "LivingRoom Temp",
+                        "title": "Living room temperature",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=9&from=now-24h&to=now"
                     },
                     "$$hashKey": "object:40"
                 },
                 {
-                    "name": "LivingRoom Lum",
+                    "name": "Living room luminosity",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 4,
-                    "col": 6,
+                    "row": 1,
+                    "col": 9,
                     "config": {
                         "item": "LuminositySensor_LivingRoom_Main",
                         "statusItem": "OFF",
-                        "title": "LivingRoom Lum",
+                        "title": "Living room luminosity",
                         "unit": "lx",
                         "icon": "sun",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=8&from=now-24h&to=now"
@@ -219,9 +220,9 @@
                     "$$hashKey": "object:41"
                 },
                 {
-                    "name": "LivingRoom Humidity",
+                    "name": "Living room humidity",
                     "sizeX": 3,
-                    "sizeY": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
                     "row": 4,
@@ -229,7 +230,7 @@
                     "config": {
                         "item": "TempHumidSensor_LivingRoom_Main_Humidity",
                         "statusItem": "OFF",
-                        "title": "LivingRoom Humidity",
+                        "title": "Living room humidity",
                         "unit": "%",
                         "icon": "waterdrop",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=6&from=now-24h&to=now"
@@ -237,17 +238,17 @@
                     "$$hashKey": "object:42"
                 },
                 {
-                    "name": "LivingRoom Motion",
-                    "sizeX": 3,
+                    "name": "Living room motion",
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 3,
-                    "col": 9,
+                    "row": 1,
+                    "col": 5,
                     "config": {
                         "item": "MotionSensor_LivingRoom_Main",
                         "statusItem": "MotionSensor_LivingRoom_Main",
-                        "title": "LivingRoom Motion",
+                        "title": "Living room motion",
                         "icon": "running",
                         "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=7&from=now-24h&to=now"
                     },
@@ -264,20 +265,107 @@
                     "$$hashKey": "object:44"
                 },
                 {
-                    "name": "ESP8266 - LivingRoom",
-                    "sizeX": 3,
-                    "sizeY": 2,
+                    "name": "Living room ESP status",
+                    "sizeX": 2,
+                    "sizeY": 1,
                     "type": "template",
                     "customwidget": "ESP8266",
-                    "row": 6,
-                    "col": 1,
+                    "row": 0,
+                    "col": 3,
                     "config": {
                         "uptime": "ESP8266_LivingRoom_Main_Uptime",
                         "memfree": "ESP8266_LivingRoom_Main_FreeMem",
                         "cpufreq": "ESP8266_LivingRoom_Main_CPUFreq",
-                        "title": "ESP8266 - LivingRoom"
+                        "title": "Living room ESP status"
                     },
                     "$$hashKey": "object:45"
+                },
+                {
+                    "name": "Hallway temperature",
+                    "sizeX": 3,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "row": 5,
+                    "col": 0,
+                    "config": {
+                        "item": "TempHumidSensor_Hallway_Main_Temperature",
+                        "statusItem": "OFF",
+                        "icon": "thermometer",
+                        "title": "Hallway temperature",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=14&from=now-24h&to=now",
+                        "unit": "°C"
+                    },
+                    "$$hashKey": "object:46"
+                },
+                {
+                    "name": "Hallway humidity",
+                    "sizeX": 3,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "row": 5,
+                    "col": 3,
+                    "config": {
+                        "item": "TempHumidSensor_Hallway_Main_Humidity",
+                        "statusItem": "OFF",
+                        "icon": "waterdrop",
+                        "title": "Hallway humidity",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=11&from=now-24h&to=now",
+                        "unit": "%"
+                    },
+                    "$$hashKey": "object:47"
+                },
+                {
+                    "name": "Hallway luminosity",
+                    "sizeX": 3,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "row": 2,
+                    "col": 9,
+                    "config": {
+                        "item": "LuminositySensor_Hallway_Main",
+                        "statusItem": "OFF",
+                        "icon": "sun",
+                        "title": "Hallway luminosity",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=13&from=now-24h&to=now",
+                        "unit": "lx"
+                    },
+                    "$$hashKey": "object:48"
+                },
+                {
+                    "name": "Hallway motion",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "row": 0,
+                    "col": 7,
+                    "config": {
+                        "item": "MotionSensor_Hallway_Main",
+                        "statusItem": "OFF",
+                        "icon": "running",
+                        "title": "Hallway motion",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=12&from=now-24h&to=now"
+                    },
+                    "$$hashKey": "object:49"
+                },
+                {
+                    "name": "Hallway ESP status",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "ESP8266",
+                    "row": 2,
+                    "col": 3,
+                    "config": {
+                        "uptime": "ESP8266_Hallway_Main_Uptime",
+                        "memfree": "ESP8266_Hallway_Main_FreeMem",
+                        "cpufreq": "ESP8266_Hallway_Main_CPUFreq",
+                        "title": "Hallway ESP status"
+                    },
+                    "$$hashKey": "object:50"
                 }
             ],
             "row": 0,
