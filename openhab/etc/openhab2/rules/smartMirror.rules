@@ -25,7 +25,8 @@ then
         if (SmartMirror_State.state !== ON)
         {
             SmartMirror_State.sendCommand("ON")
-			executeCommandLine("/etc/openhab2/scripts/screen_on.sh")
+			val results = executeCommandLine("/etc/openhab2/scripts/screen_on.sh")
+            logInfo("Exec", results)
         }
     }
 end
