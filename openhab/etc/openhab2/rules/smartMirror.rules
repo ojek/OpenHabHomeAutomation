@@ -18,14 +18,14 @@ then
                 motionTimer.cancel
                 motionTimer = null
                 SmartMirror_State.sendCommand("OFF")
-			    executeCommandLine("screen_off.sh")
+			    executeCommandLine("/etc/openhab2/scripts/screen_off.sh")
             ]
         }
 
         if (SmartMirror_State.state !== ON)
         {
             SmartMirror_State.sendCommand("ON")
-			executeCommandLine("screen_on.sh")
+			executeCommandLine("/etc/openhab2/scripts/screen_on.sh")
         }
     }
 end
