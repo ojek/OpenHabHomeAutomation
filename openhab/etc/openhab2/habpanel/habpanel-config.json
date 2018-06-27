@@ -6,7 +6,7 @@
             "widgets": [
                 {
                     "name": "Raspberry temperature",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
@@ -27,7 +27,7 @@
                 },
                 {
                     "name": "Raspberry CPU load",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
@@ -45,12 +45,12 @@
                 },
                 {
                     "name": "Bedroom temperature",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 3,
-                    "col": 0,
+                    "row": 0,
+                    "col": 10,
                     "config": {
                         "item": "TempHumidSensor_Bedroom_Main_Temperature",
                         "icon": "thermometer",
@@ -63,12 +63,12 @@
                 },
                 {
                     "name": "Bedroom humidity",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 3,
-                    "col": 3,
+                    "row": 1,
+                    "col": 10,
                     "config": {
                         "item": "TempHumidSensor_Bedroom_Main_Humidity",
                         "title": "Bedroom humidity",
@@ -85,8 +85,8 @@
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 0,
-                    "col": 5,
+                    "row": 3,
+                    "col": 10,
                     "config": {
                         "item": "MotionSensor_Bedroom_Main",
                         "title": "Bedroom motion",
@@ -98,12 +98,12 @@
                 },
                 {
                     "name": "Bedroom luminosity",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 0,
-                    "col": 9,
+                    "row": 2,
+                    "col": 10,
                     "config": {
                         "item": "LuminositySensor_Bedroom_Main",
                         "title": "Bedroom luminosity",
@@ -116,7 +116,7 @@
                 },
                 {
                     "name": "Yahoo weather",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "YahooWeather",
@@ -139,8 +139,8 @@
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "ESP8266",
-                    "row": 1,
-                    "col": 3,
+                    "row": 4,
+                    "col": 10,
                     "config": {
                         "uptime": "ESP8266_Bedroom_Main_Uptime",
                         "memfree": "ESP8266_Bedroom_Main_FreeMem",
@@ -151,12 +151,12 @@
                 },
                 {
                     "name": "Bedroom desired temperature",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "item": "Desired_Temp_Bedroom",
                     "type": "slider",
                     "row": 3,
-                    "col": 9,
+                    "col": 0,
                     "floor": 18,
                     "ceil": 27,
                     "step": 0.1,
@@ -168,12 +168,12 @@
                 },
                 {
                     "name": "Bedroom heating",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
                     "row": 4,
-                    "col": 9,
+                    "col": 0,
                     "config": {
                         "item": "0",
                         "statusItem": "Desired_Temp_State_Bedroom",
@@ -185,12 +185,12 @@
                 },
                 {
                     "name": "Living room temperature",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 4,
-                    "col": 0,
+                    "row": 0,
+                    "col": 4,
                     "config": {
                         "item": "TempHumidSensor_LivingRoom_Main_Temperature",
                         "statusItem": "Desired_Temp_State_LivingRoom",
@@ -203,12 +203,12 @@
                 },
                 {
                     "name": "Living room luminosity",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 1,
-                    "col": 9,
+                    "row": 2,
+                    "col": 4,
                     "config": {
                         "item": "LuminositySensor_LivingRoom_Main",
                         "statusItem": "OFF",
@@ -221,12 +221,12 @@
                 },
                 {
                     "name": "Living room humidity",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 4,
-                    "col": 3,
+                    "row": 1,
+                    "col": 4,
                     "config": {
                         "item": "TempHumidSensor_LivingRoom_Main_Humidity",
                         "statusItem": "OFF",
@@ -243,8 +243,8 @@
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 1,
-                    "col": 5,
+                    "row": 3,
+                    "col": 4,
                     "config": {
                         "item": "MotionSensor_LivingRoom_Main",
                         "statusItem": "MotionSensor_LivingRoom_Main",
@@ -260,7 +260,7 @@
                     "sizeY": 1,
                     "item": "Yeelight1_switch",
                     "type": "switch",
-                    "row": 6,
+                    "row": 5,
                     "col": 0,
                     "$$hashKey": "object:44"
                 },
@@ -270,8 +270,8 @@
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "ESP8266",
-                    "row": 0,
-                    "col": 3,
+                    "row": 4,
+                    "col": 4,
                     "config": {
                         "uptime": "ESP8266_LivingRoom_Main_Uptime",
                         "memfree": "ESP8266_LivingRoom_Main_FreeMem",
@@ -282,12 +282,12 @@
                 },
                 {
                     "name": "Hallway temperature",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 5,
-                    "col": 0,
+                    "row": 0,
+                    "col": 6,
                     "config": {
                         "item": "TempHumidSensor_Hallway_Main_Temperature",
                         "statusItem": "OFF",
@@ -300,12 +300,12 @@
                 },
                 {
                     "name": "Hallway humidity",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 5,
-                    "col": 3,
+                    "row": 1,
+                    "col": 6,
                     "config": {
                         "item": "TempHumidSensor_Hallway_Main_Humidity",
                         "statusItem": "OFF",
@@ -318,12 +318,12 @@
                 },
                 {
                     "name": "Hallway luminosity",
-                    "sizeX": 3,
+                    "sizeX": 2,
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
                     "row": 2,
-                    "col": 9,
+                    "col": 6,
                     "config": {
                         "item": "LuminositySensor_Hallway_Main",
                         "statusItem": "OFF",
@@ -340,8 +340,8 @@
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "SingleGraph",
-                    "row": 0,
-                    "col": 7,
+                    "row": 3,
+                    "col": 6,
                     "config": {
                         "item": "MotionSensor_Hallway_Main",
                         "statusItem": "OFF",
@@ -357,8 +357,8 @@
                     "sizeY": 1,
                     "type": "template",
                     "customwidget": "ESP8266",
-                    "row": 2,
-                    "col": 3,
+                    "row": 4,
+                    "col": 6,
                     "config": {
                         "uptime": "ESP8266_Hallway_Main_Uptime",
                         "memfree": "ESP8266_Hallway_Main_FreeMem",
@@ -366,6 +366,180 @@
                         "title": "Hallway ESP status"
                     },
                     "$$hashKey": "object:50"
+                },
+                {
+                    "name": "Bathroom temperature",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "row": 0,
+                    "col": 8,
+                    "config": {
+                        "item": "TempHumidSensor_Bathroom_Main_Temperature",
+                        "statusItem": "OFF",
+                        "unit": "°C",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=18&from=now-24h&to=now",
+                        "icon": "thermometer",
+                        "title": "Bathroom temperature"
+                    },
+                    "$$hashKey": "object:51"
+                },
+                {
+                    "name": "Bathroom ESP status",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "ESP8266",
+                    "row": 4,
+                    "col": 8,
+                    "config": {
+                        "uptime": "ESP8266_Bathroom_Main_Uptime",
+                        "memfree": "ESP8266_Bathroom_Main_FreeMem",
+                        "cpufreq": "ESP8266_Bathroom_Main_CPUFreq",
+                        "title": "Bathroom ESP status"
+                    },
+                    "$$hashKey": "object:52"
+                },
+                {
+                    "name": "Bathroom humidity",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "TempHumidSensor_Bathroom_Main_Humidity",
+                        "title": "Bathroom humidity",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=15&from=now-24h&to=now",
+                        "icon": "waterdrop",
+                        "unit": "%",
+                        "statusItem": "OFF"
+                    },
+                    "row": 1,
+                    "col": 8,
+                    "$$hashKey": "object:53"
+                },
+                {
+                    "name": "Bathroom motion",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "MotionSensor_Bathroom_Main",
+                        "statusItem": "OFF",
+                        "icon": "running",
+                        "title": "Bathroom motion",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=16&from=now-24h&to=now"
+                    },
+                    "row": 3,
+                    "col": 8,
+                    "$$hashKey": "object:54"
+                },
+                {
+                    "name": "Bathroom luminosity",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "LuminositySensor_Bathroom_Main",
+                        "title": "Bathroom luminosity",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=17&from=now-24h&to=now",
+                        "icon": "sun",
+                        "unit": "lx",
+                        "statusItem": "OFF"
+                    },
+                    "row": 2,
+                    "col": 8,
+                    "$$hashKey": "object:55"
+                },
+                {
+                    "name": "Kitchen ESP status",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "ESP8266",
+                    "config": {
+                        "uptime": "ESP8266_Kitchen_Main_Uptime",
+                        "memfree": "ESP8266_Kitchen_Main_FreeMem",
+                        "cpufreq": "ESP8266_Kitchen_Main_CPUFreq",
+                        "title": "Kitchen ESP status"
+                    },
+                    "$$hashKey": "object:379",
+                    "row": 4,
+                    "col": 2
+                },
+                {
+                    "name": "Kitchen motion",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "MotionSensor_Kitchen_Main",
+                        "statusItem": "MotionSensor_Kitchen_Main",
+                        "title": "Kitchen motion",
+                        "icon": "running",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=20&from=now-24h&to=now"
+                    },
+                    "$$hashKey": "object:392",
+                    "row": 3,
+                    "col": 2
+                },
+                {
+                    "name": "Kitchen luminosity",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "LuminositySensor_Kitchen_Main",
+                        "statusItem": "OFF",
+                        "title": "Kitchen luminosity",
+                        "unit": "lx",
+                        "icon": "sun",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=8&from=now-24h&to=now"
+                    },
+                    "$$hashKey": "object:405",
+                    "row": 2,
+                    "col": 2
+                },
+                {
+                    "name": "Kitchen humidity",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "TempHumidSensor_Kitchen_Main_Humidity",
+                        "statusItem": "OFF",
+                        "title": "Kitchen humidity",
+                        "unit": "%",
+                        "icon": "waterdrop",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=19&from=now-24h&to=now"
+                    },
+                    "$$hashKey": "object:418",
+                    "row": 1,
+                    "col": 2
+                },
+                {
+                    "name": "Kitchen temperature",
+                    "sizeX": 2,
+                    "sizeY": 1,
+                    "type": "template",
+                    "customwidget": "SingleGraph",
+                    "config": {
+                        "item": "TempHumidSensor_Kitchen_Main_Temperature",
+                        "statusItem": "Desired_Temp_State_LivingRoom",
+                        "icon": "thermometer",
+                        "unit": "°C",
+                        "title": "Kitchen temperature",
+                        "chartlink": "http://192.168.0.5:3000/dashboard-solo/db/sensors?orgId=1&panelId=22&from=now-24h&to=now"
+                    },
+                    "$$hashKey": "object:431",
+                    "row": 0,
+                    "col": 2
                 }
             ],
             "row": 0,
