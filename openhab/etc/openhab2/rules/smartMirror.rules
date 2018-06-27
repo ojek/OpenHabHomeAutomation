@@ -1,0 +1,31 @@
+import org.openhab.model.script.actions.Timer
+var Timer motionTimer = null
+val int motionTimeout = 60
+
+rule "SmartMirror Power"
+when
+    Item MotionSensor_Bedroom_Main received update
+then
+    if (MotionSensor_Bedroom_Main.state == 1)
+    {
+        if (motionTimer !== null)
+        {
+            motionTimer.reschedule(now.plusSeconds(motionTimeout))
+        }
+        else 
+        {
+            motionTimer = createTimer(now.plusSeconds(motionTimeout)) [|
+                motionTimer.cancel
+                motionTimer = null
+                SmartMirror_State.sendCommand("OFF")
+			    executeCommandLine("screen_off.sh")
+            ]
+        }
+
+        if (SmartMirror_State.state !== ON)
+        {
+            SmartMirror_State.sendCommand("ON")
+			executeCommandLine("screen_on.sh")
+        }
+    }
+end

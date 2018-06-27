@@ -1,3 +1,5 @@
+Switch SmartMirror_State
+
 Number Desired_Temp_Bedroom (gPersistable_everyChange, gPersistable_restore)
 Switch Desired_Temp_State_Bedroom (gPersistable_everyMinute)
 
