@@ -10,6 +10,8 @@ cp -r /home/pi/git/OpenHabHomeAutomation/openhab/usr/share/openhab2/addons/* /us
 
 #post download scripts begin
 chmod a+x /etc/openhab2/scripts/rpiTemp.sh
+chmod a+x /etc/openhab2/scripts/screen_on.sh
+chmod a+x /etc/openhab2/scripts/screen_off.sh
 sudo chown -hR openhab:openhab /etc/openhab2
 #post download scripts end 
 
