@@ -4,9 +4,9 @@ val int motionTimeout = 60
 
 rule "SmartMirror Power"
 when
-    Item MotionSensor_Bedroom_Main received update
+    Item MotionSensor_Bathroom_Main received update
 then
-    if (MotionSensor_Bedroom_Main.state == 1)
+    if (MotionSensor_Bathroom_Main.state == 1)
     {
         if (motionTimer !== null)
         {
