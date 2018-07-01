@@ -25,7 +25,7 @@ then
         if (SmartMirror_State.state !== ON)
         {
             SmartMirror_State.sendCommand("ON")
-			val results = executeCommandLine("sudo tvservice -p && sudo chvt 2 && sudo chvt 7")
+			val results = executeCommandLine("/etc/openhab2/scripts/screen_on.sh")
             logInfo("Exec", results)
         }
     }

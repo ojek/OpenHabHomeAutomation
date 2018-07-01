@@ -28,7 +28,9 @@ mosquitto_sub -t openhab/out/MotionSensor_Bedroom_Main/state
 mosquitto_sub -t openhab/in/MotionSensor/state
 
 mosquitto_sub -t openhab/in/LedDisplayIntensity/command
-
+su -c "sudo tvservice -p && sudo chvt 2 && sudo chvt 7" -s /bin/sh openhab
+openhab ALL = NOPASSWD: tvservice, chvt
+openhab ALL=(ALL) NOPASSWD: ALL
 iceweasel http://192.168.0.5:8080/habpanel/index.html#/view/Main --display=:0
 
 ##monitor setup
