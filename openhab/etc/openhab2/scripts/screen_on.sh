@@ -1,1 +1,1 @@
-vcgencmd display_power 1
+sudo tvservice -p && sudo chvt 2 && sudo chvt 7

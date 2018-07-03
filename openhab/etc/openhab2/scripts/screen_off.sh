@@ -1,1 +1,1 @@
-vcgencmd display_power 0
+sudo tvservice -o
