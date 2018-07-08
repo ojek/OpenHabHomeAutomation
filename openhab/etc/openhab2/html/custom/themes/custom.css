@@ -98,7 +98,7 @@ th.value {
 }
 
 th.icon {
-    width: 20%;
+    height: 10%;
 }
 
 th.name {
@@ -110,7 +110,7 @@ th {
     text-align: center;
     font-weight: normal;
     position: absolute;
-    height: 2vw;
+    height: 10%;
 }
 
 th span {
