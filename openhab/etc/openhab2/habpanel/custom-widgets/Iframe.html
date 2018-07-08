@@ -1,4 +1,12 @@
-<div class="customWidget">
+<div class="customWidget" style="font-size: calc(100% * 
+{{ 
+    (ngModel.sizeY === 1 ) ? 0.5 :
+    (ngModel.sizeY === 2 ) ? 0.7 :
+    (ngModel.sizeY === 3 ) ? 0.9 :
+    (ngModel.sizeY === 4 ) ? 1.2 :
+    (ngModel.sizeY === 5 ) ? 1.5
+    : 2 }}
+);">
     <table>
         <tr class="customHeader">
             <th class="icon">
@@ -8,13 +16,19 @@
                 <span>{{config.title}}</span>
             </th>
             <th class="value">
-                <span>{{itemValue(config.item) | number:1}}{{config.unit}}</span>
+                <span>{{itemValue(config.headerItem) | number:1}}{{config.unit}}</span>
             </th>
         </tr>
-        <tr class="iframe content">
-            <td colspan="3">
-                <div class="hidden src">#loading_{{config.chartlink}}</div>
-                <div class="dst"></div>
+        <tr class="content">
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="hidden src">#loading_{{config.chartlink}}</div>
+                            <div class="dst"></div>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>

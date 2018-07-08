@@ -18,10 +18,6 @@
     background-position:center;
 }
 
-span {
-    font-size: 0.8vw;
-}
-
 div.kiosk.container {
     background-image: none !important;
     background-color: black;
@@ -61,27 +57,27 @@ div.kiosk.container {
 
 .customHeader {
     width: 100%;
-    height: 2vw;
+    height: 10%;
 }
 
 .customHeader .icon img {
-    height: 1vw;
-    margin-top: 0.4vw;
+    height: 100%;
 }
 
 .content {
     background: var(--main-opq2-bg);
-}
-
-.iframe {
-    vertical-align: top;
-    height: 6vw;
+    height: 90%;
     width: 100%;
-    top: 2vw;
+    top: 10%;
     position: absolute;
 }
 
-.iframe iframe {    
+.content > table {    
+    width: 100%;
+    height: 100%;
+}
+
+iframe {    
     position: absolute;
     height: 100%;
     width: 100%;
@@ -92,11 +88,7 @@ div.kiosk.container {
     filter: invert(100%);
 }
 
-.customHeader .name {
-    color: var(--main-text);
-}
-
-.customHeader .value {
+.customHeader span {
     color: var(--main-text) !important;
 }
 
@@ -122,13 +114,12 @@ th {
 }
 
 th span {
-    font-size: 0.8vw;
     position: absolute;
     display: block;
-    top: 0.4vw;
+    top: 45%;
     width: 100%;
 }
-
+/*
 .labelValue tr td:nth-child(1) {
     width: 40%;    
     text-align: left;
@@ -140,7 +131,7 @@ th span {
     text-align: right;
     padding-right: 10%;
 }
-
+*/
 .rzslider {
     margin: 3vw 0 1vw 0 !important;
 }

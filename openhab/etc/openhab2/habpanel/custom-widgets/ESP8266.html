@@ -1,38 +1,52 @@
-<div class="customWidget labelValue">
+<div class="customWidget" style="font-size: calc(100% * 
+{{ 
+    (ngModel.sizeY === 1 ) ? 0.5 :
+    (ngModel.sizeY === 2 ) ? 0.7 :
+    (ngModel.sizeY === 3 ) ? 0.9 :
+    (ngModel.sizeY === 4 ) ? 1.2 :
+    (ngModel.sizeY === 5 ) ? 1.5
+    : 2 }}
+);">
     <table>
         <tr class="customHeader">
             <th class="icon">
-                <img class="invert" src="/static/custom/icons/main/chip.svg" />
+                <img class="invert" src="/static/custom/icons/main/{{config.icon}}.svg" />
             </th>
-            <th class="name">
+            <th class="name" ng-class="{true: 'itemActive'}[itemValue(config.statusItem)=='ON']">
                 <span>{{config.title}}</span>
             </th>
             <th class="value">
-                <span></span>
+                <span>{{itemValue(config.headerItem) | number:1}}{{config.unit}}</span>
             </th>
         </tr>
         <tr class="content">
             <td>
-                <span>Uptime</span>
-            </td>
-            <td colspan="2">
-                <span>{{((itemValue(config.uptime)/86400)|number:2) + " Days"}}</span>
-            </td>
-        </tr>
-        <tr class="content">
-            <td>
-                <span>Memory free</span>
-            </td>
-            <td colspan="2">
-                <span>{{((itemValue(config.memfree)/1000)|number:1) + " KiB"}}</span>
-            </td>
-        </tr>
-        <tr class="content">
-            <td>
-                <span>CPU Frequency</span>
-            </td>
-            <td colspan="2">
-                <span>{{(itemValue(config.cpufreq)) + " MHz"}}</span>
+                <table>
+                    <tr>
+                        <td>
+                            <span>Uptime</span>
+                        </td>
+                        <td>
+                            <span>{{((itemValue(config.uptime)/86400)|number:2) + " Days"}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Memory free</span>
+                        </td>
+                        <td>
+                            <span>{{((itemValue(config.memfree)/1000)|number:1) + " KiB"}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>CPU Frequency</span>
+                        </td>
+                        <td>
+                            <span>{{(itemValue(config.cpufreq)) + " MHz"}}</span>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>

@@ -3,4 +3,5 @@ when
 	System started
 then
     if (Desired_Temp_Bedroom.state == NULL) Desired_Temp_Bedroom.postUpdate(0.0)
+    SmartMirror_State.sendCommand("OFF")
 end
