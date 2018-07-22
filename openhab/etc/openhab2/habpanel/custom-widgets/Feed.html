@@ -13,7 +13,7 @@
                 <img class="invert" src="/static/custom/icons/main/{{config.icon}}.svg" />
             </th>
             <th class="name" ng-class="{true: 'itemActive'}[itemValue(config.statusItem)=='ON']">
-                <span>{{config.title}}</span>
+                <span>{{itemValue(config.title)}}</span>
             </th>
             <th class="value">
                 <span>{{itemValue(config.headerItem) | number:1}}{{config.unit}}</span>
@@ -24,7 +24,7 @@
                 <table class="liveFeed">
                     <tr>
                         <td>
-                            <span>{{config.feed}}</span>
+                            <span>{{itemValue(config.feed)}}</span>
                         </td>
                     </tr>
                 </table>

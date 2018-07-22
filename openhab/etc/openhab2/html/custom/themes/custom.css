@@ -129,6 +129,18 @@ th span {
 .liveFeed span {
     font-size: 500%;
     white-space: nowrap;
+    text-align: center;
+    transform:translateX(100%);
+    animation: liveFeed 15s linear infinite;
+}
+
+@keyframes liveFeed {
+    0%   { 
+        transform: translateX(100%); 		
+    }
+    100% { 
+        transform: translateX(-100%); 
+    }
 }
 
 .rzslider {

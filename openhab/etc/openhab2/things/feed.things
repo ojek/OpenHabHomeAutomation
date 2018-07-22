@@ -1,1 +1,1 @@
-Thing feed:feed:bbc [ URL="http://feeds.reuters.com/reuters/topNews", refresh=1]
+Thing feed:feed:bbc [ URL="http://feeds.reuters.com/reuters/topNews", refresh=30]
