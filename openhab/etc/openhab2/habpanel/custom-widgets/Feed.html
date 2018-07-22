@@ -1,0 +1,35 @@
+<div class="customWidget" style="font-size: calc(100% * 
+{{ 
+    (ngModel.sizeY === 1 ) ? 0.5 :
+    (ngModel.sizeY === 2 ) ? 0.7 :
+    (ngModel.sizeY === 3 ) ? 0.9 :
+    (ngModel.sizeY === 4 ) ? 1.2 :
+    (ngModel.sizeY === 5 ) ? 1.5
+    : 2 }}
+);">
+    <table>
+        <tr class="customHeader">
+            <th class="icon">
+                <img class="invert" src="/static/custom/icons/main/{{config.icon}}.svg" />
+            </th>
+            <th class="name" ng-class="{true: 'itemActive'}[itemValue(config.statusItem)=='ON']">
+                <span>{{config.title}}</span>
+            </th>
+            <th class="value">
+                <span>{{itemValue(config.headerItem) | number:1}}{{config.unit}}</span>
+            </th>
+        </tr>
+        <tr class="content">
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <span class="liveFeed">{{config.feed}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <div class="hidden" oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
+</div>
