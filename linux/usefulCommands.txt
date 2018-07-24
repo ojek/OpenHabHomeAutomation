@@ -35,19 +35,13 @@ vcgencmd display_power 1
 su -c "sudo tvservice -p && sudo chvt 2 && sudo chvt 7" -s /bin/sh openhab
 su -c "DISPLAY=:0 chromium-browser -kiosk http://192.168.0.5:8080/habpanel/index.html#/view/SmartMirror?kiosk=on" -s /bin/sh openhab
 openhab ALL=(ALL) NOPASSWD: ALL
-iceweasel http://192.168.0.5:8080/habpanel/index.html#/view/Main --display=:0
+iceweasel -e Fullscreen -a http://192.168.0.5:8080/habpanel/index.html#/view/SmartMirror?kiosk=on --display=:0
 
 ##monitor setup
 
 nano /etc/xdg/autostart/autoChromium.desktop
 
-Shell
-@xscreensaver -no-splash
-
-# BEGIN ADDED
-@/usr/bin/chromium-browser --incognito --start-maximized --kiosk http://192.168.0.5:8080/habpanel/index.html#/view/SmartMirror?kiosk=on
-@unclutter
-@xset s off
-@xset s noblank
-@xset -dpms
-# END ADDED
+2) DISPLAY=:0.0
+3) export DISPLAY
+4) xhost +
+sudo -H -u openhab bash -c 'DISPLAY=:0 /usr/bin/chromium-browser --restore-last-session --noerrdialogs --enable-offline-auto-reload --disable-session-crashed-bubble --disable-infobars --kiosk http://192.168.0.5:8080/habpanel/index.html#/view/SmartMirror?kiosk=on' 
