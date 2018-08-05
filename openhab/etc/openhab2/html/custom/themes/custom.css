@@ -123,17 +123,15 @@ th span {
 table.valueList {
     width: 100%;
     position: absolute;
-}
-
-table.valueList tr td:nth-child(1) {
-    text-align: left;
-    padding-left: 10%;
     font-size: 150%;
 }
 
-table.valueList tr td:nth-child(2) {
+table.valueList td {
     text-align: left;
-    padding-left: 50%;
+}
+
+table.valueList tr td:nth-child(1) {
+    padding-left: 10%;
 }
 
 .liveFeed {
