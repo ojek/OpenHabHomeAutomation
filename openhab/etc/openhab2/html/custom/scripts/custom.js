@@ -39,6 +39,11 @@ if ((typeof loadContent != "function" || typeof updateCalendar != "function") &&
                     $(adjacentElem).append(element.replace('@replace@', text));
                 }
             };
+            Date.prototype.addDays = function(days) {
+                var date = new Date(this.valueOf());
+                date.setDate(date.getDate() + days);
+                return date;
+            }
             function updateCalendar()
             {
                 var currentWeekRowNumber = 4;
@@ -57,7 +62,7 @@ if ((typeof loadContent != "function" || typeof updateCalendar != "function") &&
                 $(currentCell).addClass('today');
                 var currentCellNumber = ((currentWeekRowNumber-1) * 7) + dayInWeek;
                 var remainingDays = totalCells - currentCellNumber;
-                var maxDate = todayDate.setDate(todayDate.getDate() + remainingDays);
+                var maxDate = todayDate.addDays(remainingDays);
                 
                 for (var i = rows-1; i > 1; i--)
                 {
@@ -66,7 +71,7 @@ if ((typeof loadContent != "function" || typeof updateCalendar != "function") &&
                     {
                         var currentDay = maxDate.getDate();
                         $(calendarCells[z]).text(currentDay);
-                        maxDate = maxDate.setDate(maxDate.getDate() - 1);
+                        maxDate = maxDate.addDays(-1);
                     }
                 }
             };
