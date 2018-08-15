@@ -22,48 +22,12 @@ if (typeof loadJQuery != "function") {
     loadJQuery();
 }
 
-if (typeof updateCalendar != "function") { 
-    function updateCalendar()
-    {
-        var currentWeekRowNumber = 4;
-        var rows = 7;
-        var columns = 7;
-        var totalCells = rows*columns;
-        var todayDate = new Date();
-        var dayInWeek = todayDate.getDay();
-        var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        
-        var calendarRows = $('table.calendar tr');
-        if (calendarRows.length === 0) return;
-        var dayNameHeading = $(calendarRows[0]).children()[0];
-        $(dayNameHeading).text(todayDate.toLocaleDateString('en-GB', dateOptions));
-        var currentCell = $(calendarRows[currentWeekRowNumber]).children()[dayInWeek];
-        $(currentCell).addClass('today');
-        var currentCellNumber = ((currentWeekRowNumber-1) * 7) + dayInWeek;
-        var remainingDays = totalCells - currentCellNumber;
-        var maxDate = todayDate.setDate(todayDate.getDate() + remainingDays);
-        
-        for (var i = rows-1; i > 1; i--)
-        {
-            var calendarCells = $(calendarRows[i]).children();
-            for (var z = calendarCells.length-1; z >= 0; z--)
-            {
-                var currentDay = maxDate.getDate();
-                $(calendarCells[z]).text(currentDay);
-                maxDate = maxDate.setDate(maxDate.getDate() - 1);
-            }
-        }
-    };
-    updateCalendar();
-    window.calendarRefreshInterval = window.setInterval(function(){
-        updateCalendar();
-    }, repeatTime);
-}
-
-if (typeof loadContent != "function" && window.interval === null) {   
+if ((typeof loadContent != "function" || typeof updateCalendar != "function") && window.interval === null) {   
     window.interval = window.setInterval(function(){
-        if (typeof loadContent != "function") {
+        if (typeof loadContent != "function" && typeof updateCalendar != "function") {
+
             if (typeof jQuery === undefined || typeof($) === "undefined") return;
+
             function loadContent(source, element){
                 var srcElems = $(source);
                 for(var i = 0; i < srcElems.length; i++){
@@ -75,11 +39,47 @@ if (typeof loadContent != "function" && window.interval === null) {
                     $(adjacentElem).append(element.replace('@replace@', text));
                 }
             };
+            function updateCalendar()
+            {
+                var currentWeekRowNumber = 4;
+                var rows = 7;
+                var columns = 7;
+                var totalCells = rows*columns;
+                var todayDate = new Date();
+                var dayInWeek = todayDate.getDay();
+                var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                
+                var calendarRows = $('table.calendar tr');
+                if (calendarRows.length === 0) return;
+                var dayNameHeading = $(calendarRows[0]).children()[0];
+                $(dayNameHeading).text(todayDate.toLocaleDateString('en-GB', dateOptions));
+                var currentCell = $(calendarRows[currentWeekRowNumber]).children()[dayInWeek];
+                $(currentCell).addClass('today');
+                var currentCellNumber = ((currentWeekRowNumber-1) * 7) + dayInWeek;
+                var remainingDays = totalCells - currentCellNumber;
+                var maxDate = todayDate.setDate(todayDate.getDate() + remainingDays);
+                
+                for (var i = rows-1; i > 1; i--)
+                {
+                    var calendarCells = $(calendarRows[i]).children();
+                    for (var z = calendarCells.length-1; z >= 0; z--)
+                    {
+                        var currentDay = maxDate.getDate();
+                        $(calendarCells[z]).text(currentDay);
+                        maxDate = maxDate.setDate(maxDate.getDate() - 1);
+                    }
+                }
+            };
+
             clearInterval(window.interval);
             loadContent('.content .src', '<iframe src="@replace@"></iframe>');
+            updateCalendar();
 
             if (window.repeatInterval === null) {
                 window.repeatInterval = window.setInterval(function(){loadContent('.content .src', '<iframe src="@replace@"></iframe>')},repeatTime);                
+            }
+            if (window.calendarRefreshInterval === null) {
+                window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, repeatTime);                
             }
         } 
         else {
