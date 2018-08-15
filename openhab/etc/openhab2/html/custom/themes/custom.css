@@ -148,6 +148,16 @@ table.valueList tr td:nth-child(1) {
     animation: liveFeed 15s linear infinite;
 }
 
+table.calendar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+table.calendar th {
+    position: relative;
+}
+
 @keyframes liveFeed {
     0%   { 
         transform: translateX(100%); 		
