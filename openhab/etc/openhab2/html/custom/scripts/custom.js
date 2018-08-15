@@ -44,20 +44,19 @@ if (window.updateCalendar == undefined)
 {
     window.updateCalendar = function()
     {
-        var currentWeekRowNumber = 3;
+        var currentWeekRowNumber = 2;
         var rows = 6;
         var columns = 7;
         var totalCells = rows*columns;
         var todayDate = new Date();
+        var todayDay = todayDate.getDate();
         var dayInWeek = todayDate.getDay();
         var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         
         var calendarRows = $('table.calendar tr');
         if (calendarRows.length === 0) return;
         $('.calendarTitle').text(todayDate.toLocaleDateString('en-GB', dateOptions));
-        var currentCell = $(calendarRows[currentWeekRowNumber]).children()[dayInWeek];
-        $(currentCell).addClass('today');
-        var currentCellNumber = ((currentWeekRowNumber-1) * 7) + dayInWeek;
+        var currentCellNumber = (currentWeekRowNumber * 7) + dayInWeek;
         var remainingDays = totalCells - currentCellNumber;
         var maxDate = todayDate.addDays(remainingDays);
         
@@ -66,11 +65,23 @@ if (window.updateCalendar == undefined)
             var calendarCells = $(calendarRows[i]).children();
             for (var z = calendarCells.length-1; z >= 0; z--)
             {
-                var currentDay = maxDate.getDate();
-                $(calendarCells[z]).text(currentDay);
+                var iterationCell = (i * columns) + (z + 1);
+                var iterationDay = maxDate.getDate();
+                $(calendarCells[z]).text(iterationDay);
+                $(calendarCells[z]).removeClass('oddMonth today');
                 maxDate = maxDate.addDays(-1);
+                
+                if (iterationCell > currentCellNumber && iterationDay < todayDay) {
+                    $(calendarCells[z]).addClass('oddMonth');
+                } 
+                else if (iterationCell < currentCellNumber && iterationDay > todayDay) {
+                    $(calendarCells[z]).addClass('oddMonth');
+                }
             }
         }
+
+        var currentCell = $(calendarRows[currentWeekRowNumber]).children()[dayInWeek-1];
+        $(currentCell).addClass('today');
     };
 }
 
