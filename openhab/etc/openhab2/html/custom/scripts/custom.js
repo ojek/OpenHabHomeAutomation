@@ -7,6 +7,9 @@ if (repeatTime == undefined){
 if (repeatInterval == undefined){
     var repeatInterval = null;
 }
+if (calendarRefreshInterval == undefined){
+    var calendarRefreshInterval = null;
+}
 
 if (typeof loadJQuery != "function") { 
     function loadJQuery(){
@@ -17,6 +20,42 @@ if (typeof loadJQuery != "function") {
         (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
     };
     loadJQuery();
+}
+
+if (typeof updateCalendar != "function") { 
+    function updateCalendar()
+    {
+        var currentWeekRowNumber = 4;
+        var rows = 7;
+        var columns = 7;
+        var totalCells = rows*columns;
+        var todayDate = new Date();
+        var dayInWeek = todayDate.getDay();
+        var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        
+        var calendarRows = $('table.calendar tr');
+        var dayNameHeading = $(calendarRows[0]).children()[0];
+        $(dayNameHeading).text(todayDate.toLocaleDateString('en-GB', dateOptions));
+        var currentCell = $(calendarRows[currentWeekRowNumber]).children()[dayInWeek];
+        $(currentCell).addClass('today');
+        var currentCellNumber = ((currentWeekRowNumber-1) * 7) + dayInWeek;
+        var remainingDays = totalCells - currentCellNumber;
+        var maxDate = todayDate.setDate(todayDate.getDate() + remainingDays);
+        
+        for (var i = rows-1; i > 1; i--)
+        {
+            var calendarCells = $(calendarRows[i]).children();
+            for (var z = calendarCells.length-1; z >= 0; z--)
+            {
+                var currentDay = maxDate.getDate();
+                $(calendarCells[z]).text(currentDay);
+                maxDate = maxDate.setDate(maxDate.getDate() - 1);
+            }
+        }
+    };
+    window.interval = window.setInterval(function(){
+        updateCalendar();
+    }, repeatTime);
 }
 
 if (typeof loadContent != "function" && window.interval === null) {   
