@@ -34,6 +34,7 @@ if (typeof updateCalendar != "function") {
         var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         
         var calendarRows = $('table.calendar tr');
+        if (calendarRows.length === 0) return;
         var dayNameHeading = $(calendarRows[0]).children()[0];
         $(dayNameHeading).text(todayDate.toLocaleDateString('en-GB', dateOptions));
         var currentCell = $(calendarRows[currentWeekRowNumber]).children()[dayInWeek];
@@ -53,7 +54,8 @@ if (typeof updateCalendar != "function") {
             }
         }
     };
-    window.interval = window.setInterval(function(){
+    updateCalendar();
+    window.calendarRefreshInterval = window.setInterval(function(){
         updateCalendar();
     }, repeatTime);
 }
