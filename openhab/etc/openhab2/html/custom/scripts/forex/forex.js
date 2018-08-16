@@ -1,5 +1,5 @@
 function forex(){
-	$.get('https://panel.walutomat.pl/api/v1/best_offers.php', function (data) {
+	$.get('https://cors.io/?https://panel.walutomat.pl/api/v1/best_offers.php', function (data) {
         for (var i = 0; i < data.offers.length; i++){
             if (data.offers[i].pair === "EURPLN"){
                 var currRate = data.offers[i].buy.replace('.','');
@@ -17,4 +17,6 @@ function forex(){
             }
         }
     });
-}
+};
+
+forex();
