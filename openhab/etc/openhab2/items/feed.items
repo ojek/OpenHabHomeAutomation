@@ -1,4 +1,0 @@
-String feed_latest_description      {channel="feed:feed:bbc:latest-description"}
-String feed_latest_title            {channel="feed:feed:bbc:latest-title"}
-String feed_description             {channel="feed:feed:bbc:description"}
-String feed_title                   {channel="feed:feed:bbc:title"}
