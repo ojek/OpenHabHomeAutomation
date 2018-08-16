@@ -107,6 +107,7 @@ if (window.interval == null) {
         clearInterval(window.interval);
         window.loadContent('.content .src', '<iframe src="@replace@"></iframe>');
         window.updateCalendar();
+        forex();
 
         if (window.repeatInterval === null) {
             window.repeatInterval = window.setInterval(function(){loadContent('.content .src', '<iframe src="@replace@"></iframe>'); },window.repeatTime);                

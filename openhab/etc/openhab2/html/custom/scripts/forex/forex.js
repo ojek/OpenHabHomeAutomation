@@ -18,5 +18,3 @@ function forex(){
         }
     });
 };
-
-forex();
