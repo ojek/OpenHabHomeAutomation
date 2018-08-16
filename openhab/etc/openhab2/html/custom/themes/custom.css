@@ -164,6 +164,10 @@ iframe {
 th.value {
     width: 20%;
     left: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 th.icon {
@@ -173,6 +177,10 @@ th.icon {
 th.name {
     width: 60%;
     left: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 th {
