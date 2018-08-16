@@ -13,9 +13,6 @@ if (window.repeatInterval == undefined){
 if (window.calendarRefreshInterval == undefined){
     window.calendarRefreshInterval = null;
 }
-if (window.weatherRefreshInterval == undefined){
-    window.weatherRefreshInterval = null;
-}
 
 if (window.loadScript == undefined) 
 {
@@ -100,11 +97,12 @@ if (window.scriptsPending == false) {
     window.scriptsPending = true;
     window.loadScript("/static/custom/scripts/jQuery/jquery-3.2.1.min.js");
     window.loadScript("/static/custom/scripts/weatherWidget/weatherWidget.min.js");
+    window.loadScript("/static/custom/scripts/clock/clock.js");
 }
 
 if (window.interval == null) {
     window.interval = window.setInterval(function(){
-        if (typeof jQuery === undefined || typeof($) === "undefined" || typeof(__weatherwidget_init) === "undefined") return;
+        if (typeof jQuery === undefined || typeof($) === "undefined") return;
         clearInterval(window.interval);
         window.loadContent('.content .src', '<iframe src="@replace@"></iframe>');
         window.updateCalendar();
@@ -114,9 +112,6 @@ if (window.interval == null) {
         }
         if (window.calendarRefreshInterval === null) {
             window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, repeatTime);                
-        }
-        if (window.weatherRefreshInterval === null) {
-            window.weatherRefreshInterval = window.setInterval(function(){__weatherwidget_init();}, repeatTime);                
         }
     }, 1000);
 }
