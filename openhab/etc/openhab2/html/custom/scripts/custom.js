@@ -1,5 +1,5 @@
-if (window.jQueryPending == undefined){
-    window.jQueryPending = false;
+if (window.scriptsPending == undefined){
+    window.scriptsPending = false;
 }
 if (window.interval == undefined){
     window.interval = null;
@@ -13,14 +13,17 @@ if (window.repeatInterval == undefined){
 if (window.calendarRefreshInterval == undefined){
     window.calendarRefreshInterval = null;
 }
+if (window.weatherRefreshInterval == undefined){
+    window.weatherRefreshInterval = null;
+}
 
-if (window.loadJQuery == undefined) 
+if (window.loadScript == undefined) 
 {
-    window.loadJQuery = function(){
+    window.loadScript = function(src){
         var newscript = document.createElement('script');
         newscript.type = 'text/javascript';
         newscript.async = true;
-        newscript.src = '/static/custom/scripts/jQuery/jquery-3.2.1.min.js';
+        newscript.src = src;
         (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
     };
 }
@@ -93,14 +96,15 @@ if (Date.prototype.addDays == undefined) {
     }
 }
 
-if (window.jQueryPending == false) { 
-    window.jQueryPending = true;
-    loadJQuery();
+if (window.scriptsPending == false) { 
+    window.scriptsPending = true;
+    window.loadScript("/static/custom/scripts/jQuery/jquery-3.2.1.min.js");
+    window.loadScript("/static/custom/scripts/weatherWidget/weatherWidget.min.js");
 }
 
 if (window.interval == null) {
     window.interval = window.setInterval(function(){
-        if (typeof jQuery === undefined || typeof($) === "undefined") return;
+        if (typeof jQuery === undefined || typeof($) === "undefined" || typeof(__weatherwidget_init) === "undefined") return;
         clearInterval(window.interval);
         window.loadContent('.content .src', '<iframe src="@replace@"></iframe>');
         window.updateCalendar();
@@ -110,6 +114,9 @@ if (window.interval == null) {
         }
         if (window.calendarRefreshInterval === null) {
             window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, repeatTime);                
+        }
+        if (window.weatherRefreshInterval === null) {
+            window.weatherRefreshInterval = window.setInterval(function(){__weatherwidget_init();}, repeatTime);                
         }
     }, 1000);
 }
