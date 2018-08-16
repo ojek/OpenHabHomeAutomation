@@ -220,7 +220,7 @@ table.calendar td.today {
     border: 1px solid var(--main-text);    
 }
 
-.clock {
+.singleNumericText {
     position: absolute;
     top: 50%;
     left: 50%;

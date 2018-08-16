@@ -1,0 +1,18 @@
+<div class="customWidget" style="font-size: calc(100% * 
+{{ 
+    (ngModel.sizeY === 1 ) ? 2 :
+    (ngModel.sizeY === 2 ) ? 3 :
+    (ngModel.sizeY === 3 ) ? 4 :
+    (ngModel.sizeY === 4 ) ? 5 :
+    (ngModel.sizeY === 5 ) ? 6
+    : 2 }}
+);">
+    <table>
+        <tr class="content headless">
+            <td>
+                <div id="forex" class="forex singleNumericText"></div>                    
+            </td>
+        </tr>
+    </table>
+    <div class="hidden" oc-lazy-load="['/static/custom/scripts/custom.js']"></div>
+</div>

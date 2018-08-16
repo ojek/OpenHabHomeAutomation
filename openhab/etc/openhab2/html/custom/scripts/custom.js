@@ -98,6 +98,7 @@ if (window.scriptsPending == false) {
     window.loadScript("/static/custom/scripts/jQuery/jquery-3.2.1.min.js");
     window.loadScript("/static/custom/scripts/weatherWidget/weatherWidget.min.js");
     window.loadScript("/static/custom/scripts/clock/clock.js");
+    window.loadScript("/static/custom/scripts/forex/forex.js");
 }
 
 if (window.interval == null) {
@@ -108,10 +109,10 @@ if (window.interval == null) {
         window.updateCalendar();
 
         if (window.repeatInterval === null) {
-            window.repeatInterval = window.setInterval(function(){loadContent('.content .src', '<iframe src="@replace@"></iframe>'); },repeatTime);                
+            window.repeatInterval = window.setInterval(function(){loadContent('.content .src', '<iframe src="@replace@"></iframe>'); },window.repeatTime);                
         }
         if (window.calendarRefreshInterval === null) {
-            window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, repeatTime);                
+            window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, window.repeatTime);                
         }
     }, 1000);
 }

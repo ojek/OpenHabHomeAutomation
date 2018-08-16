@@ -1,4 +1,4 @@
-function showTime(divId){
+function showTime(){
     var date = new Date();
     var h = date.getHours(); // 0 - 23
     var m = date.getMinutes(); // 0 - 59
@@ -9,10 +9,10 @@ function showTime(divId){
     s = (s < 10) ? "0" + s : s;
     
     var time = h + ":" + m + ":" + s;
-    document.getElementById(divId).innerText = time;
-    document.getElementById(divId).textContent = time;
+    document.getElementById("clock").innerText = time;
+    document.getElementById("clock").textContent = time;
     
-    setTimeout(showTime(divId), 1000);
+    setTimeout(showTime, 1000);
 };
 
-showTime("clock");
+showTime();
