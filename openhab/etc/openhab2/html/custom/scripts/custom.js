@@ -13,6 +13,9 @@ if (window.repeatInterval == undefined){
 if (window.calendarRefreshInterval == undefined){
     window.calendarRefreshInterval = null;
 }
+if (window.weatherForecastRefreshInterval == undefined){
+    window.weatherForecastRefreshInterval = null;
+}
 
 if (window.loadScript == undefined) 
 {
@@ -112,6 +115,9 @@ if (window.interval == null) {
         }
         if (window.calendarRefreshInterval === null) {
             window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, window.repeatTime);                
+        }
+        if (window.weatherForecastRefreshInterval === null) {
+            window.weatherForecastRefreshInterval = window.setInterval(function(){__weatherwidget_init();}, window.repeatTime);                
         }
     }, 1000);
 }
