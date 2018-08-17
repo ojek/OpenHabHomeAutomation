@@ -109,15 +109,16 @@ if (window.interval == null) {
         clearInterval(window.interval);
         window.loadContent('.content .src', '<iframe src="@replace@"></iframe>');
         window.updateCalendar();
+        window.__weatherwidget_init();
 
         if (window.repeatInterval === null) {
-            window.repeatInterval = window.setInterval(function(){loadContent('.content .src', '<iframe src="@replace@"></iframe>'); },window.repeatTime);                
+            window.repeatInterval = window.setInterval(function(){window.loadContent('.content .src', '<iframe src="@replace@"></iframe>'); },window.repeatTime);                
         }
         if (window.calendarRefreshInterval === null) {
-            window.calendarRefreshInterval = window.setInterval(function(){updateCalendar();}, window.repeatTime);                
+            window.calendarRefreshInterval = window.setInterval(function(){window.updateCalendar();}, window.repeatTime);                
         }
         if (window.weatherForecastRefreshInterval === null) {
-            window.weatherForecastRefreshInterval = window.setInterval(function(){__weatherwidget_init();}, window.repeatTime);                
+            window.weatherForecastRefreshInterval = window.setInterval(function(){window.__weatherwidget_init();}, window.repeatTime);                
         }
     }, 1000);
 }
