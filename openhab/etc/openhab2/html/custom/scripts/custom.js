@@ -54,6 +54,7 @@ if (window.updateCalendar == undefined)
         var todayDate = new Date();
         var todayDay = todayDate.getDate();
         var dayInWeek = todayDate.getDay();
+        if (dayInWeek === 0) dayInWeek = 7;
         var dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         
         var calendarRows = $('table.calendar tr');
