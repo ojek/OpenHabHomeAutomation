@@ -4,12 +4,14 @@ when
     Item Desired_Temp_Bedroom received update
 then
     val Number BedroomTemp = TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10))
-    if (BedroomTemp < Desired_Temp_Bedroom.state)
+
+    if (BedroomTemp < Desired_Temp_Bedroom.state && Sonoff_S20_Bedroom_Main.changedSince(now.minusMinutes(2)) == false )
     {
         Desired_Temp_State_Bedroom.sendCommand("ON")
         Sonoff_S20_Bedroom_Main.sendCommand("ON")
     }
-    else
+
+    if (BedroomTemp >= Desired_Temp_Bedroom.state)
     {
         Desired_Temp_State_Bedroom.sendCommand("OFF")
         Sonoff_S20_Bedroom_Main.sendCommand("OFF")
