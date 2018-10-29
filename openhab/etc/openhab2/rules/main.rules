@@ -4,7 +4,8 @@ when
     Item Desired_Temp_Bedroom received update
 then
     val Number BedroomTemp = TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10))
-
+    println("dupa")
+    println(Desired_Temp_State_Bedroom.changedSince(now.minusMinutes(2)))
     if (BedroomTemp < Desired_Temp_Bedroom.state && Desired_Temp_State_Bedroom.changedSince(now.minusMinutes(2)) == false )
     {
         Desired_Temp_State_Bedroom.sendCommand("ON")
