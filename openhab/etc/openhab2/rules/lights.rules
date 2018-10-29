@@ -9,7 +9,7 @@ when
     Item MotionSensor_Bedroom_Main received update or
     Item MotionSensor_LivingRoom_Main received update
 then
-    if (buttonTimer == null && (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1))
+    if (buttonTimer === null && (MotionSensor_Bedroom_Main.state == 1 || MotionSensor_LivingRoom_Main.state == 1))
     {
         if (motionTimer !== null)
         {
