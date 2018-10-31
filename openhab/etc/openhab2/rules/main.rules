@@ -1,15 +1,15 @@
 rule "Bedroom_Temperature"
 when
-    Item TempHumidSensor_Bedroom_Main_Temperature received update or
-    Item Desired_Temp_Bedroom received update
+    Item TempHumidSensor_Bedroom_Main_Temperature changed or
+    Item Desired_Temp_Bedroom changed
 then
     val Number BedroomTemp = TempHumidSensor_Bedroom_Main_Temperature.averageSince(now.minusMinutes(10))
     
-    logWarn("myLog", "#####changedSince " + Desired_Temp_State_Bedroom.changedSince(now.minusMinutes(2)));
-    logWarn("myLog", "#####updatedSince " + Desired_Temp_State_Bedroom.updatedSince(now.minusMinutes(2)));
-    logWarn("myLog", "#####averageSince " + Desired_Temp_State_Bedroom.averageSince(now.minusMinutes(2)));
-    logWarn("myLog", "#####minimumSince " + Desired_Temp_State_Bedroom.minimumSince(now.minusMinutes(2)));
-    logWarn("myLog", "#####maximumSince " + Desired_Temp_State_Bedroom.maximumSince(now.minusMinutes(2)));
+    logWarn("myLog", "#####changedSince " + Desired_Temp_State_Bedroom.changedSince(now.minusMinutes(1)));
+    logWarn("myLog", "#####updatedSince " + Desired_Temp_State_Bedroom.updatedSince(now.minusMinutes(1)));
+    logWarn("myLog", "#####averageSince " + Desired_Temp_State_Bedroom.averageSince(now.minusMinutes(1)));
+    logWarn("myLog", "#####minimumSince " + Desired_Temp_State_Bedroom.minimumSince(now.minusMinutes(1)));
+    logWarn("myLog", "#####maximumSince " + Desired_Temp_State_Bedroom.maximumSince(now.minusMinutes(1)));
     
     if ( BedroomTemp < Desired_Temp_Bedroom.state && !Desired_Temp_State_Bedroom.changedSince(now.minusMinutes(2), "influxdb") )
     {
